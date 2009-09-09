@@ -1,0 +1,173 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+<body>
+
+<div metal:fill-slot="main">
+<metal:main_macro define-macro="main">
+    <metal:body define-macro="body_macro"
+                tal:define="kssClassesView context/@@kss_field_decorator_view;
+                            getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;
+                            templateId template/getId">
+
+
+        <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+        <h1 class="documentFirstHeading"> 
+            <metal:field use-macro="python:here.widget('title', mode='view')">
+            Title
+            </metal:field>
+        </h1>
+
+        <div tal:replace="structure provider:plone.belowcontenttitle" />
+
+        <p class="documentDescription">
+            <metal:field use-macro="python:here.widget('description', mode='view')">
+            Description
+            </metal:field>
+        </p>
+
+        <div tal:replace="structure provider:plone.abovecontentbody" />
+
+        <metal:listingmacro define-macro="listing">
+        <tal:topiccontents define="topicContents python:here.queryCatalog(batch=True);
+                                   batch topicContents;">
+
+        <tal:listing condition="topicContents">
+            <a style='text-align: right' href="#"
+               tal:condition="nocall: here/asPDF|nothing"
+               tal:attributes="href string:${here_url}/asPDF/atct_topic_pdf_template/atct_topic_pdf"
+               i18n:translate="label_download_as_pdf"
+               i18n:domain="atcontenttypes">
+                Download PDF
+            </a>
+        </tal:listing>
+            
+        <div metal:define-macro="text-field-view"
+             id="parent-fieldname-text" class="stx"
+             tal:define="kss_class python:getKssClasses('text',
+                         templateId=templateId, macro='text-field-view');
+                         text here/getText|nothing"
+             tal:condition="text"
+             tal:attributes="class python:test(here.Format() in ('text/structured',
+                                                   'text/x-rst', ), 'stx' + kss_class, 'plain' + kss_class)">
+            <div metal:define-slot="inside" tal:replace="structure text">The body</div>
+        </div>
+
+        <tal:listing condition="topicContents">
+            <tal:default condition="not:here/getCustomView|nothing"
+                         define="folderContents topicContents">
+                <metal:listing metal:use-macro="here/folder_listing/macros/listing">
+                    <metal:empty metal:fill-slot="no_items_in_listing"></metal:empty>
+                </metal:listing>
+
+            </tal:default>
+
+            <tal:custom condition="here/getCustomView|nothing"
+                        define="vocab python:here.listMetaDataFields(False)">
+
+                <table class="listing"
+                       summary="Content listing"
+                       i18n:attributes="summary summary_content_listing;">
+                     <thead>
+                        <tr>
+                            <th tal:repeat="field here/getCustomViewFields"
+                                tal:content="python:vocab.getValue(field, field)"
+                                i18n:translate=""/>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tal:brain tal:repeat="obj topicContents">
+                        <tr tal:define="oddrow repeat/obj/odd;"
+                            tal:attributes="class python:test(oddrow, 'even', 'odd')">
+                            <tal:fields repeat="field here/getCustomViewFields"
+                                        define="url obj/getURL;
+                                                obj_type obj/portal_type;
+                                                obj_typeinfo python: here.portal_types.getTypeInfo(obj_type);
+                                                icon python:portal_url+'/'+ obj_typeinfo.getIcon();
+                                                obj_wf_state obj/review_state|python: wtool.getInfoFor(obj, 'review_state', '');
+                                                obj_wf_state_class python:'state-' + normalizeString(obj_wf_state);
+                                                title_or_id obj/pretty_title_or_id">
+                            <tal:block define="value python: getattr(obj, field, None)">
+                                <td tal:condition="python: field != 'Title'"
+                                    tal:content="python:here.formatCatalogMetadata(value)"
+                                    i18n:translate=""/>
+                                <td tal:condition="python: field == 'Title'">
+                                    <a href="#" tal:attributes="href url">
+                                        <img src="#"
+                                             height="16"
+                                             width="16"
+                                             tal:attributes="src icon;
+                                                             alt obj/Type|obj_type"/>
+                                    </a>
+
+                                    <a href="#" tal:condition="python: obj.portal_type not in ['Link', 'Image']"
+                                                tal:attributes="href url;
+                                                                class obj_wf_state_class"
+                                                tal:content="title_or_id" />
+
+                                    <a href="#" tal:condition="python: obj.portal_type == 'Image'"
+                                                tal:attributes="href string:${url}/view;
+                                                                class obj_wf_state_class"
+                                                tal:content="title_or_id" />
+
+                                    <a href="#"
+                                       tal:condition="python: obj.portal_type == 'Link'"
+                                       tal:attributes="href obj/getRemoteUrl;
+                                                       class obj_wf_state_class"
+                                       class="link-plain"
+                                       tal:content="title_or_id" />
+                                </td>
+                            </tal:block>
+                            </tal:fields>
+                        </tr>
+                        </tal:brain>
+                     </tbody>
+                </table>
+            </tal:custom>
+
+            </tal:listing>
+
+            <p class="discreet"
+               tal:condition="python: not topicContents and here.listCriteria()"
+               i18n:domain="atcontenttypes"
+               i18n:translate="description_no_items_in_topic">
+                There are currently no results for this search.
+            </p>
+
+            <p class="discreet"
+               tal:condition="not: here/listCriteria"
+               i18n:domain="atcontenttypes"
+               i18n:translate="description_no_criteria_in_topic">
+                There are currently no criteria on which to search.
+                Please add them using the 'criteria' tab.
+            </p>
+
+            <!-- Navigation -->
+            <div metal:use-macro="here/batch_macros/macros/navigation" />
+
+        </tal:topiccontents>
+        </metal:listingmacro>
+    </metal:body>
+
+    <metal:body define-macro="folderlisting_macro">
+        <tal:subtopics condition="here/hasSubtopics|nothing"
+                       define="folderContents here/getFolderContents">
+            <h2 i18n:domain="atcontenttypes"
+                i18n:translate="heading_contained_collections">
+                Also in this section
+            </h2>
+            <metal:list metal:use-macro="here/base/macros/folderlisting"/>
+        </tal:subtopics>
+    </metal:body>
+
+    <div tal:replace="structure provider:plone.belowcontentbody" />
+
+</metal:main_macro>
+
+</div>
+
+</body>
+</html>

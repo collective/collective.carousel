@@ -16,13 +16,18 @@ class TestCarousel(CarouselTestCase):
     """
 
     def test_js_available(self):
-        pass
+        jsreg = getattr(self.portal, 'portal_javascripts')
+        script_ids = jsreg.getResourceIds()
+        self.failUnless('jquery.tools.min.js' in script_ids)
         
     def test_css_available(self):
-        pass        
+        cssreg = getattr(self.portal, 'portal_css')
+        stylesheets_ids = cssreg.getResourceIds()
+        self.failUnless('carousel.css' in stylesheets_ids)
 
     def test_view_available_for_collection(self):
-        pass
+        views = self.portal.portal_types.Topic.getAvailableViewMethods(None)
+        self.failUnless('carousel_view' in views)
         
     def test_view_is_selectable(self):
         pass

@@ -1,8 +1,19 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:five="http://namespaces.zope.org/five"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"    
     i18n_domain="collective.carousel">
 
    <five:registerPackage package="." initialize=".initialize" />
+   
+   <include file="skins.zcml" /> 
+   
+   <genericsetup:registerProfile
+       name="default"
+       title="Carousel for Collections"
+       directory="profiles"
+       description='Extension profile for the collective.carousel'
+       provides="Products.GenericSetup.interfaces.EXTENSION"
+       />   
 
 </configure>
