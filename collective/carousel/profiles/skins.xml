@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<object name="portal_skins">
+
+ <object name="carousel"
+    meta_type="Filesystem Directory View"
+    directory="collective.carousel:skins/carousel"/>
+
+ <skin-path name="*" purge="False">
+  <layer name="carousel"
+     insert-after="custom"/>
+ </skin-path>
+
+</object>

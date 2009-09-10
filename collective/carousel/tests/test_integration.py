@@ -15,6 +15,9 @@ class TestCarousel(CarouselTestCase):
     tests the installation of a particular product.
     """
 
+    def test_skins_is_available(self):
+        self.failUnless('carousel' in self.portal.portal_skins.objectIds())
+
     def test_js_available(self):
         jsreg = getattr(self.portal, 'portal_javascripts')
         script_ids = jsreg.getResourceIds()
@@ -25,17 +28,26 @@ class TestCarousel(CarouselTestCase):
         cssreg = getattr(self.portal, 'portal_css')
         stylesheets_ids = cssreg.getResourceIds()
         self.failUnless('carousel.css' in stylesheets_ids)
+        
+    def test_skin_layer(self):
+        self.skins = self.portal.portal_skins
+        themes = self.skins.getSkinSelections()
+        for theme in themes:
+            path = self.skins.getSkinPath(theme)
+            path = [x.strip() for x in path.split(',')]
+            self.failUnless('carousel' in path)
+            self.assertEqual(path[1], 'carousel')
 
     def test_view_available_for_collection(self):
         views = self.portal.portal_types.Topic.getAvailableViewMethods(None)
         self.failUnless('carousel_view' in views)
         
     def test_view_is_selectable(self):
-        topic = self.folder.invokeFactory('Topic', 'test-topic')
+        self.setRoles(('Manager',))
+        topic_id = self.folder.invokeFactory('Topic', 'test-topic')
+        topic = getattr(self.folder, 'test-topic')
         topic.setLayout('carousel_view')
         self.assertEqual(topic.getLayout(), 'carousel_view')
-        self.assertEqual(topic.defaultView(), 'carousel_view')
-        self.assertEqual(topic.getDefaultLayout(), 'carousel_view')
         
     # Keep adding methods here, or break it into multiple classes or
     # multiple files as appropriate. Having tests in multiple files makes
