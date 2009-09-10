@@ -19,6 +19,7 @@ class TestCarousel(CarouselTestCase):
         jsreg = getattr(self.portal, 'portal_javascripts')
         script_ids = jsreg.getResourceIds()
         self.failUnless('jquery.tools.min.js' in script_ids)
+        self.failUnless('carousel.js' in script_ids)        
         
     def test_css_available(self):
         cssreg = getattr(self.portal, 'portal_css')
@@ -30,7 +31,11 @@ class TestCarousel(CarouselTestCase):
         self.failUnless('carousel_view' in views)
         
     def test_view_is_selectable(self):
-        pass
+        topic = self.folder.invokeFactory('Topic', 'test-topic')
+        topic.setLayout('carousel_view')
+        self.assertEqual(topic.getLayout(), 'carousel_view')
+        self.assertEqual(topic.defaultView(), 'carousel_view')
+        self.assertEqual(topic.getDefaultLayout(), 'carousel_view')
         
     # Keep adding methods here, or break it into multiple classes or
     # multiple files as appropriate. Having tests in multiple files makes

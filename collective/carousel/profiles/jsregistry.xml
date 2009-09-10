@@ -2,4 +2,6 @@
 <object name="portal_javascripts" meta_type="JavaScripts Registry">
  <javascript cacheable="True" compression="safe" cookable="True"
     enabled="True" expression="" id="jquery.tools.min.js" inline="False"/>
+ <javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True" expression="" id="carousel.js" inline="False"/>    
 </object>
