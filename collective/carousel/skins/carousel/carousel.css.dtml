@@ -1,1 +1,143 @@
 /* Main stylesheet for collective.carousel */
+/* <dtml-with base_properties> (do not remove this :) */
+/* <dtml-with carousel_properties> (do not remove this :) */
+/* <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either :) */
+
+/* @group scrollable */
+
+/* 
+    root element for the scrollable. 
+    when scrolling occurs this element stays still. 
+*/ 
+div#carousel {
+    margin: 1em auto;
+    width: &dtml-carouselWidth;;
+    padding: 0 10px;
+    height: &dtml-carouselHeight;;
+    border: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+}
+
+div.scrollable { 
+    /* required settings */ 
+    position:relative; 
+    overflow:hidden; 
+    width: 600px; 
+    height:&dtml-carouselHeight;; 
+} 
+ 
+/* 
+    root element for scrollable items. Must be absolutely positioned 
+    and it should have a extremely large width to accomodate scrollable items. 
+    it's enough that you set width and height for the root element and 
+    not for this element. 
+*/ 
+div.scrollable div.items { 
+    /* this cannot be too large */ 
+    width:20000em; 
+    position:absolute; 
+} 
+ 
+/* 
+    a single item. must be floated in horizontal scrolling. 
+    typically, this element is the one that *you* will style 
+    the most. 
+*/ 
+div.scrollable div.items div.tileItem { 
+    float:left; 
+    width: 600px;
+    border: none;
+} 
+ 
+/* you may want to setup some decorations to active the item */ 
+div.items div.active { 
+    border:1px inset #ccc; 
+    background-color:#fff; 
+}
+
+/* @group buttons */
+/* this makes it possible to add next button beside scrollable */
+.scrollable {
+    float:left;
+}
+
+
+/* @group Navigation elements */
+/* prev, next, prevPage and nextPage buttons */
+a.browse {
+    background:url(http://flowplayer.org/tools/img/scrollable/arrow/hori_large.png) no-repeat;
+    display:block;
+    width:30px;
+    height:30px;
+    float:left;
+    margin:80px 10px;
+    cursor:pointer;
+    font-size:1px;
+}
+
+/* right */
+a.right { background-position: 0 -30px; clear:right; margin-right: 0px;}
+a.right:hover { background-position:-30px -30px; }
+a.right:active { background-position:-60px -30px; }
+
+
+/* left */
+a.left { margin-left: 0px; }
+a.left:hover { background-position:-30px 0; }
+a.left:active { background-position:-60px 0; }
+
+/* up and down */
+a.up, a.down {
+    background:url(http://flowplayer.org/tools/img/scrollable/arrow/vert_large.png) no-repeat;
+    float: none;
+    margin: 10px 50px;
+}
+
+/* up */
+a.up:hover { background-position:-30px 0; }
+a.up:active { background-position:-60px 0; }
+
+/* down */
+a.down { background-position: 0 -30px; }
+a.down:hover { background-position:-30px -30px; }
+a.down:active { background-position:-60px -30px; }
+
+
+/* disabled navigational button */
+a.disabled {
+    visibility:hidden !important;
+}
+
+.scrollable img {
+    margin:20px 5px 20px 21px;
+    width:100px;
+}
+.scrollable img.hover {
+    background-color:#112233;
+}
+.navi {
+    height:20px;
+    margin-left:328px;
+    width:200px;
+}
+.navi a {
+    -moz-background-clip:border;
+    -moz-background-inline-policy:continuous;
+    -moz-background-origin:padding;
+    background:transparent url(http://flowplayer.org/tools/img/scrollable/arrow/navigator.png) no-repeat scroll 0 0;
+    display:block;
+    float:left;
+    font-size:1px;
+    height:8px;
+    margin:3px;
+    width:8px;
+}
+.navi a:hover {
+    background-position:0 -8px;
+}
+.navi a.active {
+    background-position:0 -16px;
+}
+
+
+/* </dtml-with> */
+/* </dtml-with> */

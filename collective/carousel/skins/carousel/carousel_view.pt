@@ -48,15 +48,28 @@
         <tal:listing condition="topicContents">
             <tal:default condition="not:here/getCustomView|nothing"
                          define="folderContents topicContents">
-                <div id="flowpanes">
-                    <div class="items">
-                        <metal:listing metal:use-macro="here/folder_summary_view/macros/listing">
-                            <metal:empty metal:fill-slot="no_items_in_listing"></metal:empty>
-                        </metal:listing>
+                         
+                <div id="carousel">
+                    <!-- wrapper for navigator elements --> 
+                    <div class="navi"></div>                    
+                    
+                    <!-- "previous page" action --> 
+                    <a class="prev browse left">&laquo;</a>                         
+                
+                    <div class="scrollable" id="flowpanes">
+                        <div class="items">
+                            <metal:listing metal:use-macro="here/folder_summary_view/macros/listing">
+                                <metal:empty metal:fill-slot="no_items_in_listing"></metal:empty>
+                            </metal:listing>
+                        </div>
                     </div>
+                    <!-- "next page" action --> 
+                    <a class="next browse right">&raquo;</a>                
                 </div>
+                
             </tal:default>
         </tal:listing>
+        <span class="visualClear"><!-- --></span>
 
             <p class="discreet"
                tal:condition="python: not topicContents and here.listCriteria()"
