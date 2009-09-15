@@ -1,2 +1,2 @@
 carouselWidth:string=680px
-carouselHeight:string=200px
+carouselDefaultHeight:string=200px

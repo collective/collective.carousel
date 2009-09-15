@@ -13,7 +13,7 @@ div#carousel {
     margin: 1em auto;
     width: &dtml-carouselWidth;;
     padding: 0 10px;
-    height: &dtml-carouselHeight;;
+    height: &dtml-carouselDefaultHeight;;
     border: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
 }
 
@@ -22,7 +22,7 @@ div.scrollable {
     position:relative; 
     overflow:hidden; 
     width: 600px; 
-    height:&dtml-carouselHeight;; 
+    height:&dtml-carouselDefaultHeight;; 
 } 
  
 /* 
