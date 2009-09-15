@@ -120,22 +120,24 @@ a.disabled {
     width:200px;
 }
 .navi a {
-    -moz-background-clip:border;
-    -moz-background-inline-policy:continuous;
-    -moz-background-origin:padding;
-    background:transparent url(http://flowplayer.org/tools/img/scrollable/arrow/navigator.png) no-repeat scroll 0 0;
+    border: 1px solid &dtml-globalBorderColor;;
+    border-radius: 4px;
+    -moz-border-radius: 4px; 
+    -webkit-border-radius: 4px;
+    background: &dtml-globalBackgroundColor;;
     display:block;
     float:left;
     font-size:1px;
-    height:8px;
+    height:6px;
     margin:3px;
-    width:8px;
+    width:6px;
 }
 .navi a:hover {
-    background-position:0 -8px;
+    background: &dtml-globalBorderColor;;
+    cursor: pointer;
 }
 .navi a.active {
-    background-position:0 -16px;
+    background: &dtml-globalBorderColor;;
 }
 
 
