@@ -7,6 +7,8 @@ jQuery(function($) {
     $("#flowpanes .items .tileItem").height(base_height);
     $("#flowpanes").height(base_height);    
     $("#carousel").height($("#flowpanes .items .tileItem").outerHeight(true) + $(".navi").outerHeight(true) + 10);
+    // 35px in the following like is 20px (height of navi) + 15px (1/2 height of the button)
+    $(".browse").css("margin-top", ($("#carousel").height()/2 - 35));
         
     // initialize scrollable 
     $("div.scrollable").scrollable({
