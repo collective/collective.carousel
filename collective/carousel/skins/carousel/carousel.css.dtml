@@ -15,6 +15,9 @@ div#carousel {
     padding: 0 10px;
     height: &dtml-carouselDefaultHeight;;
     border: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+    border-radius: 10px;
+    -moz-border-radius: 10px; 
+    -webkit-border-radius: 10px;
 }
 
 div.scrollable { 
@@ -64,10 +67,14 @@ div.items div.active {
 /* @group Navigation elements */
 /* prev, next, prevPage and nextPage buttons */
 a.browse {
-    background:url(http://flowplayer.org/tools/img/scrollable/arrow/hori_large.png) no-repeat;
+    background:url(&dtml-portal_url;/arrowLeft.gif) 50% 50% no-repeat;
     display:block;
-    width:30px;
-    height:30px;
+    width:28px;
+    height:28px;
+    border:1px solid &dtml-globalBorderColor;;
+    border-radius: 15px;
+    -moz-border-radius: 15px; 
+    -webkit-border-radius: 15px;    
     float:left;
     margin:80px 10px;
     cursor:pointer;
@@ -75,31 +82,13 @@ a.browse {
 }
 
 /* right */
-a.right { background-position: 0 -30px; clear:right; margin-right: 0px;}
-a.right:hover { background-position:-30px -30px; }
-a.right:active { background-position:-60px -30px; }
-
+a.right { background-image: url(&dtml-portal_url;/arrowRight.gif); clear:right; margin-right: 0px;}
 
 /* left */
 a.left { margin-left: 0px; }
-a.left:hover { background-position:-30px 0; }
-a.left:active { background-position:-60px 0; }
 
-/* up and down */
-a.up, a.down {
-    background:url(http://flowplayer.org/tools/img/scrollable/arrow/vert_large.png) no-repeat;
-    float: none;
-    margin: 10px 50px;
-}
-
-/* up */
-a.up:hover { background-position:-30px 0; }
-a.up:active { background-position:-60px 0; }
-
-/* down */
-a.down { background-position: 0 -30px; }
-a.down:hover { background-position:-30px -30px; }
-a.down:active { background-position:-60px -30px; }
+a.left:hover,
+a.right:hover { background-color: &dtml-globalBackgroundColor;;}
 
 
 /* disabled navigational button */
