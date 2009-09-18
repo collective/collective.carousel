@@ -18,6 +18,7 @@ div#carousel {
     border-radius: 10px;
     -moz-border-radius: 10px; 
     -webkit-border-radius: 10px;
+/*    position: relative;*/
 }
 
 div.scrollable { 
@@ -80,6 +81,10 @@ a.browse {
     cursor:pointer;
     font-size:1px;
 }
+a.browse span {
+    position: absolute;
+    visibility: hidden;
+}
 
 /* right */
 a.right { background-image: url(&dtml-portal_url;/arrowRight.gif); clear:right; margin-right: 0px;}
@@ -128,7 +133,37 @@ a.disabled {
 .navi a.active {
     background: &dtml-globalBorderColor;;
 }
+#carousel-fullscreen {
+    position: absolute;
+    display: block;
+    bottom: 10px;
+    right: 10px;
+    background: transparent url('&dtml-portal_url;/fullscreenexpand_icon.gif') 50% 50%;
+    width: 16px;
+    height: 16px;
+}
+#carousel-fullscreen span {
+    /* we don't need fullscreen link to appear in screen readers, 
+       so it's safe to simply make hide it */
+    display: none;
+}
 
+/* @group Fullscreen mode */
+
+.activeKiosk {
+    width: 900px;
+    margin: 0 auto;
+}
+.activeKiosk #flowpanes {
+    font-size: 2em;
+    height: 100% !important;
+    width: 900px !important;
+    margin: 0 auto;
+}
+.activeKiosk div.items div.tileItem {
+/*    height: 100% !important;*/
+    width: 900px !important;
+}
 
 /* </dtml-with> */
 /* </dtml-with> */
