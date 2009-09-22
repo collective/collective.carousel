@@ -108,10 +108,13 @@ a.disabled {
 .scrollable img.hover {
     background-color:#112233;
 }
-.navi {
+.carouselNavBar {
     height:20px;
-    margin-left:328px;
-    width:200px;
+    text-align: center;
+    clear: left;
+}
+#fullscreen-switcher {
+    text-align: right;
 }
 .navi a {
     border: 1px solid &dtml-globalBorderColor;;
@@ -119,8 +122,7 @@ a.disabled {
     -moz-border-radius: 4px; 
     -webkit-border-radius: 4px;
     background: &dtml-globalBackgroundColor;;
-    display:block;
-    float:left;
+    display:inline-block;
     font-size:1px;
     height:6px;
     margin:3px;
@@ -134,10 +136,7 @@ a.disabled {
     background: &dtml-globalBorderColor;;
 }
 #carousel-fullscreen {
-    position: absolute;
-    display: block;
-    bottom: 10px;
-    right: 10px;
+    display: inline-block;
     background: transparent url('&dtml-portal_url;/fullscreenexpand_icon.gif') 50% 50%;
     width: 16px;
     height: 16px;
@@ -159,6 +158,8 @@ a.disabled {
     height: 100% !important;
     width: 900px !important;
     margin: 0 auto;
+    /* we don't have next/prev buttons in kiosk mode. Hence we can avoid floating this element */
+    float: none; 
 }
 .activeKiosk div.items div.tileItem {
 /*    height: 100% !important;*/

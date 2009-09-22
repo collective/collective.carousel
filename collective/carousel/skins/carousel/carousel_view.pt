@@ -50,7 +50,7 @@
                          
                 <div id="carousel">
                     <!-- wrapper for navigator elements --> 
-                    <div class="navi"></div>                    
+                    <div class="navi carouselNavBar"><!-- --></div>                    
                     
                     <!-- "previous page" action --> 
                     <a class="prev browse left"
@@ -202,11 +202,14 @@
                     <a class="next browse right" i18n:domain="collective.carousel"
                        title="Next item"
                        i18n:attributes="title label_next_item"><span i18n:translate="label_next_item">Next item</span></a> 
-                    
-                    <a id="carousel-fullscreen" i18n:domain="collective.carousel"
-                       href="#"
-                       title="Fullscreen mode" 
-                       i18n:attributes="title"><span i18n:translate="text_fullscreen_mode">Fullscreen mode</span></a>
+
+                    <!-- Wrapper for fullscreen switcher -->
+                    <div id="fullscreen-switcher" class="carouselNavBar">
+                        <a id="carousel-fullscreen" i18n:domain="collective.carousel"
+                           href="#"
+                           title="View in fullscreen mode" 
+                           i18n:attributes="title"><span i18n:translate="text_fullscreen_mode">View in fullscreen mode</span></a>
+                    </div>
                                    
                 </div>
                 

@@ -13,15 +13,45 @@ jQuery(function($) {
         // 35px in the following like is 20px (height of navi) + 15px (1/2 height of the button)
         $(".browse").css("margin-top", ($("#carousel").height()/2 - 35));
     };
-    elems.find("img").load(function() {
-        resizeCarousel(); 
-    });
-
+    
     // initialize scrollable 
-    $("div.scrollable").scrollable({
+    var api = $("div.scrollable").scrollable({
         size: 1,  
         clickable: false,      
-        loop: true,
-    }).circular().autoscroll(25000).navigator();
- 
+        loop: true
+    }).circular().autoscroll({autoplay: true,steps:1,interval:25000,api:true}).navigator({api:true});
+    
+    elems.find("img").load(function() {
+        resizeCarousel(); 
+        console.info(api.getIndex());
+    });
+
+    
+    $("#carousel-fullscreen").overlay({
+           api: true,
+           target: "#kiosk-wrapper",
+           top: "center",
+           left: 0,
+           closeOnClick: false,        
+           speed: "slow",           
+           expose: {
+                color: "#fff",
+                opacity: 1.0,
+                loadSpeed: 'fast'
+           },
+           onBeforeLoad: function() {   
+               // copy #flowpanes to overlay
+               this.getOverlay().height($(window).height());
+               this.getOverlay().width($(window).width());
+           },
+           onLoad: function() {
+               console.info(api.getIndex());              
+               this.getOverlay().toggleClass("activeKiosk");
+           },
+           onClose: function() {
+               api.begin();
+               this.getOverlay().removeAttr("style");
+               this.getOverlay().toggleClass("activeKiosk");               
+           }
+    });    
 })
