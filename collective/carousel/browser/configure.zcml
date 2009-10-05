@@ -1,0 +1,39 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="collective.carousel">
+    
+  <include package="plone.browserlayer" />    
+  
+  <!-- Viewlets registration -->
+  <browser:viewlet
+      name="plone.carousel"
+      for="*"
+      view="plone.app.layout.globals.interfaces.IViewView" 
+      manager="plone.app.layout.viewlets.interfaces.IAboveContent"
+      class=".viewlets.CarouselViewlet"
+      permission="zope2.View" 
+      layer="..interfaces.ICollectiveCarouselLayer"
+      />
+
+  <!-- Special views for normal carousel -->
+
+  <browser:page
+    name="carousel-view"                  
+    for="Products.ATContentTypes.interface.IATContentType"
+    template="templates/default_tile.pt"
+    permission="zope2.View"
+    layer="..interfaces.ICollectiveCarouselLayer"      
+    />
+    
+  <browser:page
+    name="carousel-view"                  
+    for="Products.ATContentTypes.interface.IATNewsItem"
+    template="templates/news_item_tile.pt"
+    permission="zope2.View"
+    layer="..interfaces.ICollectiveCarouselLayer"      
+    />  
+  
+  <!-- Zope 3 browser resources -->
+
+</configure>

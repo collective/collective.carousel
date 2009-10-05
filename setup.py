@@ -3,6 +3,8 @@ import os
 
 version = '1.0'
 
+tests_require = ['collective.testcaselayer']
+
 setup(name='collective.carousel',
       version=version,
       description="Small add-on for having Collections' results presented as a nice carousel",
@@ -27,6 +29,8 @@ setup(name='collective.carousel',
           'setuptools',
           # -*- Extra requirements: -*-
       ],
+      tests_require=tests_require,
+      extras_require={'tests': tests_require},
       entry_points="""
       # -*- Entry points: -*-
       """,

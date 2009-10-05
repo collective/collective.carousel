@@ -7,6 +7,7 @@
    <five:registerPackage package="." initialize=".initialize" />
    
    <include file="skins.zcml" /> 
+   <include package=".portlets" />  
    
    <genericsetup:registerProfile
        name="default"
