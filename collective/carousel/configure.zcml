@@ -6,12 +6,18 @@
 
    <five:registerPackage package="." initialize=".initialize" />
    
+   <include package="archetypes.schemaextender" />
+   
    <include file="skins.zcml" /> 
    <include package=".portlets" />  
+   <include package=".browser" />     
+   
+   <adapter factory=".schemaextender.ContentTypeExtender"
+            provides="archetypes.schemaextender.interfaces.ISchemaExtender" />   
    
    <genericsetup:registerProfile
        name="default"
-       title="Carousel for Collections"
+       title="Carousel for Plone"
        directory="profiles"
        description='Extension profile for the collective.carousel'
        provides="Products.GenericSetup.interfaces.EXTENSION"
