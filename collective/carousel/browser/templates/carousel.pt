@@ -1,1 +1,47 @@
-<tal:block replace="structure provider:carousel.row" />
+<div id="carousel" 
+     i18n:domain="collective.carousel"
+     tal:condition="view/results">
+    <!-- wrapper for navigator elements --> 
+    <div class="navi carouselNavBar"><!-- --></div>                    
+    
+    <!-- "previous page" action --> 
+    <a class="prev browse left"
+       i18n:domain="collective.carousel"
+       title="Previous item"
+       i18n:attributes="title label_previous_item"><span i18n:translate="label_previous_item">Previous item</span></a>                         
+
+    <div id="kiosk-wrapper">
+        <div class="scrollable" id="flowpanes">
+            <div class="items">
+
+                <tal:block tal:repeat="item view/results">
+                    <div class="tileItem visualIEFloatFix"
+                         tal:define="item_object item/getObject">
+
+                        <tal:block replace="structure python:view.get_tile(item_object)" />
+
+                        <div class="visualClear"><!-- --></div>
+
+                    </div>
+                </tal:block>
+        
+            </div>
+        </div>
+    </div>
+
+    <!-- "next page" action --> 
+    <a class="next browse right" i18n:domain="collective.carousel"
+       title="Next item"
+       i18n:attributes="title label_next_item"><span i18n:translate="label_next_item">Next item</span></a> 
+
+    <!-- Wrapper for fullscreen switcher -->
+    <div id="fullscreen-switcher" class="carouselNavBar">
+        <a id="carousel-fullscreen" i18n:domain="collective.carousel"
+           href="#"
+           title="View in fullscreen mode" 
+           i18n:attributes="title"><span i18n:translate="text_fullscreen_mode">View in fullscreen mode</span></a>
+    </div>
+                   
+</div>
+
+<div class="visualClear"><!-- --></div>

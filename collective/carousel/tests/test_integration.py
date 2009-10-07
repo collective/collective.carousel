@@ -1,11 +1,4 @@
-from zope.component import getUtility
-
-from plone.portlets.interfaces import IPortletManager
-from plone.portlets.interfaces import IPortletType
-
 from collective.carousel.tests.base import TestCase
-from collective.carousel.browser.viewlets import CarouselViewlet
-from collective.carousel.interfaces import ICarouselPortletsRow
 
 class CarouselTestCase(TestCase):
 
@@ -31,28 +24,12 @@ class CarouselTestCase(TestCase):
         stylesheets_ids = cssreg.getResourceIds()
         self.failUnless('carousel.css' in stylesheets_ids)
         
-    def test_viewlet_is_available(self):
-        request = self.app.REQUEST
-        self.setRoles(['Manager', 'Member'])
-        self.portal.invokeFactory('Folder', 'f1')
-        context = getattr(self.portal, 'f1')
-        viewlet = CarouselViewlet(context, request, None, None)
-        self.failUnless(viewlet) 
-        
-    def test_portlet_manager_installed(self):
-        manager = getUtility(IPortletManager, name=u"carousel.row")
-        self.failUnless(ICarouselPortletsRow.providedBy(manager))
-        
-    def test_portlet_type_registered(self):
-        portlet = getUtility(IPortletType, name='portlet.Carousel')
-        self.assertEquals(portlet.addview, 'portlet.Carousel')        
-        
     def test_collections_carouselable(self):
-        from collective.carousel.interfaces import ICarouselable
+        from collective.carousel.interfaces import ICarouselProvider
         self.setRoles('Manager',)
         self.folder.invokeFactory("Topic", "test-collection")
         carouselable_col = getattr(self.folder, 'test-collection')
-        self.failUnless(ICarouselable.providedBy(carouselable_col))
+        self.failUnless(ICarouselProvider.providedBy(carouselable_col))     
 
 def test_suite():
     from unittest import defaultTestLoader

@@ -8,8 +8,7 @@
    
    <include package="archetypes.schemaextender" />
    
-   <include file="skins.zcml" /> 
-   <include package=".portlets" />  
+   <include file="skins.zcml" />  
    <include package=".browser" />     
    
    <adapter factory=".schemaextender.ContentTypeExtender"

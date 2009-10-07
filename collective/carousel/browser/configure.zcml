@@ -6,7 +6,7 @@
   <include package="plone.browserlayer" />
   
   <class class="Products.ATContentTypes.content.topic.ATTopic">
-    <implements interface="collective.carousel.interfaces.ICarouselable" />
+    <implements interface="collective.carousel.interfaces.ICarouselProvider" />
   </class>      
   
   <!-- Viewlets registration -->
