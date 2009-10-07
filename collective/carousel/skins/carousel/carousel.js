@@ -19,7 +19,7 @@ jQuery(function($) {
         size: 1,  
         clickable: false,      
         loop: true
-    }).circular().autoscroll({autoplay: true,steps:1,interval:25000,api:true}).navigator({api:true});
+    }).circular().autoscroll({autoplay: true,steps:1,interval:25000}).navigator({api:true});
     
     elems.find("img").load(function() {
         resizeCarousel(); 
