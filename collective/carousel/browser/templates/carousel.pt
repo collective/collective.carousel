@@ -35,12 +35,12 @@
        i18n:attributes="title label_next_item"><span i18n:translate="label_next_item">Next item</span></a> 
 
     <!-- Wrapper for fullscreen switcher -->
-    <div id="fullscreen-switcher" class="carouselNavBar">
+    <!-- <div id="fullscreen-switcher" class="carouselNavBar">
         <a id="carousel-fullscreen" i18n:domain="collective.carousel"
            href="#"
            title="View in fullscreen mode" 
            i18n:attributes="title"><span i18n:translate="text_fullscreen_mode">View in fullscreen mode</span></a>
-    </div>
+    </div> -->
                    
 </div>
 
