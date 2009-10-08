@@ -1,17 +1,17 @@
 // What is $(document).ready ? See: http://flowplayer.org/tools/using.html#document_ready
 jQuery(function($) {
-    var elems = $('#flowpanes .items .tileItem');
+    var carousels = $(".carousel");
 
-    var resizeCarousel = function() {
+    var resizeCarousel = function(carousel, elems) {
         // adjust height of the carousel to the max height of the elements
         var base_height = Math.max.apply(null,
             elems.map(function() { return $(this).innerHeight() }).get()
         );
         elems.height(base_height);
-        $("#flowpanes").height(base_height);    
-        $("#carousel").height(elems.outerHeight(true) + $(".navi").outerHeight(true) + 10);
+        $(carousel).find(".flowpanes").height(base_height);    
+        $(carousel).height(elems.outerHeight(true) + $(".navi").outerHeight(true) + 10);
         // 35px in the following like is 20px (height of navi) + 15px (1/2 height of the button)
-        $(".browse").css("margin-top", ($("#carousel").height()/2 - 35));
+        $(carousel).find(".browse").css("margin-top", ($(carousel).height()/2 - 35));
     };
     
     // initialize scrollable 
@@ -21,11 +21,15 @@ jQuery(function($) {
         loop: true
     }).circular().autoscroll({autoplay: true,steps:1,interval:25000}).navigator({api:true});
     
-    elems.find("img").load(function() {
-        resizeCarousel(); 
-        console.info(api.getIndex());
-    });
-
+    carousels.each( function(i) {
+        var elems = $(this).find('.flowpanes .items .tileItem');
+        resizeCarousel($(this), elems); 
+        elems.find("img").load(function() {
+            c = carousels[i];
+            console.info("We are loading an image");
+            resizeCarousel(c, elems); 
+        });
+    })
     
     $("#carousel-fullscreen").overlay({
            api: true,

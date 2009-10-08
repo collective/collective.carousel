@@ -1,27 +1,15 @@
 # Carousel is rendered through a viewlet in IAboveContent
 # using items provided by the carousel provider added to the context
 
-from Products.Five.viewlet.manager import ViewletManager
-from plone.app.viewletmanager.manager import OrderedViewletManager
-from plone.app.layout.viewlets.interfaces import IAboveContent
-from Products.Five.browser import BrowserView as View
+# from Products.Five.viewlet.manager import ViewletManager
+# from plone.app.viewletmanager.manager import OrderedViewletManager
+# from plone.app.layout.viewlets.interfaces import IAboveContent
+# from Products.Five.browser import BrowserView as View
 
 from collective.carousel.tests.base import TestCase
 from collective.carousel.browser.viewlets import CarouselViewlet
 
 class ViewletTestCase(TestCase):
-    
-    def afterSetUp(self):
-        self.setRoles('Manager')       
-        self.folder.invokeFactory('Topic', 'collection')
-        
-        crit = self.folder.collection.addCriterion('portal_type', 'ATSimpleStringCriterion')
-        crit.setValue('Document')
-        
-        # add a few documents
-        for i in range(6):
-            self.folder.invokeFactory('Document', 'document_%s'%i)
-            getattr(self.folder, 'document_%s'%i).reindexObject()
     
     def test_viewlet_is_available(self):
         request = self.app.REQUEST
@@ -45,7 +33,6 @@ class ViewletTestCase(TestCase):
         
         self.failUnless(len(viewlet.getProviders()) >= 3)
         
-        
     # def test_viewlets_manager(self):
     #     request = self.app.REQUEST
     #     context = self.folder
@@ -63,7 +50,18 @@ class ViewletTestCase(TestCase):
     #     # we should get new viewlet in IAboveContent now
     #     self.failUnless('id="carousel"' in manager.render())        
         
-    def test_viewlet(self):       
+    def test_viewlet(self): 
+        self.setRoles('Manager')       
+        self.folder.invokeFactory('Topic', 'collection')
+        
+        crit = self.folder.collection.addCriterion('portal_type', 'ATSimpleStringCriterion')
+        crit.setValue('Document')
+        
+        # add a few documents
+        for i in range(6):
+            self.folder.invokeFactory('Document', 'document_%s'%i)
+            getattr(self.folder, 'document_%s'%i).reindexObject()
+              
         collection_num_items = len(self.folder.collection.queryCatalog())
         # We better have some documents
         self.failUnless(collection_num_items >= 6)

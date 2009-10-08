@@ -26,11 +26,11 @@ class CarouselViewlet(ViewletBase):
             results = provider.queryCatalog()
         return results
             
-    def use_view_action(self):
-        portal_properties = getToolByName(self.context, 'portal_properties', None)
-        site_properties = getattr(portal_properties, 'site_properties', None)
-        use_view_action = site_properties.getProperty('typesUseViewActionInListings', ())
-        return use_view_action        
+    # def use_view_action(self):
+    #     portal_properties = getToolByName(self.context, 'portal_properties', None)
+    #     site_properties = getattr(portal_properties, 'site_properties', None)
+    #     use_view_action = site_properties.getProperty('typesUseViewActionInListings', ())
+    #     return use_view_action        
 
     def get_tile(self, obj):
         # note to myself
