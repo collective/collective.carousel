@@ -30,6 +30,7 @@ class ContentTypeExtender(object):
             allowed_types = ('Topic'),
             relationship = 'Carousel',
             languageIndependent = True,
+            multiValued = True,
             widget = ReferenceBrowserWidget(
                 label = _(u"label_carouselprovider_title",
                     default=u"Carousel object."),

@@ -1,3 +1,11 @@
+# In these tests we are testing a ReferenceField injected to all 
+# content types. The field has to accept objects, providing 
+# content for carousel.
+# 
+# We accept only Collections in ATReferenceBrowserWidget of the field
+# but in these tests we assume that widget itself works as it should 
+# and doesn't allow to add objects of any other content type.
+
 from collective.carousel.tests.base import TestCase
 
 class FieldTestCase(TestCase):
@@ -19,7 +27,8 @@ class FieldTestCase(TestCase):
         self.folder.invokeFactory('Document', 'my-page', carouselprovider=(carouselable_col,))
         new_obj = getattr(self.folder, 'my-page')
         field = new_obj.Schema().getField('carouselprovider')
-        self.assertEqual(field.get(new_obj), carouselable_col)
+        # we deal with multiValued field, thus we are getting a list out of the field
+        self.assertEqual(field.get(new_obj), [carouselable_col])
 
 def test_suite():
     from unittest import defaultTestLoader

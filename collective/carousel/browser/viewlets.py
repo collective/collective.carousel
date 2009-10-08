@@ -13,14 +13,13 @@ class CarouselViewlet(ViewletBase):
     def update(self):
         if IViewView.providedBy(self.__parent__):
             alsoProvides(self, IViewView)
-            
-    def provider(self):
+          
+    def getProviders(self):
         field = self.context.Schema().getField('carouselprovider')
         return field.get(self.context)
             
-    def results(self):
+    def results(self, provider):
         results = []
-        provider = self.provider()
         if provider is not None:
             # by default we assume that only Collections are addable 
             # as a carousel provider

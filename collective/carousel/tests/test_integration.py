@@ -1,3 +1,6 @@
+# Testing basic integration of the package into Plone
+
+
 from collective.carousel.tests.base import TestCase
 
 class CarouselTestCase(TestCase):
