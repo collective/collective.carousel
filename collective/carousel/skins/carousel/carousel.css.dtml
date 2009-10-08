@@ -9,7 +9,7 @@
     root element for the scrollable. 
     when scrolling occurs this element stays still. 
 */ 
-div#carousel {
+div.carousel {
     margin: 1em auto;
     width: &dtml-carouselWidth;;
     padding: 0 10px;
@@ -113,7 +113,7 @@ a.disabled {
     text-align: center;
     clear: left;
 }
-#fullscreen-switcher {
+.fullscreen-switcher {
     text-align: right;
 }
 .navi a {
@@ -135,13 +135,13 @@ a.disabled {
 .navi a.active {
     background: &dtml-globalBorderColor;;
 }
-#carousel-fullscreen {
+.carousel-fullscreen {
     display: inline-block;
     background: transparent url('&dtml-portal_url;/fullscreenexpand_icon.gif') 50% 50%;
     width: 16px;
     height: 16px;
 }
-#carousel-fullscreen span {
+.carousel-fullscreen span {
     /* we don't need fullscreen link to appear in screen readers, 
        so it's safe to simply make hide it */
     display: none;
@@ -153,7 +153,7 @@ a.disabled {
     width: 900px;
     margin: 0 auto;
 }
-.activeKiosk #flowpanes {
+.activeKiosk .flowpanes {
     font-size: 2em;
     height: 100% !important;
     width: 900px !important;
