@@ -14,24 +14,24 @@
                title="Previous item"
                i18n:attributes="title label_previous_item"><span i18n:translate="label_previous_item">Previous item</span></a>                         
 
-            <div class="kiosk-wrapper">
-                <div class="scrollable flowpanes">
-                    <div class="items">
+            <!-- <div class="kiosk-wrapper"> -->
+            <div class="scrollable">
+                <div class="items">
 
-                        <tal:block tal:repeat="item python:view.results(provider)">
-                            <div class="tileItem visualIEFloatFix"
-                                 tal:define="item_object item/getObject">
+                    <tal:block tal:repeat="item python:view.results(provider)">
+                        <div class="tileItem visualIEFloatFix"
+                             tal:define="item_object item/getObject">
 
-                                <tal:block replace="structure python:view.get_tile(item_object)" />
+                            <tal:block replace="structure python:view.get_tile(item_object)" />
 
-                                <div class="visualClear"><!-- --></div>
+                            <div class="visualClear"><!-- --></div>
 
-                            </div>
-                        </tal:block>
-        
-                    </div>
+                        </div>
+                    </tal:block>
+    
                 </div>
             </div>
+            <!-- </div> -->
 
             <!-- "next page" action --> 
             <a class="next browse right"
