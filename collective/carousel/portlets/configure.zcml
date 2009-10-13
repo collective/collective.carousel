@@ -1,0 +1,20 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:browser="http://namespaces.zope.org/browser"
+           xmlns:plone="http://namespaces.plone.org/plone"
+           xmlns:kss="http://namespaces.zope.org/kss">
+
+    <include package="plone.app.portlets" />
+    <include package="plone.portlet.collection" />
+        
+    <plone:portlet
+        name="portlet.Carousel"
+        interface=".carousel.ICarouselPortlet"
+        assignment=".carousel.Assignment"
+        view_permission="zope2.View"
+        edit_permission="plone.portlet.collection.AddCollectionPortlet"
+        renderer=".carousel.Renderer"
+        addview=".carousel.AddForm"
+        editview=".carousel.EditForm"       
+        />
+        
+</configure>

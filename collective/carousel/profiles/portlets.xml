@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<portlets
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="collective.carousel">
+  
+   
+ <!-- Portlet type registrations -->
+ 
+ <portlet 
+   addview="portlet.Carousel"
+   title="Carousel portlet"
+   description="A portlet retrurning collection's result as carousel."
+   i18n:attributes="title title_map_portlet;
+                    description description_map_portlet">
+   <for interface="plone.app.portlets.interfaces.IColumn" />
+ </portlet>   
+    
+</portlets>

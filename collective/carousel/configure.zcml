@@ -10,6 +10,7 @@
    
    <include file="skins.zcml" />  
    <include package=".browser" />     
+   <include package=".portlets" />   
    
    <adapter factory=".schemaextender.ContentTypeExtender"
             provides="archetypes.schemaextender.interfaces.ISchemaExtender" />   

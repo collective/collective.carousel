@@ -1,6 +1,10 @@
 # Testing basic integration of the package into Plone
 
 
+from zope.component import getUtility
+
+from plone.portlets.interfaces import IPortletType
+
 from collective.carousel.tests.base import TestCase
 
 class CarouselTestCase(TestCase):
@@ -32,7 +36,11 @@ class CarouselTestCase(TestCase):
         self.setRoles('Manager',)
         self.folder.invokeFactory("Topic", "test-collection")
         carouselable_col = getattr(self.folder, 'test-collection')
-        self.failUnless(ICarouselProvider.providedBy(carouselable_col))     
+        self.failUnless(ICarouselProvider.providedBy(carouselable_col))
+        
+    def test_portlet_type_registered(self):
+        portlet = getUtility(IPortletType, name='portlet.Carousel')
+        self.assertEquals(portlet.addview, 'portlet.Carousel')     
 
 def test_suite():
     from unittest import defaultTestLoader

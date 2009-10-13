@@ -1,0 +1,54 @@
+<div id="carousel-wrapper"
+     tal:condition="view/getProviders"
+     i18n:domain="collective.carousel">
+     
+     <tal:carousel repeat="provider view/getProviders">
+        <div class="carousel"
+             tal:condition="python: view.results(provider)">
+             
+            <!-- wrapper for navigator elements --> 
+            <div class="navi carouselNavBar"><!-- --></div>                    
+    
+            <!-- "previous page" action --> 
+            <a class="prev browse left"
+               title="Previous item"
+               i18n:attributes="title label_previous_item"><span i18n:translate="label_previous_item">Previous item</span></a>                         
+
+            <!-- <div class="kiosk-wrapper"> -->
+            <div class="scrollable">
+                <div class="items">
+
+                    <tal:block tal:repeat="item python:view.results(provider)">
+                        <div class="tileItem visualIEFloatFix"
+                             tal:define="item_object item/getObject">
+
+                            <tal:block replace="structure python:view.get_tile(item_object)" />
+
+                            <div class="visualClear"><!-- --></div>
+
+                        </div>
+                    </tal:block>
+    
+                </div>
+            </div>
+            <!-- </div> -->
+
+            <!-- "next page" action --> 
+            <a class="next browse right"
+               title="Next item"
+               i18n:attributes="title label_next_item"><span i18n:translate="label_next_item">Next item</span></a> 
+
+            <!-- Wrapper for fullscreen switcher -->
+            <!-- <div class="fullscreen-switcher carouselNavBar">
+                <a class="carousel-fullscreen"
+                   href="#"
+                   title="View in fullscreen mode" 
+                   i18n:attributes="title"><span i18n:translate="text_fullscreen_mode">View in fullscreen mode</span></a>
+            </div> -->
+                   
+        </div>
+    </tal:carousel>
+
+    <div class="visualClear"><!-- --></div>
+
+</div>

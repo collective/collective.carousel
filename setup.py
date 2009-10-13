@@ -27,6 +27,7 @@ setup(name='collective.carousel',
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'archetypes.schemaextender',
           # -*- Extra requirements: -*-
       ],
       tests_require=tests_require,
