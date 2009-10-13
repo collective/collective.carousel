@@ -1,10 +1,8 @@
 <div id="carousel-wrapper"
-     tal:condition="view/getProviders"
+     tal:condition="view/results"
      i18n:domain="collective.carousel">
      
-     <tal:carousel repeat="provider view/getProviders">
-        <div class="carousel"
-             tal:condition="python: view.results(provider)">
+        <div class="carousel">
              
             <!-- wrapper for navigator elements --> 
             <div class="navi carouselNavBar"><!-- --></div>                    
@@ -18,7 +16,7 @@
             <div class="scrollable">
                 <div class="items">
 
-                    <tal:block tal:repeat="item python:view.results(provider)">
+                    <tal:block tal:repeat="item view/results">
                         <div class="tileItem visualIEFloatFix"
                              tal:define="item_object item/getObject">
 
@@ -47,7 +45,6 @@
             </div> -->
                    
         </div>
-    </tal:carousel>
 
     <div class="visualClear"><!-- --></div>
 
