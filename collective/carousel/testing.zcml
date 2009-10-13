@@ -1,7 +1,37 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:browser="http://namespaces.zope.org/browser"
     i18n_domain="collective.carousel">
+    
+    <!-- General views for carousel viewlet -->
+    <browser:page
+      name="carousel-view"                  
+      for="Products.ATContentTypes.interface.IATContentType"
+      template="tests/default_tile.pt"
+      permission="zope2.View"
+      />
+    <browser:page
+      name="carousel-view"                  
+      for="Products.ATContentTypes.interface.IATNewsItem"
+      template="tests/news_item_tile.pt"
+      permission="zope2.View"
+      /> 
+    <browser:page
+      name="carousel-view"                  
+      for="Products.ATContentTypes.interface.IATDocument"
+      template="tests/page_tile.pt"
+      permission="zope2.View"
+      />
+      
+    <!-- Special views for carousel portlet -->
+    <!-- default view for standard carousel is good enough for the portlet as well -->    
+    <browser:page
+      name="carousel-portlet-view"                  
+      for="Products.ATContentTypes.interface.IATContentType"
+      template="tests/default_tile.pt"
+      permission="zope2.View"
+      />    
 
 </configure>
 

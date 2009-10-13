@@ -37,6 +37,16 @@
     permission="zope2.View"
     layer="..interfaces.ICollectiveCarouselLayer"      
     />  
+    
+  <!-- Views for carousel portlet -->
+  <!-- default view for standard carousel is good enough for the portlet as well -->
+  <browser:page
+    name="carousel-portlet-view"                  
+    for="Products.ATContentTypes.interface.IATContentType"
+    template="templates/default_tile.pt"
+    permission="zope2.View"
+    layer="..interfaces.ICollectiveCarouselLayer"      
+    />  
   
   <!-- Zope 3 browser resources -->
 

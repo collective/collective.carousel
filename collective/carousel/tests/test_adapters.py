@@ -1,9 +1,10 @@
-import os.path
-
 from collective.carousel.tests.base import TestCase
 from collective.carousel.browser.viewlets import CarouselViewlet
+        
+from Products.Five import zcml
+import collective.carousel
 
-class AdaptersTestCase(TestCase):
+class ViewsTestCase(TestCase):
     
     def afterSetUp(self):
         self.setRoles('Manager')       
@@ -20,32 +21,45 @@ class AdaptersTestCase(TestCase):
         self.folder.invokeFactory('Document', 'carousel-doc')
         self.folder.invokeFactory('News Item', 'carousel-news-item')
         self.folder.invokeFactory('Event', 'carousel-event')        
+
+    def test_ct_views(self):
+        from zope.component import queryMultiAdapter
+        zcml.load_config('testing.zcml', collective.carousel)
         
-        from Products.Five import zcml
-        zcml.load_string('''<configure xmlns="http://namespaces.zope.org/browser">
-        <page
-          name="carousel-view"                  
-          for="Products.ATContentTypes.interface.IATContentType"
-          template="default_tile.pt"
-          permission="zope2.View"
-          />
-        <page
-          name="carousel-view"                  
-          for="Products.ATContentTypes.interface.IATNewsItem"
-          template="news_item_tile.pt"
-          permission="zope2.View"
-          /> 
-        <page
-          name="carousel-view"                  
-          for="Products.ATContentTypes.interface.IATDocument"
-          template="page_tile.pt"
-          permission="zope2.View"
-          />                   
-        </configure>''')
-    
-    def test_adapters(self):
-        self.fail()
+        # test tile for a Page
+        obj = getattr(self.folder, 'carousel-doc')
+        tile = queryMultiAdapter((obj, self.app.REQUEST), name="carousel-view")
+        self.failUnless('PAGE' in tile(), obj)
         
+        # test tile for a News Item
+        obj = getattr(self.folder, 'carousel-news-item')
+        tile = queryMultiAdapter((obj, self.app.REQUEST), name="carousel-view")
+        self.failUnless('NEWS ITEM' in tile(), obj)
+        
+        # test tile for an Event. 
+        # Since we don't have any special view registered for Event in
+        # zcml we should get default view for an object of this content type
+        obj = getattr(self.folder, 'carousel-event')
+        tile = queryMultiAdapter((obj, self.app.REQUEST), name="carousel-view")
+        self.failUnless('DEFAULT' in tile(), obj)  
+        
+        # test tile for a Page in a carousel portlet
+        # since we don't have any special view for Page in the carousel portlet
+        # we should get default tile for the carousel portlet that is the same 
+        # as for a carousel in the viewlet
+        obj = getattr(self.folder, 'carousel-doc')
+        tile = queryMultiAdapter((obj, self.app.REQUEST), name="carousel-portlet-view")
+        self.failUnless('<p>This is a DEFAULT tile</p>' in tile(), obj)        
+        
+    # def test_integration_into_viewlet(self):
+    #   from zope.component import queryMultiAdapter
+    #   zcml.load_config('configure.zcml', collective.carousel.browser)
+    # 
+    #   viewlet = CarouselViewlet(self.folder, self.app.REQUEST, None, None)
+    #   viewlet.update()
+    #   result = viewlet.render()
+    #   import pdb ; pdb.set_trace( )
+    #   self.fail()
         
 
 def test_suite():
