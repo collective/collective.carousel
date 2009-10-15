@@ -30,7 +30,6 @@ jQuery(function($) {
         resizeCarousel($(this), elems); 
         elems.find("img").load(function() {
             c = carousels[i];
-            console.info("We are loading an image");
             resizeCarousel(c, elems); 
         });
     })
