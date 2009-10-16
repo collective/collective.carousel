@@ -1,4 +1,4 @@
-<div id="carousel-wrapper"
+<div class="portletCarouselWrapper"
      tal:condition="view/results"
      i18n:domain="collective.carousel">
      
@@ -6,11 +6,6 @@
              
             <!-- wrapper for navigator elements --> 
             <div class="navi carouselNavBar"><!-- --></div>                    
-    
-            <!-- "previous page" action --> 
-            <a class="prev browse left"
-               title="Previous item"
-               i18n:attributes="title label_previous_item"><span i18n:translate="label_previous_item">Previous item</span></a>                         
 
             <!-- <div class="kiosk-wrapper"> -->
             <div class="scrollable">
@@ -30,7 +25,12 @@
                 </div>
             </div>
             <!-- </div> -->
-
+            
+            <!-- "previous page" action --> 
+            <a class="prev browse left"
+               title="Previous item"
+               i18n:attributes="title label_previous_item"><span i18n:translate="label_previous_item">Previous item</span></a>
+               
             <!-- "next page" action --> 
             <a class="next browse right"
                title="Next item"

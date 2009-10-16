@@ -1,4 +1,4 @@
-<div id="carousel-wrapper"
+<div class="carouselWrapper"
      tal:condition="view/getProviders"
      i18n:domain="collective.carousel">
      
