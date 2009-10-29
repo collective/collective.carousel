@@ -25,6 +25,12 @@ class CarouselViewlet(ViewletBase):
             # as a carousel provider
             results = provider.queryCatalog()
         return results
+        
+    def editCarouselLink(self, provider):
+        if provider is not None:
+            return provider.absolute_url() + '/criterion_edit_form'
+        return None
+        
             
     # def use_view_action(self):
     #     portal_properties = getToolByName(self.context, 'portal_properties', None)

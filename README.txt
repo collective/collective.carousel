@@ -76,7 +76,7 @@ carousel:
 
   * `browser/templates/news_item_tile.pt` |---| defines how News Items should
     be rendered in a carousel;
-  * `browser/templates/dafault_tile.pt` |---| how all the rest content types
+  * `browser/templates/default_tile.pt` |---| how all the rest content types
     should be rendered in a carousel.
 
 If you need to either override one of the existing views or define a new view

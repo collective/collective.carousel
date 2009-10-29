@@ -27,6 +27,9 @@ class ContentTypeExtender(object):
     _fields = [
         CarouselProviderField("carouselprovider",
             schemata = "settings",
+            # the field accepts Collections only atm. 
+            # Would be cool to have ATRBW to be able to select items by interface
+            # with something like 'allowed_interfaces'
             allowed_types = ('Topic'),
             relationship = 'Carousel',
             languageIndependent = True,

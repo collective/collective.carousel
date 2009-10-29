@@ -20,6 +20,10 @@ div.carousel {
     -webkit-border-radius: 10px;
 /*    position: relative;*/
 }
+.portletCarouselWrapper div.carousel {
+    width: 100%;
+    padding: 0;
+}
 
 div.scrollable { 
     /* required settings */ 
@@ -28,6 +32,9 @@ div.scrollable {
     width: 600px; 
     height:&dtml-carouselDefaultHeight;; 
 } 
+.portletCarouselWrapper div.scrollable {
+    width: 100%;
+}
  
 /* 
     root element for scrollable items. Must be absolutely positioned 
@@ -115,6 +122,8 @@ a.disabled {
 }
 .fullscreen-switcher {
     text-align: right;
+    position: relative;
+    top: -20px;
 }
 .navi a {
     border: 1px solid &dtml-globalBorderColor;;

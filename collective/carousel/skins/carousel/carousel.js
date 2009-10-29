@@ -33,6 +33,14 @@ jQuery(function($) {
             resizeCarousel(c, elems); 
         });
     })
+    // $(".fullscreen-switcher:eq(0)").prepOverlay(
+    //     {
+    //         subtype: 'ajax',
+    //         filter: '#content > *',
+    //         formtarget: '#content form',
+    //         noform: 'reload'
+    //     }
+    // )
     
     // $("#carousel-fullscreen").overlay({
     //        api: true,

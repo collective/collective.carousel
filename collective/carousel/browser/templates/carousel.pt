@@ -45,6 +45,11 @@
                    title="View in fullscreen mode" 
                    i18n:attributes="title"><span i18n:translate="text_fullscreen_mode">View in fullscreen mode</span></a>
             </div> -->
+            <div class="fullscreen-switcher carouselNavBar">
+                <a href="#" tal:attributes="href python:view.editCarouselLink(provider)"
+                   title="Edit carousel's results" 
+                   i18n:attributes="title">Edit</a>
+            </div>
                    
         </div>
     </tal:carousel>

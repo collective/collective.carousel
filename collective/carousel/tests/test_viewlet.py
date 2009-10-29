@@ -96,6 +96,16 @@ class ViewletTestCase(TestCase):
         doc_ids = [id for id in self.folder.contentIds() if 'document' in id]
         for doc_id in doc_ids:
             self.failUnless(doc_id in results)
+    
+    def test_edit_carousel_link(self):
+        self.setRoles('Manager')       
+        self.folder.invokeFactory('Topic', 'collection')
+        self.folder.invokeFactory('Folder', 'my-carousel', carouselprovider=(self.folder.collection,))
+        carousel_obj = getattr(self.folder, 'my-carousel')
+
+        viewlet = CarouselViewlet(carousel_obj, self.app.REQUEST, None, None)
+        carousel_criteria = self.folder.collection.absolute_url() + '/criterion_edit_form'
+        self.assertEqual(viewlet.editCarouselLink(viewlet.getProviders()[0]), carousel_criteria)
         
 
 def test_suite():
