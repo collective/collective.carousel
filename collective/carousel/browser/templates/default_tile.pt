@@ -13,14 +13,14 @@
     </a>
 </h2>
 
-<p class="tileBody">
+<div class="tileBody">
     <span tal:omit-tag="" tal:condition="not:item_description">
         &nbsp;
     </span>
     <span class="description" tal:content="item_description">
         description
     </span>
-</p>
+</div>
 
 <p class="tileFooter">
     <a href=""
