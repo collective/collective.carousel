@@ -84,7 +84,7 @@ a.browse {
     -moz-border-radius: 15px; 
     -webkit-border-radius: 15px;    
     float:left;
-    margin:80px 10px;
+    margin:50px 10px 0;
     cursor:pointer;
     font-size:1px;
 }
@@ -122,8 +122,6 @@ a.disabled {
 }
 .fullscreen-switcher {
     text-align: right;
-    position: relative;
-/*    top: -20px;*/
 }
 .navi a {
     border: 1px solid &dtml-globalBorderColor;;

@@ -12,7 +12,6 @@ jQuery(function($) {
         $(carousel).height(elems.outerHeight(true) + $(".navi").outerHeight(true) + 10);
         // 35px in the following like is 20px (height of navi) + 15px (1/2 height of the button)
         $(carousel).find(".browse").css("margin-top", (($(carousel).height()/2) - 20 - 15));
-        $(carousel).find(".browse").css("margin-bottom", (($(carousel).height()/2) - 20 - 15));
     };
     
     // doesn't make sense to enable autoscrolling if more than one 
