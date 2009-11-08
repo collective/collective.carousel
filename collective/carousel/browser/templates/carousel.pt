@@ -48,7 +48,7 @@
             <div class="fullscreen-switcher carouselNavBar">
                 <a href="#" tal:attributes="href python:view.editCarouselLink(provider)"
                    title="Edit carousel's results" 
-                   i18n:attributes="title">Edit</a>
+                   i18n:attributes="title">Edit Carousel</a>
             </div>
                    
         </div>
