@@ -27,7 +27,6 @@ setup(name='collective.carousel',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'archetypes.referencebrowserwidget',          
           'archetypes.schemaextender',
           # -*- Extra requirements: -*-
       ],
