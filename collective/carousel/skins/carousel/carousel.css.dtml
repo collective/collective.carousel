@@ -123,7 +123,7 @@ a.disabled {
 .fullscreen-switcher {
     text-align: right;
     position: relative;
-    top: -20px;
+/*    top: -20px;*/
 }
 .navi a {
     border: 1px solid &dtml-globalBorderColor;;
