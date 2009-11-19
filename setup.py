@@ -33,6 +33,7 @@ setup(name='collective.carousel',
       tests_require=tests_require,
       extras_require={'tests': tests_require},
       entry_points="""
-      # -*- Entry points: -*-
+      [z3c.autoinclude.plugin]
+      target = plone
       """,
       )

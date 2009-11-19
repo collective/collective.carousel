@@ -3,7 +3,9 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     xmlns:browser="http://namespaces.zope.org/browser"
     i18n_domain="collective.carousel">
-    
+
+    <include package="." file="configure.zcml" />
+
     <!-- General views for carousel viewlet -->
     <browser:page
       name="carousel-view"                  

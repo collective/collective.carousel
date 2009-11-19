@@ -14,13 +14,13 @@
    
    <adapter factory=".schemaextender.ContentTypeExtender"
             provides="archetypes.schemaextender.interfaces.ISchemaExtender" />   
-   
+
    <genericsetup:registerProfile
        name="default"
        title="Carousel for Plone"
-       directory="profiles"
+       directory="profiles/default"
        description='Extension profile for the collective.carousel'
        provides="Products.GenericSetup.interfaces.EXTENSION"
-       />   
+       />
 
 </configure>

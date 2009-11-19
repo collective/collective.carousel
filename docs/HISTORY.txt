@@ -4,5 +4,9 @@ Changelog
 1.0 - Unreleased
 ----------------
 
+* Adjusted slightly to work on Plone 4.
+  [hannosch]
+
 * Initial release
+  [spliter]
 
