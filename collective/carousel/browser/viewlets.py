@@ -1,11 +1,11 @@
 from zope.component import queryMultiAdapter
 from zope.interface import alsoProvides
 
-from Products.CMFCore.utils import getToolByName
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from plone.app.layout.viewlets.common import ViewletBase
 from plone.app.layout.globals.interfaces import IViewView 
+
 
 class CarouselViewlet(ViewletBase):
     index = ViewPageTemplateFile('templates/carousel.pt')
@@ -13,11 +13,14 @@ class CarouselViewlet(ViewletBase):
     def update(self):
         if IViewView.providedBy(self.__parent__):
             alsoProvides(self, IViewView)
-          
+
     def getProviders(self):
-        field = self.context.Schema().getField('carouselprovider')
+        schema = getattr(self.context, 'Schema', None)
+        if schema is None:
+            return None
+        field = schema().getField('carouselprovider')
         return field.get(self.context)
-            
+
     def results(self, provider):
         results = []
         if provider is not None:
@@ -25,18 +28,11 @@ class CarouselViewlet(ViewletBase):
             # as a carousel provider
             results = provider.queryCatalog()
         return results
-        
+
     def editCarouselLink(self, provider):
         if provider is not None:
             return provider.absolute_url() + '/criterion_edit_form'
         return None
-        
-            
-    # def use_view_action(self):
-    #     portal_properties = getToolByName(self.context, 'portal_properties', None)
-    #     site_properties = getattr(portal_properties, 'site_properties', None)
-    #     use_view_action = site_properties.getProperty('typesUseViewActionInListings', ())
-    #     return use_view_action        
 
     def get_tile(self, obj):
         # note to myself
