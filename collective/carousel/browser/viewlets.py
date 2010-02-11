@@ -19,6 +19,8 @@ class CarouselViewlet(ViewletBase):
         if schema is None:
             return None
         field = schema().getField('carouselprovider')
+        if field is None:
+            return None
         return field.get(self.context)
 
     def results(self, provider):
