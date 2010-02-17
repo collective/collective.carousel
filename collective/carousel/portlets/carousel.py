@@ -1,7 +1,6 @@
 from zope.component import queryMultiAdapter
 from zope.i18nmessageid import MessageFactory
 from zope.interface import implements
-from zope.interface import Interface
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
@@ -11,7 +10,7 @@ from plone.portlet.collection import collection as base
 PLMF = MessageFactory('collective.carousel')
 
 
-class ICarouselPortlet(Interface):
+class ICarouselPortlet(base.ICollectionPortlet):
     """A portlet displaying a carousel with a Collection's results
     """
 
@@ -40,9 +39,7 @@ class Renderer(base.Renderer):
         # instructions about how to be handled in defined view or interface
         # for multi adapter the same is true except more object than just the 
         # obj are check for instructions
-        #tile = queryMultiAdapter((obj, self.request), name="carousel-portlet-view")
-        # due to acquisition magic we lose security if we use queryMultiAdapter directly instead of traversal
-        tile = obj.unrestrictedTraverse("carousel-portlet-view")
+        tile = queryMultiAdapter((obj, self.request), name="carousel-portlet-view")
         if tile is None:
             return None
         return tile()

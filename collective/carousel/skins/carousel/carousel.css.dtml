@@ -10,9 +10,9 @@
     when scrolling occurs this element stays still. 
 */ 
 div.carousel {
-    margin: 0px auto;
+    margin: 1em auto;
     width: &dtml-carouselWidth;;
-    padding: 0 0px;
+    padding: 0 10px;
     height: &dtml-carouselDefaultHeight;;
     border: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
     border-radius: 10px;
@@ -30,7 +30,7 @@ div.scrollable {
     position:relative; 
     overflow:hidden; 
     width: 600px; 
-   height:&dtml-carouselDefaultHeight;;  
+    height:&dtml-carouselDefaultHeight;; 
 } 
 .portletCarouselWrapper div.scrollable {
     width: 100%;
@@ -53,7 +53,7 @@ div.scrollable div.items {
     typically, this element is the one that *you* will style 
     the most. 
 */ 
-div.items div.tileItem { 
+div.scrollable div.items div.tileItem { 
     float:left; 
     width: 600px;
     border: none;
@@ -68,7 +68,7 @@ div.items div.active {
 /* @group buttons */
 /* this makes it possible to add next button beside scrollable */
 .scrollable {
- /*   float:left; */
+    float:left;
 }
 
 
@@ -77,14 +77,14 @@ div.items div.active {
 a.browse {
     background:url(&dtml-portal_url;/arrowLeft.gif) 50% 50% no-repeat;
     display:block;
-    width:14px;
-    height:14px;
+    width:28px;
+    height:28px;
     border:1px solid &dtml-globalBorderColor;;
-    border-radius: 7px;
-    -moz-border-radius: 7px; 
-    -webkit-border-radius: 7px;    
+    border-radius: 15px;
+    -moz-border-radius: 15px; 
+    -webkit-border-radius: 15px;    
     float:left;
-    margin:10px 5px 0;
+    margin:50px 10px 0;
     cursor:pointer;
     font-size:1px;
 }
@@ -99,8 +99,6 @@ a.right { background-image: url(&dtml-portal_url;/arrowRight.gif); clear:right; 
 /* left */
 a.left { margin-left: 0px; }
 
-a.pause { background-image: url(&dtml-portal_url;/pause.jpeg);}
-
 a.left:hover,
 a.right:hover { background-color: &dtml-globalBackgroundColor;;}
 
@@ -114,28 +112,14 @@ a.disabled {
     margin:20px 5px 20px 21px;
     width:100px;
 }
-
-.scrollable .leadimagetile img {
-    margin: 0px;
-    width: auto;
-}
-
 .scrollable img.hover {
     background-color:#112233;
 }
 .carouselNavBar {
-    height:25px;
-    padding-top: 3px;
-    text-align: left;
-    margin: auto;
+    height:20px;
+    text-align: center;
+    clear: left;
 }
-
-.carouselNavBarBottom {
-float: right;
-clear: right;
-padding-bottom: 1px;
-}
-
 .fullscreen-switcher {
     text-align: right;
 }

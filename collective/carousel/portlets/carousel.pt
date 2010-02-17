@@ -4,6 +4,9 @@
      
         <div class="carousel">
              
+            <!-- wrapper for navigator elements --> 
+            <div class="navi carouselNavBar"><!-- --></div>                    
+
             <!-- <div class="kiosk-wrapper"> -->
             <div class="scrollable">
                 <div class="items">
@@ -22,36 +25,24 @@
                 </div>
             </div>
             <!-- </div> -->
-
             
-            <!-- "previous page" action -->
-            <div class="carouselNavBarBottom">
-            <a class="prev browse left"
+            <!-- "previous page" action --> 
+            <!-- <a class="prev browse left"
                title="Previous item"
-               i18n:attributes="title label_previous_item"><span i18n:translate="label_previous_item">Previous item</span></a>
-           
-            <a class="browse pause" title="Pause scrolling"
-            i18n:attributes="title label_pause_scrolling"><span i18n:translate="label_pause_scrolling">Pause scrolling</span></a>
+               i18n:attributes="title label_previous_item"><span i18n:translate="label_previous_item">Previous item</span></a> -->
                
             <!-- "next page" action --> 
-            <a class="next browse right"
+            <!-- <a class="next browse right"
                title="Next item"
-               i18n:attributes="title label_next_item"><span i18n:translate="label_next_item">Next item</span></a>
-            </div>
-
-            <!-- wrapper for navigator elements --> 
-            <div class="navi carouselNavBar"><!-- --></div>                    
-
+               i18n:attributes="title label_next_item"><span i18n:translate="label_next_item">Next item</span></a>  -->
 
             <!-- Wrapper for fullscreen switcher -->
-          <!--
-            <div class="fullscreen-switcher carouselNavBar">
+            <!-- <div class="fullscreen-switcher carouselNavBar">
                 <a class="carousel-fullscreen"
                    href="#"
                    title="View in fullscreen mode" 
                    i18n:attributes="title"><span i18n:translate="text_fullscreen_mode">View in fullscreen mode</span></a>
-            </div>
-            -->
+            </div> -->
                    
         </div>
 
