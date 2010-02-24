@@ -31,36 +31,7 @@ class ViewletTestCase(TestCase):
 
         viewlet = CarouselViewlet(self.folder, self.app.REQUEST, None, None)
         
-        self.failUnless(len(viewlet.getProviders()) >= 3)
-        
-    # def test_viewlets_manager(self):
-    #     request = self.app.REQUEST
-    #     context = self.folder
-    #     view = View(context, request)        
-    #     AboveContent = ViewletManager('above-content', IAboveContent,
-    #                                 bases=(OrderedViewletManager,))
-    #     manager = AboveContent(context, request, view)
-    #     manager.update()
-    #     # we are not supposed to have carousel viewlet available right away
-    #     self.failIf('id="carousel"' in manager.render())
-    #     
-    #     self.setRoles('Manager')       
-    #     self.folder.invokeFactory('Topic', 'collection')
-    #     crit = self.folder.collection.addCriterion('portal_type', 'ATSimpleStringCriterion')
-    #     crit.setValue('Document')
-    #     field = self.folder.Schema().getField('carouselprovider')
-    #     field.set(self.folder, (self.folder.collection,))
-    #     manager.update()
-    #     # we even now we are not supposed to have the viewlet available
-    #     self.failIf('id="carousel"' in manager.render())        
-    #     # But when we explicitely specify that we are on the view of an object
-    #     # we should finally get the viewlet in the manager
-    #     import pdb ; pdb.set_trace( )
-    #     from plone.app.layout.globals.interfaces import IViewView 
-    #     from zope.interface import alsoProvides    
-    #     alsoProvides(context, IViewView)
-    #     manager.update()
-    #     self.failUnless('id="carousel"' in manager.render())                
+        self.failUnless(len(viewlet.getProviders()) >= 3)             
         
     def test_viewlet(self): 
         self.setRoles('Manager')       

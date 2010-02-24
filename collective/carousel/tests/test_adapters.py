@@ -51,16 +51,6 @@ class ViewsTestCase(TestCase):
         tile = queryMultiAdapter((obj, self.app.REQUEST), name="carousel-portlet-view")
         self.failUnless('<p>This is a DEFAULT tile</p>' in tile(), obj)        
         
-    # def test_integration_into_viewlet(self):
-    #   from zope.component import queryMultiAdapter
-    #   zcml.load_config('configure.zcml', collective.carousel.browser)
-    # 
-    #   viewlet = CarouselViewlet(self.folder, self.app.REQUEST, None, None)
-    #   viewlet.update()
-    #   result = viewlet.render()
-    #   import pdb ; pdb.set_trace( )
-    #   self.fail()
-        
 
 def test_suite():
     from unittest import defaultTestLoader
