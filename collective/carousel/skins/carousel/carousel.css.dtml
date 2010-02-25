@@ -9,7 +9,7 @@
     root element for the scrollable. 
     when scrolling occurs this element stays still. 
 */ 
-div.carousel {
+.carousel {
     margin: 1em auto;
     width: &dtml-carouselWidth;;
     padding: 0 10px;
@@ -20,9 +20,13 @@ div.carousel {
     -webkit-border-radius: 10px;
 /*    position: relative;*/
 }
-.portletCarouselWrapper div.carousel {
+.portletCarouselWrapper {
+    border: none;
+}
+.portletCarouselWrapper .carousel {
     width: 100%;
     padding: 0;
+    margin-bottom: 0;
 }
 
 div.scrollable { 
