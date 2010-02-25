@@ -15,8 +15,10 @@
                         <div class="tileItem visualIEFloatFix"
                              tal:define="item_object item/getObject">
 
-                            <tal:block replace="structure python:view.get_tile(item_object)" />
-
+                            <div class="itemPadding"> 
+                                <tal:block replace="structure python:view.get_tile(item_object)" />
+                            </div>
+                            
                             <div class="visualClear"><!-- --></div>
 
                         </div>
