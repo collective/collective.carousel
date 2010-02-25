@@ -59,7 +59,7 @@ div.scrollable div.items div.tileItem {
     border: none;
 } 
 div.scrollable div.items div.itemPadding {
-    margin: 0 10px;
+    margin: 0 1em;
 }
  
 /* you may want to setup some decorations to active the item */ 
