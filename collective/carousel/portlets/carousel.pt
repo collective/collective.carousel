@@ -1,53 +1,31 @@
-<div class="portletCarouselWrapper"
-     tal:condition="view/results"
-     i18n:domain="collective.carousel">
+<dl class="portlet portletCarouselWrapper"
+    tal:condition="view/results"
+    i18n:domain="collective.carousel">
      
-        <div class="carousel">
-             
-            <!-- wrapper for navigator elements --> 
-            <div class="navi carouselNavBar"><!-- --></div>                    
+    <dd class="carousel portletItem">
+         
+        <!-- wrapper for navigator elements --> 
+        <div class="navi carouselNavBar"><!-- --></div>                    
 
-            <!-- <div class="kiosk-wrapper"> -->
-            <div class="scrollable">
-                <div class="items">
+        <!-- <div class="kiosk-wrapper"> -->
+        <div class="scrollable">
+            <div class="items">
 
-                    <tal:block tal:repeat="item view/results">
-                        <div class="tileItem visualIEFloatFix"
-                             tal:define="item_object item/getObject">
+                <tal:block tal:repeat="item view/results">
+                    <div class="tileItem visualIEFloatFix"
+                         tal:define="item_object item/getObject">
 
-                            <div class="itemPadding"> 
-                                <tal:block replace="structure python:view.get_tile(item_object)" />
-                            </div>
-                            
-                            <div class="visualClear"><!-- --></div>
-
+                        <div class="itemPadding"> 
+                            <tal:block replace="structure python:view.get_tile(item_object)" />
                         </div>
-                    </tal:block>
-    
-                </div>
+                        
+                        <div class="visualClear"><!-- --></div>
+
+                    </div>
+                </tal:block>
+
             </div>
-            <!-- </div> -->
-            
-            <!-- "previous page" action --> 
-            <!-- <a class="prev browse left"
-               title="Previous item"
-               i18n:attributes="title label_previous_item"><span i18n:translate="label_previous_item">Previous item</span></a> -->
-               
-            <!-- "next page" action --> 
-            <!-- <a class="next browse right"
-               title="Next item"
-               i18n:attributes="title label_next_item"><span i18n:translate="label_next_item">Next item</span></a>  -->
-
-            <!-- Wrapper for fullscreen switcher -->
-            <!-- <div class="fullscreen-switcher carouselNavBar">
-                <a class="carousel-fullscreen"
-                   href="#"
-                   title="View in fullscreen mode" 
-                   i18n:attributes="title"><span i18n:translate="text_fullscreen_mode">View in fullscreen mode</span></a>
-            </div> -->
-                   
         </div>
-
-    <div class="visualClear"><!-- --></div>
-
-</div>
+                       
+    </dd>
+</dl>
