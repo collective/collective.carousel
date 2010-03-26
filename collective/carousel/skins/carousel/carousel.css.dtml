@@ -76,24 +76,22 @@ div.items div.active {
 /* this makes it possible to add next button beside scrollable */
 .scrollable {
     float:left;
+    position: relative;
+    z-index: 1;
 }
 
 
 /* @group Navigation elements */
 /* prev, next, prevPage and nextPage buttons */
 a.browse {
-    background:url(&dtml-portal_url;/arrowLeft.gif) 50% 50% no-repeat;
+	position: absolute;
+	bottom: -100px; /* just to move the arrows out of the carousel's area */
+	z-index: 0;
     display:block;
     width:28px;
-    height:28px;
-    border:1px solid &dtml-globalBorderColor;;
-    border-radius: 15px;
-    -moz-border-radius: 15px; 
-    -webkit-border-radius: 15px;    
-    float:left;
-    margin:50px 0 0;
+    height:28px; 	
+    background:url(&dtml-portal_url;/arrowLeft.gif) 50% 50% no-repeat;
     cursor:pointer;
-    font-size:1px;
 }
 a.browse span {
     position: absolute;
@@ -127,7 +125,7 @@ a.disabled {
     text-align: center;
     clear: left;
 }
-.fullscreen-switcher {
+.toolBar {
     text-align: right;
 }
 .navi a {

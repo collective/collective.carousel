@@ -5,12 +5,22 @@
      <tal:carousel repeat="provider view/getProviders">
         <div class="carousel"
              tal:condition="python: view.results(provider)">
-             
-            <!-- wrapper for navigator elements --> 
-            <div class="navi carouselNavBar"><!-- --></div>                    
+    
+             <div class="toolBar hiddenStructure">
+                 <!-- Wrapper for fullscreen switcher -->
+                 <!--
+                     <a class="carousel-fullscreen"
+                        href="#"
+                        title="View in fullscreen mode" 
+                        i18n:attributes="title"><span i18n:translate="text_fullscreen_mode">View in fullscreen mode</span></a>
+                 -->
+                 <a href="#" tal:attributes="href python:view.editCarouselLink(provider)"
+                    title="Edit carousel's results" 
+                    i18n:attributes="title">Edit Carousel</a>
+             </div>        
     
             <!-- "previous page" action --> 
-            <a class="prev browse left"
+            <a class="prev browse left hiddenStructure"
                title="Previous item"
                i18n:attributes="title label_previous_item"><span i18n:translate="label_previous_item">Previous item</span></a>                         
 
@@ -36,22 +46,12 @@
             <!-- </div> -->
 
             <!-- "next page" action --> 
-            <a class="next browse right"
+            <a class="next browse right hiddenStructure"
                title="Next item"
                i18n:attributes="title label_next_item"><span i18n:translate="label_next_item">Next item</span></a> 
 
-            <!-- Wrapper for fullscreen switcher -->
-            <!-- <div class="fullscreen-switcher carouselNavBar">
-                <a class="carousel-fullscreen"
-                   href="#"
-                   title="View in fullscreen mode" 
-                   i18n:attributes="title"><span i18n:translate="text_fullscreen_mode">View in fullscreen mode</span></a>
-            </div> -->
-            <div class="fullscreen-switcher carouselNavBar">
-                <a href="#" tal:attributes="href python:view.editCarouselLink(provider)"
-                   title="Edit carousel's results" 
-                   i18n:attributes="title">Edit Carousel</a>
-            </div>
+           <!-- wrapper for navigator elements --> 
+           <div class="navi carouselNavBar"><!-- --></div>
                    
         </div>
     </tal:carousel>
