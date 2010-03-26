@@ -28,7 +28,10 @@ class CarouselViewlet(ViewletBase):
         if provider is not None:
             # by default we assume that only Collections are addable 
             # as a carousel provider
-            results = provider.queryCatalog()
+            
+            # It doesn't make sense to show *all* objects from a collection 
+            # - some of them might return hundreeds of objects
+            return provider.queryCatalog()[:7]
         return results
 
     def editCarouselLink(self, provider):

@@ -41,13 +41,13 @@ class ViewletTestCase(TestCase):
         crit.setValue('Document')
         
         # add a few documents
-        for i in range(6):
+        for i in range(200):
             self.folder.invokeFactory('Document', 'document_%s'%i)
             getattr(self.folder, 'document_%s'%i).reindexObject()
               
         collection_num_items = len(self.folder.collection.queryCatalog())
         # We better have some documents
-        self.failUnless(collection_num_items >= 6)
+        self.failUnless(collection_num_items >= 200)
         
         # we create a folder for test to not interfere with Documents in Collection results
         self.folder.invokeFactory('Folder', 'my-carousel', carouselprovider=(self.folder.collection,))
@@ -61,10 +61,11 @@ class ViewletTestCase(TestCase):
         # first check getProviders()
         self.assertEqual(viewlet.getProviders(), [self.folder.collection])
         
-        # check results()
-        self.failUnless(len(viewlet.results(viewlet.getProviders()[0])) >= 6)
-        results = [result.id for result in viewlet.results(viewlet.getProviders()[0])]
-        doc_ids = [id for id in self.folder.contentIds() if 'document' in id]
+        # check results(). We get not more than 7 items even though the collection returns >=7 
+        # results, don't we?
+        self.failUnless(len(viewlet.results(viewlet.getProviders()[0])) == 7)
+        results = [result.id for result in viewlet.results(viewlet.getProviders()[0])]         
+        doc_ids = [id for id in self.folder.contentIds()[:7] if 'document' in id]
         for doc_id in doc_ids:
             self.failUnless(doc_id in results)
     
@@ -77,7 +78,7 @@ class ViewletTestCase(TestCase):
         viewlet = CarouselViewlet(carousel_obj, self.app.REQUEST, None, None)
         carousel_criteria = self.folder.collection.absolute_url() + '/criterion_edit_form'
         self.assertEqual(viewlet.editCarouselLink(viewlet.getProviders()[0]), carousel_criteria)
-        
+                
 
 def test_suite():
     from unittest import defaultTestLoader

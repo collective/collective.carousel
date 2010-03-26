@@ -4,6 +4,9 @@ Changelog
 1.0 - Unreleased
 ----------------
 
+- Limit number of items returned by a carousel to 7.
+  [spliter]
+
 - Adjusted slightly to work on Plone 4.
   [hannosch]
 
