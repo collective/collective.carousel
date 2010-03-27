@@ -8,8 +8,8 @@
 <a href="#"
    tal:attributes="href python:(item_type in use_view_action) and item_url+'/view' or item_url;">
     <img src="" alt=""
-         tal:condition="exists:context/image_thumb"
-         tal:replace="structure python: path('nocall:context/tag')(scale='thumb', css_class='tileImage')" />
+         tal:condition="exists:context/image_mini"
+         tal:replace="structure python: path('nocall:context/tag')(scale='mini', css_class='tileImage')" />
 </a>
                 
 <h2 class="tileHeadline">
