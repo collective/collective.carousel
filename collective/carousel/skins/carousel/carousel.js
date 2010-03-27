@@ -2,19 +2,19 @@
 jQuery(function($) {
     var carousels = $(".carousel");
 
-    var resizeCarousel = function(carousel, elems) {
-        var scrollable = $(carousel).find(".scrollable").eq(0);
+    var resizeCarousel = function(carousel, scrollable, elems) {
+        // var scrollable = $(carousel).find(".scrollable").eq(0);
                 
         // adjust height of the carousel to the max height of the elements
         var base_height = Math.max.apply(null,
-            elems.map(function() { return $(this).innerHeight() }).get()
+            $(elems).map(function() { return $(this).innerHeight() }).get()
         );
         
-        elems.height(base_height);
+        $(elems).height(base_height);
         
         $(scrollable).height(base_height);    
-        $(carousel).height(elems.outerHeight(true) + $(".navi").outerHeight(true) + 10);
-        // 35px in the following like is 20px (height of navi) + 15px (1/2 height of the button)
+        $(carousel).height($(elems).outerHeight(true) + $(".carouselNavBar").outerHeight(true) + 10);
+        // 35px in the following like is 20px (height of carouselNavBar) + 15px (1/2 height of the button)
         $(carousel).find(".browse").css("margin-top", (($(carousel).height()/2) - 20 - 15));
     };
     
@@ -31,15 +31,18 @@ jQuery(function($) {
         };
 
         if($(scrollable).find("img").length == 0) {
+            console.info("Carousel has NO images");
             // We resize right away
-            resizeCarousel($(this), elems);             
-        }
-        else {
+            resizeCarousel(this, scrollable, elems);             
+        } 
+        else if($(scrollable).find("img").length > 0) {
+            console.info("Carousel HAS images");            
+            resizeCarousel(this, scrollable, elems);          
             // We wait until all images are loaded and resize afterwards
             $(scrollable).find("img").load(function() {
+                alert("Image");
                 c = carousels[i];
-                alert();
-                resizeCarousel($(this), elems);          
+                resizeCarousel(this, scrollable, elems);          
             });            
         }
     })    

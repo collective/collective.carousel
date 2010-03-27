@@ -3,9 +3,6 @@
     i18n:domain="collective.carousel">
      
     <dd class="carousel portletItem">
-         
-        <!-- wrapper for navigator elements --> 
-        <div class="navi carouselNavBar"><!-- --></div>                    
 
         <!-- <div class="kiosk-wrapper"> -->
         <div class="scrollable">
@@ -26,6 +23,9 @@
 
             </div>
         </div>
-                       
+        
+        <!-- wrapper for navigator elements --> 
+        <div class="navi"><!-- --></div>        
+        
     </dd>
 </dl>

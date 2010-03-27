@@ -3,94 +3,72 @@
 /* <dtml-with carousel_properties> (do not remove this :) */
 /* <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either :) */
 
-/* @group scrollable */
+/* @group Viewlet */
 
-/* 
-    root element for the scrollable. 
-    when scrolling occurs this element stays still. 
-*/ 
+/* root element for the scrollable. 
+   when scrolling occurs this element stays still. */
 .carousel {
-    margin: 1em auto;
+	position: relative; 
+	z-index: 0;   
+    padding: 0;
+    margin: 1em auto;  
     width: &dtml-carouselWidth;;
-    padding: 0 10px;
-    height: &dtml-carouselDefaultHeight;;
+    height: &dtml-carouselDefaultHeight;;      
     border: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
-    border-radius: 10px;
     -moz-border-radius: 10px; 
     -webkit-border-radius: 10px;
-/*    position: relative;*/
-}
-.portletCarouselWrapper {
-    border: none;
-}
-.portletCarouselWrapper .carousel {
-    width: 100%;
-    padding: 0;
-    margin-bottom: 0;
+    border-radius: 10px;    
 }
 
 div.scrollable { 
     /* required settings */ 
     position:relative; 
+    z-index: 1;
     overflow:hidden; 
-    width: 600px; 
+    width: &dtml-carouselWidth;; 
     height:&dtml-carouselDefaultHeight;; 
-} 
-.portletCarouselWrapper div.scrollable {
-    width: 100%;
 }
  
-/* 
-    root element for scrollable items. Must be absolutely positioned 
-    and it should have a extremely large width to accomodate scrollable items. 
-    it's enough that you set width and height for the root element and 
-    not for this element. 
-*/ 
+/* root element for scrollable items. Must be absolutely positioned 
+   and it should have a extremely large width to accomodate scrollable items. 
+   it's enough that you set width and height for the root element and 
+   not for this element. */ 
 div.scrollable div.items { 
     /* this cannot be too large */ 
     width:20000em; 
     position:absolute; 
 } 
  
-/* 
-    a single item. must be floated in horizontal scrolling. 
+/* a single item. must be floated in horizontal scrolling. 
     typically, this element is the one that *you* will style 
-    the most. 
-*/ 
+    the most. */ 
 div.scrollable div.items div.tileItem { 
     float:left; 
-    width: 600px;
+    width: &dtml-carouselWidth;;
     border: none;
 } 
+
+/* Visual padding for a single item in a carousel. It's better to keep the padding here than
+   on .tileItem to avoid messing up the width of an item. */
 div.scrollable div.items div.itemPadding {
-    margin: 0 1em;
-}
- 
-/* you may want to setup some decorations to active the item */ 
-div.items div.active { 
-    border:1px inset #ccc; 
-    background-color:#fff; 
+    margin: 1em;
 }
 
-/* @group buttons */
-/* this makes it possible to add next button beside scrollable */
-.scrollable {
-    float:left;
-    position: relative;
-    z-index: 1;
-}
-
+/* @end */
 
 /* @group Navigation elements */
+
+/* @group Navigation buttons */
+
 /* prev, next, prevPage and nextPage buttons */
 a.browse {
 	position: absolute;
-	bottom: -100px; /* just to move the arrows out of the carousel's area */
-	z-index: 0;
-    display:block;
+	bottom: -1000px; /* just to move the arrows out of the carousel's area */
+	z-index: 2;
     width:28px;
     height:28px; 	
-    background:url(&dtml-portal_url;/arrowLeft.gif) 50% 50% no-repeat;
+    /*background:url(&dtml-portal_url;/arrowLeft.gif) 50% 50% no-repeat;*/
+	background: Red;
     cursor:pointer;
 }
 a.browse span {
@@ -98,37 +76,21 @@ a.browse span {
     visibility: hidden;
 }
 
-/* right */
-a.right { background-image: url(&dtml-portal_url;/arrowRight.gif); clear:right; margin-right: 0px;}
-
-/* left */
-a.left { margin-left: 0px; }
-
-a.left:hover,
-a.right:hover { background-color: &dtml-globalBackgroundColor;;}
-
-
 /* disabled navigational button */
 a.disabled {
     visibility:hidden !important;
 }
 
-.scrollable img {
-    margin:20px 5px 20px 21px;
-    width:100px;
-}
-.scrollable img.hover {
-    background-color:#112233;
-}
-.carouselNavBar {
+/* @end */
+
+/* @group Navigation bar */
+
+div.navi {
     height:20px;
     text-align: center;
     clear: left;
 }
-.toolBar {
-    text-align: right;
-}
-.navi a {
+div.navi a {
     border: 1px solid &dtml-globalBorderColor;;
     border-radius: 4px;
     -moz-border-radius: 4px; 
@@ -140,43 +102,45 @@ a.disabled {
     margin:3px;
     width:6px;
 }
-.navi a:hover {
+div.navi a:hover {
     background: &dtml-globalBorderColor;;
     cursor: pointer;
 }
-.navi a.active {
+div.navi a.active {
     background: &dtml-globalBorderColor;;
 }
-.carousel-fullscreen {
-    display: inline-block;
-    background: transparent url('&dtml-portal_url;/fullscreenexpand_icon.gif') 50% 50%;
-    width: 16px;
-    height: 16px;
-}
-.carousel-fullscreen span {
-    /* we don't need fullscreen link to appear in screen readers, 
-       so it's safe to simply make hide it */
-    display: none;
+
+/* @end */
+
+/* @group Tool bar */
+
+div.toolBar {
+    text-align: right;
 }
 
-/* @group Fullscreen mode */
+/* @end */
 
-.activeKiosk {
-    width: 900px;
-    margin: 0 auto;
+/* @end */
+
+/* @group Additional styles for the portlet */
+
+dl.portletCarouselWrapper {
+	border: none;
 }
-.activeKiosk .flowpanes {
-    font-size: 2em;
-    height: 100% !important;
-    width: 900px !important;
-    margin: 0 auto;
-    /* we don't have next/prev buttons in kiosk mode. Hence we can avoid floating this element */
-    float: none; 
+dl.portletCarouselWrapper .carousel {
+    width: 100%;
+    padding: 0;
+    margin-bottom: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;    
+    border-radius: 0;
 }
-.activeKiosk div.items div.tileItem {
-/*    height: 100% !important;*/
-    width: 900px !important;
+
+dl.portletCarouselWrapper div.scrollable {
+    width: 100%;
 }
+
+/* @end */
 
 /* </dtml-with> */
 /* </dtml-with> */

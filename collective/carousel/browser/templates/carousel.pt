@@ -20,7 +20,7 @@
              </div>        
     
             <!-- "previous page" action --> 
-            <a class="prev browse left hiddenStructure"
+            <a class="prev browse hiddenStructure"
                title="Previous item"
                i18n:attributes="title label_previous_item"><span i18n:translate="label_previous_item">Previous item</span></a>                         
 
@@ -46,12 +46,12 @@
             <!-- </div> -->
 
             <!-- "next page" action --> 
-            <a class="next browse right hiddenStructure"
+            <a class="next browse hiddenStructure"
                title="Next item"
                i18n:attributes="title label_next_item"><span i18n:translate="label_next_item">Next item</span></a> 
 
            <!-- wrapper for navigator elements --> 
-           <div class="navi carouselNavBar"><!-- --></div>
+           <div class="navi"><!-- --></div>
                    
         </div>
     </tal:carousel>
