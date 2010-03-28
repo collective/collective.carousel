@@ -41,13 +41,13 @@ class ViewletTestCase(TestCase):
         crit.setValue('Document')
         
         # add a few documents
-        for i in range(200):
+        for i in range(10):
             self.folder.invokeFactory('Document', 'document_%s'%i)
             getattr(self.folder, 'document_%s'%i).reindexObject()
               
         collection_num_items = len(self.folder.collection.queryCatalog())
         # We better have some documents
-        self.failUnless(collection_num_items >= 200)
+        self.failUnless(collection_num_items >= 10)
         
         # we create a folder for test to not interfere with Documents in Collection results
         self.folder.invokeFactory('Folder', 'my-carousel', carouselprovider=(self.folder.collection,))
