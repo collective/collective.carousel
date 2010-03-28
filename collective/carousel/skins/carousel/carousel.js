@@ -1,50 +1,45 @@
 // What is $(document).ready ? See: http://flowplayer.org/tools/using.html#document_ready
 jQuery(function($) {
-    var carousels = $(".carousel");
 
     var resizeCarousel = function(carousel, scrollable, elems) {
-        // var scrollable = $(carousel).find(".scrollable").eq(0);
-                
-        // adjust height of the carousel to the max height of the elements
+        // Adjust height of the carousel to the max height of the elements.
         var base_height = Math.max.apply(null,
-            $(elems).map(function() { return $(this).innerHeight() }).get()
+            $(elems).map(function() { return $(this).height() }).get()
         );
-        
         $(elems).height(base_height);
         
-        $(scrollable).height(base_height);    
-        $(carousel).height($(elems).outerHeight(true) + $(".carouselNavBar").outerHeight(true) + 10);
-        // 35px in the following like is 20px (height of carouselNavBar) + 15px (1/2 height of the button)
-        $(carousel).find(".browse").css("margin-top", (($(carousel).height()/2) - 20 - 15));
+        // Re-size .scrollable. Since all .tileItem lements have equal height 
+        // by now, we can rely on the first element in the set.
+        var scrollable_height = $(elems).eq(0).outerHeight(true);
+        $(scrollable).height(scrollable_height);    
+        
+        // Re-size .carousel.
+        var outer_height = $(scrollable).outerHeight(true) + $(".navi").outerHeight(true);
+        $(carousel).height(outer_height);
     };
+    $(".toolBar").hide();
+    var carousels = $(".carousel");
     
     carousels.each( function(i) {
+        var carousel = this;
         var scrollable = $(this).find(".scrollable").eq(0);        
         var elems = $(scrollable).find('.tileItem');
-        // set width of all elems so they wrap and have correct heights
-        var cwidth = $(this).innerWidth();
         
-        $(scrollable).width(cwidth);
+        // Set width of all carousel items so they wrap and have correct widths
+        var cwidth = $(this).innerWidth();
+        $(scrollable).width(cwidth);        
+        scrollable_width = $(scrollable).innerWidth();        
         
         for (i=0; i<elems.length; i++) {   
-            $(elems[i]).css( {width: cwidth } );
+            $(elems[i]).css( {width: scrollable_width } );
         };
-
-        if($(scrollable).find("img").length == 0) {
-            console.info("Carousel has NO images");
-            // We resize right away
-            resizeCarousel(this, scrollable, elems);             
-        } 
-        else if($(scrollable).find("img").length > 0) {
-            console.info("Carousel HAS images");            
-            resizeCarousel(this, scrollable, elems);          
-            // We wait until all images are loaded and resize afterwards
-            $(scrollable).find("img").load(function() {
-                alert("Image");
-                c = carousels[i];
-                resizeCarousel(this, scrollable, elems);          
-            });            
-        }
+        
+        resizeCarousel(this, scrollable, elems);                         
+        
+        $(scrollable).find("img").load(function() {
+            // If an image is loaded later we need to resize the whole carousel to fit it
+            resizeCarousel(carousel, scrollable, elems);          
+        });            
     })    
     
     // doesn't make sense to enable autoscrolling if more than one 
@@ -58,5 +53,13 @@ jQuery(function($) {
         loop: true
     }).circular().autoscroll({autoplay: ap,steps:1,interval:25000}).navigator({api:true});
       
-    // Show navigation arrows and toolBar when hovering over a carousel
+    // Show toolBar when hovering over a carousel
+    $(".carousel").hover(
+        function(){
+            $(this).find(".toolBar").eq(0).slideToggle('fast').show();
+        },
+        function(){
+            $(this).find(".toolBar").eq(0).slideToggle('fast').hide();
+        }
+    );
 })

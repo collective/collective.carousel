@@ -5,22 +5,22 @@
      <tal:carousel repeat="provider view/getProviders">
         <div class="carousel"
              tal:condition="python: view.results(provider)">
-    
-             <div class="toolBar hiddenStructure">
-                 <!-- Wrapper for fullscreen switcher -->
-                 <!--
-                     <a class="carousel-fullscreen"
-                        href="#"
-                        title="View in fullscreen mode" 
-                        i18n:attributes="title"><span i18n:translate="text_fullscreen_mode">View in fullscreen mode</span></a>
-                 -->
-                 <a href="#" tal:attributes="href python:view.editCarouselLink(provider)"
-                    title="Edit carousel's results" 
-                    i18n:attributes="title">Edit Carousel</a>
-             </div>        
+     
+            <div class="toolBar">
+                <!-- Wrapper for fullscreen switcher -->
+                <!--
+                    <a class="carousel-fullscreen"
+                       href="#"
+                       title="View in fullscreen mode" 
+                       i18n:attributes="title"><span i18n:translate="text_fullscreen_mode">View in fullscreen mode</span></a>
+                -->
+                <a href="#" tal:attributes="href python:view.editCarouselLink(provider)"
+                   title="Edit carousel's results" 
+                   i18n:attributes="title">Edit Carousel</a>
+            </div>      
     
             <!-- "previous page" action --> 
-            <a class="prev browse hiddenStructure"
+            <a class="prev browse"
                title="Previous item"
                i18n:attributes="title label_previous_item"><span i18n:translate="label_previous_item">Previous item</span></a>                         
 
@@ -46,7 +46,7 @@
             <!-- </div> -->
 
             <!-- "next page" action --> 
-            <a class="next browse hiddenStructure"
+            <a class="next browse"
                title="Next item"
                i18n:attributes="title label_next_item"><span i18n:translate="label_next_item">Next item</span></a> 
 

@@ -15,9 +15,6 @@
     width: &dtml-carouselWidth;;
     height: &dtml-carouselDefaultHeight;;      
     border: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
-    -moz-border-radius: 10px; 
-    -webkit-border-radius: 10px;
-    border-radius: 10px;    
 }
 
 div.scrollable { 
@@ -46,12 +43,14 @@ div.scrollable div.items div.tileItem {
     float:left; 
     width: &dtml-carouselWidth;;
     border: none;
+    padding: 0;
+    margin: 0;
 } 
 
 /* Visual padding for a single item in a carousel. It's better to keep the padding here than
    on .tileItem to avoid messing up the width of an item. */
 div.scrollable div.items div.itemPadding {
-    margin: 1em;
+    margin: 1.5em 1em;
 }
 
 /* @end */
@@ -63,13 +62,21 @@ div.scrollable div.items div.itemPadding {
 /* prev, next, prevPage and nextPage buttons */
 a.browse {
 	position: absolute;
-	bottom: -1000px; /* just to move the arrows out of the carousel's area */
+	/*bottom: -1000px;*/ /* just to move the arrows out of the carousel's area */
 	z-index: 2;
-    width:28px;
-    height:28px; 	
-    /*background:url(&dtml-portal_url;/arrowLeft.gif) 50% 50% no-repeat;*/
-	background: Red;
+	bottom: 0;
+    width:38px;
+    height:38px; 	
+    margin: 0;
+    background:url(&dtml-portal_url;/arrowLeft.gif) 50% 50% no-repeat;
     cursor:pointer;
+}
+a.prev {
+	left: 0;	
+}
+a.next {
+	right: 0;
+	background-image: url('&dtml-portal_url;/arrowRight.gif');
 }
 a.browse span {
     position: absolute;
@@ -86,21 +93,21 @@ a.disabled {
 /* @group Navigation bar */
 
 div.navi {
-    height:20px;
+    height:38px;
     text-align: center;
     clear: left;
 }
 div.navi a {
+    height:7px;
+    margin:14px 3px 3px;
+    width:7px;	
     border: 1px solid &dtml-globalBorderColor;;
-    border-radius: 4px;
     -moz-border-radius: 4px; 
     -webkit-border-radius: 4px;
+    border-radius: 4px;
     background: &dtml-globalBackgroundColor;;
     display:inline-block;
     font-size:1px;
-    height:6px;
-    margin:3px;
-    width:6px;
 }
 div.navi a:hover {
     background: &dtml-globalBorderColor;;
@@ -115,7 +122,17 @@ div.navi a.active {
 /* @group Tool bar */
 
 div.toolBar {
+	position: absolute;
+	right: 0;
+	top:0;
+	z-index: 2;
     text-align: right;
+    height:2em; 
+    width: auto;
+    padding: 0 0.5em;
+    line-height: 2em;    
+    background-color: #fff; /* for those browsers that don't yet support CSS3 rgba colors */
+	background-color: rgba(256, 256, 256, 0.8); /* for good boys of the block */       
 }
 
 /* @end */
@@ -131,9 +148,6 @@ dl.portletCarouselWrapper .carousel {
     width: 100%;
     padding: 0;
     margin-bottom: 0;
-    -moz-border-radius: 0;
-    -webkit-border-radius: 0;    
-    border-radius: 0;
 }
 
 dl.portletCarouselWrapper div.scrollable {
