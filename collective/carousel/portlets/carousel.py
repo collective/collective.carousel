@@ -34,7 +34,6 @@ class Renderer(base.Renderer):
         return use_view_action        
 
     def get_tile(self, obj):
-        # note to myself
         # When adapter is uesd this means we check whether obj has any special 
         # instructions about how to be handled in defined view or interface
         # for multi adapter the same is true except more object than just the 
