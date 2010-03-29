@@ -1,6 +1,8 @@
 from zope.component import queryMultiAdapter
 from zope.interface import alsoProvides
+from AccessControl import SecurityManagement
 
+from Products.ATContentTypes.permission import ChangeTopics
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from plone.app.layout.viewlets.common import ViewletBase
@@ -33,6 +35,10 @@ class CarouselViewlet(ViewletBase):
             # - some of them might return hundreeds of objects
             return provider.queryCatalog()[:7]
         return results
+
+    def canSeeEditLink(self, provider):
+        smanager = SecurityManagement.getSecurityManager()
+        return smanager.checkPermission(ChangeTopics, provider)
 
     def editCarouselLink(self, provider):
         if provider is not None:

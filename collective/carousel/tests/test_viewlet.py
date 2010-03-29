@@ -55,7 +55,7 @@ class ViewletTestCase(TestCase):
             getattr(self.folder, 'document_%s'%i).reindexObject()
               
         collection_num_items = len(self.folder.collection.queryCatalog())
-        # We better have some documents
+        # We better have some documents in the collection's results
         self.failUnless(collection_num_items >= 10)
         
         field = self.folder.Schema().getField('carouselprovider')
