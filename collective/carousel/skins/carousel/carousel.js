@@ -26,9 +26,9 @@ jQuery(function($) {
         var elems = $(scrollable).find('.tileItem');
         
         // Set width of all carousel items so they wrap and have correct widths
-        var cwidth = $(this).innerWidth();
+        var cwidth = $(this).width();
         $(scrollable).width(cwidth);        
-        scrollable_width = $(scrollable).innerWidth();        
+        scrollable_width = $(scrollable).width();        
         
         for (i=0; i<elems.length; i++) {   
             $(elems[i]).css( {width: scrollable_width } );
