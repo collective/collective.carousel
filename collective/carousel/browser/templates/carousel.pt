@@ -4,6 +4,7 @@
      
      <tal:carousel repeat="provider view/getProviders">
         <div class="carousel"
+             tal:attributes="class python:repeat['provider'].end and 'carousel lastCarousel' or 'carousel'"
              tal:condition="python: view.results(provider)">
      
             <div class="toolBar">

@@ -39,7 +39,7 @@ div.scrollable div.items {
 /* a single item. must be floated in horizontal scrolling. 
     typically, this element is the one that *you* will style 
     the most. */ 
-div.scrollable div.items div.tileItem { 
+.scrollable .items .tileItem { 
     float:left; 
     width: &dtml-carouselWidth;;
     border: none;
