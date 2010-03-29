@@ -11,6 +11,22 @@ from collective.carousel.browser.viewlets import CarouselViewlet
 
 class ViewletTestCase(TestCase):
     
+    def afterSetUp(self):
+        self.setRoles('Manager')       
+        self.folder.invokeFactory('Topic', 'collection')
+        collection = getattr(self.folder, 'collection')
+        
+        crit = self.folder.collection.addCriterion('portal_type', 'ATSimpleStringCriterion')
+        crit.setValue(['Document', 'News Item', 'Event'])
+        
+        field = self.folder.Schema().getField('carouselprovider')
+        field.set(self.folder, collection)
+        
+        # add a few objects
+        self.folder.invokeFactory('Document', 'carousel-doc')
+        self.folder.invokeFactory('News Item', 'carousel-news-item')
+        self.folder.invokeFactory('Event', 'carousel-event')  
+    
     def test_viewlet_is_available(self):
         request = self.app.REQUEST
         context = self.folder
@@ -18,7 +34,6 @@ class ViewletTestCase(TestCase):
         self.failUnless(viewlet)
         
     def test_multiple_providers(self):
-        self.setRoles('Manager') 
         collections = []
         for i in range(3):              
             self.folder.invokeFactory('Topic', 'collection_%s'%i)
@@ -33,13 +48,7 @@ class ViewletTestCase(TestCase):
         
         self.failUnless(len(viewlet.getProviders()) >= 3)             
         
-    def test_viewlet(self): 
-        self.setRoles('Manager')       
-        self.folder.invokeFactory('Topic', 'collection')
-        
-        crit = self.folder.collection.addCriterion('portal_type', 'ATSimpleStringCriterion')
-        crit.setValue('Document')
-        
+    def test_viewlet_rendering(self):         
         # add a few documents
         for i in range(10):
             self.folder.invokeFactory('Document', 'document_%s'%i)
@@ -49,14 +58,11 @@ class ViewletTestCase(TestCase):
         # We better have some documents
         self.failUnless(collection_num_items >= 10)
         
-        # we create a folder for test to not interfere with Documents in Collection results
-        self.folder.invokeFactory('Folder', 'my-carousel', carouselprovider=(self.folder.collection,))
-        carousel_obj = getattr(self.folder, 'my-carousel')
-        field = carousel_obj.Schema().getField('carouselprovider')
+        field = self.folder.Schema().getField('carouselprovider')
         # technically the following checkup is done in test_field, but we better check again
-        self.assertEqual(field.get(carousel_obj), [self.folder.collection])
+        self.assertEqual(field.get(self.folder), [self.folder.collection])
         
-        viewlet = CarouselViewlet(carousel_obj, self.app.REQUEST, None, None)
+        viewlet = CarouselViewlet(self.folder, self.app.REQUEST, None, None)
 
         # first check getProviders()
         self.assertEqual(viewlet.getProviders(), [self.folder.collection])
@@ -70,15 +76,17 @@ class ViewletTestCase(TestCase):
             self.failUnless(doc_id in results)
     
     def test_edit_carousel_link(self):
-        self.setRoles('Manager')       
-        self.folder.invokeFactory('Topic', 'collection')
-        self.folder.invokeFactory('Folder', 'my-carousel', carouselprovider=(self.folder.collection,))
-        carousel_obj = getattr(self.folder, 'my-carousel')
-
-        viewlet = CarouselViewlet(carousel_obj, self.app.REQUEST, None, None)
+        viewlet = CarouselViewlet(self.folder, self.app.REQUEST, None, None)
         carousel_criteria = self.folder.collection.absolute_url() + '/criterion_edit_form'
         self.assertEqual(viewlet.editCarouselLink(viewlet.getProviders()[0]), carousel_criteria)
-                
+
+        # Check whether anonymous users get "edit" link. First check that Manager gets it:
+        self.failUnless(viewlet.canSeeEditLink(viewlet.getProviders()[0]))
+        
+        # Then we switch user to Anonymous:
+        self.setRoles([])
+        self.logout()
+        self.failIf(viewlet.canSeeEditLink(viewlet.getProviders()[0]))
 
 def test_suite():
     from unittest import defaultTestLoader
