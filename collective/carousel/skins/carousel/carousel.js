@@ -26,6 +26,9 @@ jQuery(function($) {
             // $("#my-special-case .carousel").bind('resized.carousel', function(event, newheight) {
             //     your custom handler for resized.carousel' event
             // });
+            // This is helpful if you need to have more than 1 carousel in the same row
+            // and want all of them to be the same height - then you bind risizing function to this
+            // 'resized.carousel' trigger.
             $carousel.height(outer_height).trigger('resized.carousel', [outer_height]);
         }
     };
