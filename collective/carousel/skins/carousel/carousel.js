@@ -11,12 +11,25 @@ jQuery(function($) {
         // Re-size .scrollable. Since all .tileItem lements have equal height 
         // by now, we can rely on the first element in the set.
         var scrollable_height = $(elems).eq(0).outerHeight(true);
-        $(scrollable).height(scrollable_height);    
+        $(scrollable).height(scrollable_height);
         
         // Re-size .carousel.
         var outer_height = $(scrollable).outerHeight(true) + $(".navi").outerHeight(true);
-        $(carousel).height(outer_height);
+        var $carousel = $(carousel);
+        if ($carousel.height() < outer_height) {
+            // 'resized.carousel' is a custom trigger that 3rd-party code can use for 
+            // binding events to the moment when a carousel is resized. 'carousel' namespace 
+            // minimizes chances of conflicting with any other custom trigger of the same 'resized'
+            // name.
+            // In your custom JS code to bind an event to the moment when a carousel has been 
+            // completely loaded and resized use something like this:
+            // $("#my-special-case .carousel").bind('resized.carousel', function(event, newheight) {
+            //     your custom handler for resized.carousel' event
+            // });
+            $carousel.height(outer_height).trigger('resized.carousel', [outer_height]);
+        }
     };
+    
     $(".toolBar").hide();
     var carousels = $(".carousel");
     
@@ -31,10 +44,13 @@ jQuery(function($) {
             $(elems[i]).css( {width: scrollable_width } );
         };
         
-        resizeCarousel(this, scrollable, elems);                         
+        // Use setTimeout here to give other code a chance to bind events.
+        // setTimeout 0 causes code to run right after the jQuery load event has finished.
+        // setTimeout(function() { resizeCarousel(carousel, scrollable, elems); }, 0);
+        setTimeout(function() { resizeCarousel(carousel, scrollable, elems) }, 0);        
         
-        $(scrollable).find("img").load(function() {
-            // If an image is loaded later we need to resize the whole carousel to fit it
+        $(scrollable).find("img").load(function(event) {
+            // If an image is loaded later we need to resize the whole carousel to fit it          
             resizeCarousel(carousel, scrollable, elems);          
         });            
     })    

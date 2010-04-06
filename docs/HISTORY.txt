@@ -4,6 +4,10 @@ Changelog
 1.0 - Unreleased
 ----------------
 
+- Custom 'resized.carousel' event for being able to bind custom 
+  handlers to the moment when a carousel is re-sized.
+  [spliter]
+
 - Limit number of items returned by a carousel to 7.
   [spliter]
 
