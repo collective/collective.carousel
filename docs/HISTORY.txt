@@ -4,6 +4,9 @@ Changelog
 1.0 - Unreleased
 ----------------
 
+- Added information about 'resized.carousel' event to README.txt
+  [spliter]
+
 - Custom 'resized.carousel' event for being able to bind custom 
   handlers to the moment when a carousel is re-sized.
   [spliter]

@@ -53,7 +53,7 @@ inheritable as any other portlet in a Plone site. This means that when you add
 a content carousel to a folder, the same carousel will not be shown on any
 object within that folder. At the same time if you add a carousel portlet on a
 folder, that portlet will be shown for all objects within the folder that
-don't explicitely block parent portlets.
+don't explicitly block parent portlets.
 
 Tips
 ====
@@ -94,6 +94,32 @@ So if you need to override/register a view for any specific content type for
 content carousel, your `<browser:page />` has to have `carousel-view` name. In
 case you want to override/register a view for carousel portlet, name should be
 `carousel-portlet-view`.
+
+I need do something once the carousel is fully loaded.
+------------------------------------------------------
+The simplest use-case |---| you have some content carousels placed in a row
+side by side. Most probably your carousels have different heighta that doesn't
+look nice when they are placed side by side. So you want to equalize the
+heights of these carousels with Javascript so that your carousels have the
+same height. Since collective.carousel already binds ``load()`` event to each
+carousel (resizing the carousel to fit all of it's content) you can not bind
+one more ``load()`` event to a carousel because due to the way ``load()``
+event is fired for elements it might be either fired too early when not all
+content of a carousel is loaded.
+
+For the cases like this collective.carousel provides custom Javascript event
+``resized.carousel`` that you can attach your special handlers to. Moreover
+each carousel returns it's height that can be accessed in ``resized.carousel``
+event.
+
+Here is a simple code snippet of how to adjust the heights of carousels with
+JQuery::
+
+    $("#my-container .carousel").bind('resized.carousel', function(event, newheight) {
+        $("#my-container .carousel").each(function() {
+            if ($(this).height() < newheight) $(this).height(newheight); 
+        });
+    }); 
   
 
 Developed by **Jarn AS** |---| http://www.jarn.com
