@@ -7,7 +7,7 @@ tests_require = ['collective.testcaselayer']
 
 setup(name='collective.carousel',
       version=version,
-      description="Small add-on for having Collections' results presented as a nice carousel",
+      description="Add-on for having Collections' results presented as a nice carousel",
       long_description=open("README.txt").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
