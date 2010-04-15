@@ -1,13 +1,11 @@
 # Carousel is rendered through a viewlet in IAboveContent
 # using items provided by the carousel provider added to the context
 
-# from Products.Five.viewlet.manager import ViewletManager
-# from plone.app.viewletmanager.manager import OrderedViewletManager
-# from plone.app.layout.viewlets.interfaces import IAboveContent
-# from Products.Five.browser import BrowserView as View
+from zope.interface import alsoProvides, noLongerProvides
 
-from collective.carousel.tests.base import TestCase
 from collective.carousel.browser.viewlets import CarouselViewlet
+from collective.carousel.testing import ICustomType
+from collective.carousel.tests.base import TestCase
 
 class ViewletTestCase(TestCase):
     
@@ -25,7 +23,7 @@ class ViewletTestCase(TestCase):
         # add a few objects
         self.folder.invokeFactory('Document', 'carousel-doc')
         self.folder.invokeFactory('News Item', 'carousel-news-item')
-        self.folder.invokeFactory('Event', 'carousel-event')  
+        self.folder.invokeFactory('Event', 'carousel-event') 
     
     def test_viewlet_is_available(self):
         request = self.app.REQUEST
@@ -74,6 +72,26 @@ class ViewletTestCase(TestCase):
         doc_ids = [id for id in self.folder.contentIds()[:7] if 'document' in id]
         for doc_id in doc_ids:
             self.failUnless(doc_id in results)
+            
+        # Test that we get correct tiles in the carousel        
+        for result in viewlet.results(viewlet.getProviders()[0]):
+            item_type = result.portal_type
+            if item_type == 'Document':
+                self.failUnless('<p>This is a PAGE tile</p>' in viewlet.get_tile(result.getObject()))
+            if item_type == 'Event':           
+                self.failUnless('<p>This is a DEFAULT tile</p>' in viewlet.get_tile(result.getObject()))                
+            if item_type == 'News Item':
+                self.failUnless('<p>This is a NEWS ITEM tile</p>' in viewlet.get_tile(result.getObject()))
+                
+        # Now we apply new custom tile registration for event object
+        event = getattr(self.folder, 'carousel-event')
+        alsoProvides(event, ICustomType)        
+        self.failIf('<p>This is a DEFAULT tile</p>' in viewlet.get_tile(event))             
+
+        # We revert event to standard state (without custom tile registration)
+        noLongerProvides(event, ICustomType)
+        # We should get our DEFAULT tile again
+        self.failIf('<p>This is a CUSTOM DEFAULT tile</p>' in viewlet.get_tile(event))
     
     def test_edit_carousel_link(self):
         viewlet = CarouselViewlet(self.folder, self.app.REQUEST, None, None)
