@@ -98,14 +98,14 @@ case you want to override/register a view for carousel portlet, name should be
 I need do something once the carousel is fully loaded.
 ------------------------------------------------------
 The simplest use-case |---| you have some content carousels placed in a row
-side by side. Most probably your carousels have different heighta that doesn't
-look nice when they are placed side by side. So you want to equalize the
-heights of these carousels with Javascript so that your carousels have the
+side by side. Most probably your carousels have different heights and that
+doesn't look nice when they are placed side by side. So you want to equalize
+the heights of these carousels with Javascript so that your carousels have the
 same height. Since collective.carousel already binds ``load()`` event to each
 carousel (resizing the carousel to fit all of it's content) you can not bind
-one more ``load()`` event to a carousel because due to the way ``load()``
-event is fired for elements it might be either fired too early when not all
-content of a carousel is loaded.
+one more ``load()`` event to a carousel because due to the nature of
+``load()`` event it might be fired too early when not all content of a
+carousel is loaded.
 
 For the cases like this collective.carousel provides custom Javascript event
 ``resized.carousel`` that you can attach your special handlers to. Moreover
