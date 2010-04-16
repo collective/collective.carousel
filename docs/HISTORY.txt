@@ -1,6 +1,13 @@
 Changelog
 =========
 
+2.0 - Unreleased
+----------------
+
+- Fixed the height of the carousel for cases when items are shorter than the
+  carousel's height declared in CSS.
+  [spliter]
+
 1.0 - April 15, 2010
 --------------------
 
