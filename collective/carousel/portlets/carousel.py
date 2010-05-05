@@ -7,7 +7,7 @@ from Products.CMFCore.utils import getToolByName
 
 from plone.portlet.collection import collection as base
 
-PLMF = MessageFactory('collective.carousel')
+_ = MessageFactory('collective.carousel')
 
 
 class ICarouselPortlet(base.ICollectionPortlet):
@@ -44,12 +44,12 @@ class Renderer(base.Renderer):
         return tile()
 
 class AddForm(base.AddForm):
-    label = u"Add Carousel Portlet"
-    description = u"This portlet display a listing of items from a Collection as a carousel."
+    label = _(u"Add Carousel Portlet")
+    description = _(u"This portlet display a listing of items from a Collection as a carousel.")
     
     def create(self, data):
         return Assignment(**data)
 
 class EditForm(base.EditForm):
-    label = u"Edit Carousel Portlet"
-    description = u"This portlet display a listing of items from a Collection as a carousel."
+    label = _(u"Edit Carousel Portlet")
+    description = _(u"This portlet display a listing of items from a Collection as a carousel.")

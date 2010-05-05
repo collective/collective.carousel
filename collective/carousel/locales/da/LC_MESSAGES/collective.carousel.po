@@ -1,0 +1,68 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2010-05-05 12:45+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: da\n"
+"Language-Name: Danish\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: collective.carousel\n"
+
+#: ./portlets/carousel.py:47
+msgid "Add Carousel Portlet"
+msgstr "Tilføj karrusel-portlet"
+
+#: ./portlets/carousel.py:54
+msgid "Edit Carousel Portlet"
+msgstr "Rediger karrusel-portlet"
+
+#: ./browser/templates/carousel.pt:19
+#: ./portlets/carousel.pt:15
+msgid "Edit carousel's results"
+msgstr "Rediger karruselens resultater"
+
+#: ./portlets/carousel.py:48
+msgid "This portlet display a listing of items from a Collection as a carousel."
+msgstr "Portletten viser elementerne fra en dynamisk liste som en karrusel."
+
+#. Default: "A portlet retrurning collection's result as carousel."
+#: ./profiles/default/portlets.xml
+msgid "description_map_portlet"
+msgstr ""
+
+#. Default: "Object providing items (content) for carousel."
+#: ./schemaextender.py:40
+msgid "help_carouselprovider"
+msgstr "Vælg en dynamisk liste, som indeholder de indholdsobjekter, der skal optræde i karrusellen."
+
+#. Default: "Carousel object."
+#: ./schemaextender.py:38
+msgid "label_carouselprovider_title"
+msgstr "Karrusel-kilde"
+
+#. Default: "Next item"
+#: ./browser/templates/carousel.pt:52
+#: ./portlets/carousel.pt:45
+msgid "label_next_item"
+msgstr "Næste"
+
+#. Default: "Previous item"
+#: ./browser/templates/carousel.pt:26
+#: ./portlets/carousel.pt:21
+msgid "label_previous_item"
+msgstr "Forrige"
+
+#. Default: "Carousel portlet"
+#: ./profiles/default/portlets.xml
+msgid "title_map_portlet"
+msgstr "Karrusel-portlet"
+
