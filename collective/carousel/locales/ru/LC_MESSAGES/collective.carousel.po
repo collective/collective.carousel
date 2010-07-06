@@ -1,71 +1,65 @@
-# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
-# SOME DESCRIPTIVE TITLE.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.carousel\n"
-"POT-Creation-Date: 2010-05-05 12:45+0000\n"
-"PO-Revision-Date: 2010-07-06 10:31+0100\n"
-"Last-Translator: Sverre Helge Bolstad \n"
-"Language-Team: Bergen Offentlige Bibliotek <info@jarn.com>\n"
+"POT-Creation-Date: 2010-05-05 12:45 +0000\n"
+"PO-Revision-Date: 2010-06-30 15:26+0100\n"
+"Last-Translator: Denys Mishunov <denys@jarn.com>\n"
+"Language-Team: Jarn AS <info@jarn.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
-"Language-Code: no\n"
-"Language-Name: Norsk\n"
-"Preferred-Encodings: utf-8 latin1\n"
+"Language-Code: ru\n"
+"Language-Name: Russian\n"
+"Preferred-Encodings: utf-8\n"
 "Domain: collective.carousel\n"
-"X-Poedit-Language: Norwegian Bokmal\n"
-"X-Poedit-Country: NORWAY\n"
-"X-Poedit-SourceCharset: utf-8\n"
 
 #: ./portlets/carousel.py:47
 msgid "Add Carousel Portlet"
-msgstr "Legg til karusell-portlet"
+msgstr "Добавить портлет-карусель"
 
 #: ./portlets/carousel.py:54
 msgid "Edit Carousel Portlet"
-msgstr "Rediger karusell-portlet"
+msgstr "Редактировать портлет-карусель"
 
 #: ./browser/templates/carousel.pt:19
 #: ./portlets/carousel.pt:15
 msgid "Edit carousel's results"
-msgstr "Rediger karusellens resultater"
+msgstr "Редактировать карусель"
 
 #: ./portlets/carousel.py:48
 msgid "This portlet display a listing of items from a Collection as a carousel."
-msgstr "Portleten viser elementene fra en samling som en karusell."
+msgstr "Этот портлет показывает список элементов Коллекции в виде карусели"
 
-#. Default: "A portlet returning collection's result as carousel."
+#. Default: "A portlet retrurning collection's result as carousel."
 #: ./profiles/default/portlets.xml
 msgid "description_map_portlet"
-msgstr "Portleten viser elementene fra en samling som en karusell."
+msgstr "Портлет, показывающий элементы Коллекции в виде карусели"
 
 #. Default: "Object providing items (content) for carousel."
 #: ./schemaextender.py:40
 msgid "help_carouselprovider"
-msgstr "Velg en samling som inneholder de innholdsobjektene som skal vise i karusellen."
+msgstr "Выберите Коллекцию(ии), элементы которой будут представлены в виде карусели."
 
 #. Default: "Carousel object."
 #: ./schemaextender.py:38
 msgid "label_carouselprovider_title"
-msgstr "Karusell-kilde"
+msgstr "Карусель"
 
 #. Default: "Next item"
 #: ./browser/templates/carousel.pt:52
 #: ./portlets/carousel.pt:45
 msgid "label_next_item"
-msgstr "Neste"
+msgstr "Следующий"
 
 #. Default: "Previous item"
 #: ./browser/templates/carousel.pt:26
 #: ./portlets/carousel.pt:21
 msgid "label_previous_item"
-msgstr "Forrige"
+msgstr "Предыдущий"
 
 #. Default: "Carousel portlet"
 #: ./profiles/default/portlets.xml
 msgid "title_map_portlet"
-msgstr "Karusell-portlet"
+msgstr "Портлет-карусель"
 

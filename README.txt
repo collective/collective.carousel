@@ -95,8 +95,8 @@ content carousel, your `<browser:page />` has to have `carousel-view` name. In
 case you want to override/register a view for carousel portlet, name should be
 `carousel-portlet-view`.
 
-I need do something once the carousel is fully loaded.
-------------------------------------------------------
+I need to do something once the carousel is fully loaded.
+---------------------------------------------------------
 The simplest use-case |---| you have some content carousels placed in a row
 side by side. Most probably your carousels have different heights and that
 doesn't look nice when they are placed side by side. So you want to equalize
