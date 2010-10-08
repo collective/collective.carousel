@@ -49,6 +49,24 @@ class LeadImageTile(BrowserView):
         else:
             return ''
 
+    def modified(self):
+        """        http://svn.plone.org/svn/plone/Plone/trunk/Products/CMFPlone/browser/ploneview.py
+        @return: Last modified as a string, local time format        """
+        # Get Plone helper view
+        # which we use to convert the date to local format
+        plone=getMultiAdapter((self.context,self.request),name="plone")
+        time=self.context.modified()
+        return plone.toLocalizedTime(time)
+
+    def published(self):
+        """        http://svn.plone.org/svn/plone/Plone/trunk/Products/CMFPlone/browser/ploneview.py
+        @return: Last modified as a string, local time format        """
+        # Get Plone helper view
+        # which we use to convert the date to local format
+        plone=getMultiAdapter((self.context,self.request),name="plone")
+        time=self.context.effective()
+        return plone.toLocalizedTime(time)
+
     
     def __call__(self):
         return self.render()
