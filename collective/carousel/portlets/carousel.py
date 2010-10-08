@@ -3,12 +3,15 @@ from zope.i18nmessageid import MessageFactory
 from zope.interface import implements
 from zope import schema
 from zope.formlib import form
+from AccessControl import SecurityManagement
 
+from Products.ATContentTypes.permission import ChangeTopics
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 
 from plone.portlet.collection import collection as base
 from plone.app.form.widgets.uberselectionwidget import UberSelectionWidget
+
 
 _ = MessageFactory('collective.carousel')
 
@@ -79,6 +82,18 @@ class Renderer(base.Renderer):
         if tile is None:
             return None
         return tile()
+
+    def canSeeEditLink(self):
+        provider = self.collection()
+        smanager = SecurityManagement.getSecurityManager()
+        return smanager.checkPermission(ChangeTopics, provider)
+
+    def editCarouselLink(self):
+        provider = self.collection()
+        if provider is not None:
+            return provider.absolute_url() + '/criterion_edit_form'
+        return None
+
 
 class AddForm(base.AddForm):
     form_fields = form.Fields(ICarouselPortlet)

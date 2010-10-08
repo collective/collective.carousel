@@ -7,9 +7,10 @@ jQuery(function($) {
         var base_height = Math.max.apply(null,
             $(elems).map(function() { return $(this).height() }).get()
         );
-        if(base_height < $(carousel).height()) {
-            base_height = $(carousel).height() - $(".navi").outerHeight(true);
-        }
+        //Commented out min height. Why do we need a min height of 200?
+        //if(base_height < $(carousel).height()) {
+        //    base_height = $(carousel).height() - $(".navi").outerHeight(true);
+        //}
         $(elems).height(base_height);
         
         // Re-size .scrollable. Since all .tileItem lements have equal height 
