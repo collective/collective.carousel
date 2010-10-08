@@ -1,7 +1,11 @@
 // What is $(document).ready ? See: http://flowplayer.org/tools/using.html#document_ready
 jQuery(function($) {
 	
-	// wait another half a second to make sure the browser is ready to make the width calculations
+	// The carousel was not loading properly in some browsers and the reason seemed to be that
+	// even though the jQuery document.ready function is being triggered, the DOM elements inside
+	// the carousel have not loaded in sufficiently for jQuery to correctly calculate widths and heights.
+	// The solution is to wrap eveything in a timer, giving the browser a little bit of extra time to do
+	// the layout calculations. Interestingly webkit browsers require more time (1250ms) then others browsers(500ms).
 	setTimeout(function(){
 		
 		    var resizeCarousel = function(carousel, scrollable, elems) {
@@ -97,6 +101,7 @@ jQuery(function($) {
 		    // Pause button
 		    $(".carousel .pause").click(function (){api.pause();})
     
-	}, 500);
+	}, (($.browser.safari||$.browser.webkit) ? 1250 : 500)); // this is the loading delay time to fix the DOM issue described at the top of this script
+	;
 	
 })
