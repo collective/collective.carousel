@@ -8,6 +8,15 @@
 <div class="portletCarouselWrapper"
      tal:omit-tag="not:omit_border">
 
+    <dt class="portletHeader"
+        tal:condition="not:omit_border">
+        <span class="portletTopLeft"></span>
+        <a href="#" 
+           class="tile"
+           tal:content="view/data/title | string: Carousel portlet" />
+        <span class="portletTopRight"></span>
+    </dt>
+
     <dd class="carousel portletItem"
         tal:omit-tag="omit_border">
 

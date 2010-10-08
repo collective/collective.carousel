@@ -21,7 +21,7 @@ class ICarouselPortlet(base.ICollectionPortlet):
         description=_(u"Tick this box if you want to render the text above "
                       "without the standard header, border or footer."),
         required=True,
-        default=False)
+        default=True)
 
     hide_controls = schema.Bool(
         title=_(u"Hide controls"),
@@ -39,12 +39,12 @@ class Assignment(base.Assignment):
     random = False
     show_more = True
     show_dates = False
-    omit_border = False
+    omit_border = True
     hide_controls = False
 
     def __init__(self, header=u"", target_collection=None, limit=None,
                  random=False, show_more=True, show_dates=False,
-                 omit_border=False, hide_controls=False):
+                 omit_border=True, hide_controls=False):
         super(Assignment, self).__init__(header=header,
                                          target_collection=target_collection, 
                                          limit=limit,

@@ -1,0 +1,7 @@
+<tal:block define="desc context/Description | nothing;">
+  <center>
+    <img src="" alt=""
+         tal:condition="exists:context/image"
+         tal:replace="structure python: path('nocall:context/tag')(alt=desc, title=desc)" />
+  </center>
+</tal:block>

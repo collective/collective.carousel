@@ -71,7 +71,14 @@ jQuery(function($) {
         clickable: false,      
         loop: true
     }).circular().autoscroll({autoplay: ap,steps:1,interval:25000}).navigator({api:true});
-      
+    
+    // fix circular function (in jquery.tools) bugs: calculate wrong item width
+    $("div.scrollable").each(function(i) {
+        var items = $(this).find('.items');
+        var item = items.children().first();
+        items.css('left', '-'+item.css('width'));
+    });  
+    
     // Show toolBar when hovering over a carousel
     $(".carousel").hover(
         function(){

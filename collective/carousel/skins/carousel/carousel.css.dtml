@@ -141,16 +141,16 @@ div.toolBar {
 
 /* @group Additional styles for the portlet */
 
-dl.portletCarouselWrapper {
+.portletCarouselWrapper {
 	border: none;
 }
-dl.portletCarouselWrapper .carousel {
+.portletCarouselWrapper .carousel {
     width: 100%;
     padding: 0;
     margin-bottom: 0;
 }
 
-dl.portletCarouselWrapper div.scrollable {
+.portletCarouselWrapper div.scrollable {
     width: 100%;
 }
 

@@ -48,6 +48,14 @@
     layer="..interfaces.ICollectiveCarouselLayer"      
     />  
   
+  <browser:page
+      name="carousel-portlet-view"                  
+      for="Products.ATContentTypes.interface.IATImage"
+      template="templates/image_tile.pt"
+      permission="zope2.View"
+      layer="collective.carousel.interfaces.ICollectiveCarouselLayer"      
+      />
+
   <!-- Zope 3 browser resources -->
 
 </configure>
