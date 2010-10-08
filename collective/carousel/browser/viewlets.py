@@ -1,4 +1,5 @@
 from zope.component import queryMultiAdapter
+from zope.component import getMultiAdapter
 from zope.interface import alsoProvides
 from AccessControl import SecurityManagement
 
@@ -6,7 +7,8 @@ from Products.ATContentTypes.permission import ChangeTopics
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from plone.app.layout.viewlets.common import ViewletBase
-from plone.app.layout.globals.interfaces import IViewView 
+from plone.app.layout.globals.interfaces import IViewView
+
 
 
 class CarouselViewlet(ViewletBase):
@@ -51,7 +53,8 @@ class CarouselViewlet(ViewletBase):
         # instructions about how to be handled in defined view or interface
         # for multi adapter the same is true except more object than just the 
         # obj are check for instructions
-        tile = queryMultiAdapter((obj, self.request), name="carousel-view")
+        #have to use traverse to make zpt security work
+        tile = obj.unrestrictedTraverse("carousel-view")
         if tile is None:
             return None
         return tile()

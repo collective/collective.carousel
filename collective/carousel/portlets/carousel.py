@@ -90,9 +90,8 @@ class Renderer(base.Renderer):
         # for multi adapter the same is true except more object than just the 
         # obj are check for instructions
         
-        #have to use traverse to make security work
+        #have to use traverse to make zpt security work
         tile = obj.unrestrictedTraverse("carousel-portlet-view")
-        print tile
         if tile is None:
             return None
         return tile()
