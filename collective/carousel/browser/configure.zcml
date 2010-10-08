@@ -73,6 +73,7 @@
       name="carousel-portlet-view"                  
       for="..interfaces.IATWithLeadImage"
       template="templates/lead_image_tile.pt"
+      class=".leadimagetile.LeadImageTile"
       permission="zope2.View"
       layer="collective.carousel.interfaces.ICollectiveCarouselLayer"      
       />
