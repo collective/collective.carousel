@@ -51,12 +51,14 @@ jQuery(function($) {
         var setWidthCarousels = function() {
             // Set width of all carousel items so they wrap and have correct widths
             scrollable_width = $(scrollable).width();
+
             for (i=0; i<elems.length; i++) {   
                 $(elems[i]).css( {width: scrollable_width } );
             };
         };
         
         $(scrollable).bind('onAllImagesReady', function() {
+            
             setWidthCarousels();
             resizeCarousel(carousel, scrollable, elems);
             
@@ -70,10 +72,10 @@ jQuery(function($) {
             }).circular().autoscroll({autoplay: ap,steps:1,interval:25000}).navigator({api:true});
         });
         
-        
         var images = $(scrollable).find("img");
         images.each(function(i) {
-            $(this).load(function(event) {
+            var src = $(this).attr('src');
+            $(this).attr('src', src).load(function(event) {
                 if (i++ == images.length-1) $(scrollable).trigger('onAllImagesReady');                
             });
         });          
