@@ -78,7 +78,7 @@ jQuery(function($) {
         var images = $(scrollable).find("img");
         images.each(function(i) {
             var src = $(this).attr('src');
-            $(this).attr('src', src).load(function(event) {
+            $(this).attr('src', src + '?timestamp=' + (new Date()).getTime()).load(function(event) {
                 if (i++ == images.length-1) $(scrollable).trigger('onAllImagesReady');                
             });
         });          
