@@ -89,7 +89,10 @@ class Renderer(base.Renderer):
         # instructions about how to be handled in defined view or interface
         # for multi adapter the same is true except more object than just the 
         # obj are check for instructions
-        tile = queryMultiAdapter((obj, self.request), name="carousel-portlet-view")
+        
+        #have to use traverse to make security work
+        tile = obj.unrestrictedTraverse("carousel-portlet-view")
+        print tile
         if tile is None:
             return None
         return tile()

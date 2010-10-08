@@ -21,3 +21,5 @@ if ILeadImageable is not None:
     # Need to make sure we come up top
     class IATWithLeadImage(ILeadImageable, IATContentType):
         """ More specific interface """
+    class IATNewsItemWithLeadImage(ILeadImageable, IATNewsItem):
+        """ More specific interface """

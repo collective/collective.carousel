@@ -18,13 +18,9 @@
 
 <a href="#"
    tal:attributes="href python:(item_type in use_view_action) and item_url+'/view' or item_url;">
-    <img src="" alt=""
-         tal:condition="exists:context/image_thumb"
-         tal:replace="structure python: path('nocall:context/tag')(scale='preview', css_class='tileImage')" />
-    <img src="" alt=""
-         tal:define="imgField python:context.getField('leadImage')"
-         tal:condition="python: imgField is not None and imgField.get_size(context) != 0"
-         tal:replace="structure python: path('nocall:imgField/tag')(context, scale='leadimage', css_class='')" />
+    <img src="" tal:condition="view/tag|nothing"
+         tal:replace="structure python:path('nocall:view/tag')(css_class='')"
+         alt="" />
 </a>
 
 <p class="tileBody">

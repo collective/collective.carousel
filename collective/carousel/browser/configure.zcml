@@ -48,6 +48,15 @@
     permission="zope2.View"
     layer="..interfaces.ICollectiveCarouselLayer"      
     />  
+
+  <browser:page
+    name="carousel-portlet-view"                  
+    for="Products.ATContentTypes.interface.IATNewsItem"
+    template="templates/news_item_tile.pt"
+    permission="zope2.View"
+    layer="..interfaces.ICollectiveCarouselLayer"      
+    />  
+
   
   <browser:page
       name="carousel-portlet-view"                  
@@ -68,15 +77,25 @@
     <class class="Products.Archetypes.BaseObject.BaseObject">
       <implements interface="..interfaces.IATWithLeadImage"/>
     </class>
+    <class class="Products.ATContentTypes.content.newsitem.ATNewsItem">
+      <implements interface="..interfaces.IATNewsItemWithLeadImage"/>
+    </class>
   
     <browser:page
       name="carousel-portlet-view"                  
       for="..interfaces.IATWithLeadImage"
-      template="templates/lead_image_tile.pt"
       class=".leadimagetile.LeadImageTile"
       permission="zope2.View"
       layer="collective.carousel.interfaces.ICollectiveCarouselLayer"      
       />
+
+  <browser:page
+    name="carousel-portlet-view"                  
+    for="collective.carousel.interfaces.IATNewsItemWithLeadImage"
+    class=".leadimagetile.LeadImageTile"
+    permission="zope2.View"
+      layer="collective.carousel.interfaces.ICollectiveCarouselLayer"      
+    />
 
     <browser:page
       name="carousel-portlet-view"                  

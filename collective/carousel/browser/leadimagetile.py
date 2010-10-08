@@ -8,8 +8,8 @@ from collective.contentleadimage.leadimageprefs import ILeadImagePrefsForm
 
 class LeadImageTile(BrowserView):
     
-#    template = ViewPageTemplateFile('templates/lead_image_tile.pt')
-#    render = template
+    template = ViewPageTemplateFile('templates/lead_image_tile.pt')
+    render = template
 
     @property
     def prefs(self):
@@ -19,8 +19,6 @@ class LeadImageTile(BrowserView):
     def tag(self, css_class='tileImage'):
         """ return a tag for the leadimage"""
         context = aq_inner(self.context)
-        if getattr(context,'image_thumb', None) is not None:
-            return context.tag(scale='preview', css_class=css_class)
         
         field = context.getField(IMAGE_FIELD_NAME)
         if field is not None:
@@ -28,7 +26,12 @@ class LeadImageTile(BrowserView):
                 #scale = self.prefs.body_scale_name
                 scale = 'leadimage'
                 return field.tag(context, scale=scale, css_class=css_class)
+
+        if getattr(context,'tag', None) is not None:
+            return context.tag(scale='preview', css_class=css_class)
+
         return ''
+
 
     def caption(self):
         context = aq_inner(self.context)
@@ -47,7 +50,7 @@ class LeadImageTile(BrowserView):
             return ''
 
     
-#    def __call__(self):
-#        return self.index()
+    def __call__(self):
+        return self.render()
         
         
