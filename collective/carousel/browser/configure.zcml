@@ -1,6 +1,7 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
     i18n_domain="collective.carousel">
     
   <include package="plone.browserlayer" />
@@ -57,5 +58,35 @@
       />
 
   <!-- Zope 3 browser resources -->
+
+
+  <!-- Special tiles for when contentleadimage is installed -->
+
+  <configure zcml:condition="installed collective.contentleadimage">
+    <include package="collective.contentleadimage"/>
+  
+    <class class="Products.Archetypes.BaseObject.BaseObject">
+      <implements interface="..interfaces.IATWithLeadImage"/>
+    </class>
+  
+    <browser:page
+      name="carousel-portlet-view"                  
+      for="..interfaces.IATWithLeadImage"
+      template="templates/lead_image_tile.pt"
+      permission="zope2.View"
+      layer="collective.carousel.interfaces.ICollectiveCarouselLayer"      
+      />
+
+    <browser:page
+      name="carousel-portlet-view"                  
+      for="Products.ATContentTypes.interface.IATLink"
+      template="templates/banner_tile.pt"
+      permission="zope2.View"
+      layer="collective.carousel.interfaces.ICollectiveCarouselLayer"      
+      />
+
+  </configure>
+
+
 
 </configure>

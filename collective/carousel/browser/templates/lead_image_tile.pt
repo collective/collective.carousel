@@ -1,0 +1,46 @@
+<div tal:define="item_url context/getURL|context/absolute_url;
+                  item_type context/portal_type;
+                  use_view_action site_properties/typesUseViewActionInListings|python:();
+                  item_description context/Description;
+                  item_title_or_id context/pretty_title_or_id;
+                "
+                class="leadimagetile">
+                
+                
+<h2 class="tileHeadline">
+    <a href="#"
+       class="summary url"
+       tal:attributes="href python:(item_type in use_view_action) and item_url+'/view' or item_url;"
+       tal:content="item_title_or_id">
+        Item Title
+    </a>
+</h2>
+
+<a href="#"
+   tal:attributes="href python:(item_type in use_view_action) and item_url+'/view' or item_url;">
+    <img src="" alt=""
+         tal:condition="exists:context/image_thumb"
+         tal:replace="structure python: path('nocall:context/tag')(scale='preview', css_class='tileImage')" />
+    <img src="" alt=""
+         tal:define="imgField python:context.getField('leadImage')"
+         tal:condition="python: imgField is not None and imgField.get_size(context) != 0"
+         tal:replace="structure python: path('nocall:imgField/tag')(context, scale='leadimage', css_class='')" />
+</a>
+
+<p class="tileBody">
+    <span tal:omit-tag="" tal:condition="not:item_description">
+        &nbsp;
+    </span>
+    <span class="description" tal:content="item_description">
+        description
+    </span>
+</p>
+
+<p class="tileFooter">
+    <a href=""
+       tal:attributes="href python:(item_type in use_view_action) and item_url+'/view' or item_url;"
+       i18n:translate="read_more">
+    Read More&hellip;
+    </a>
+</p>
+</div>
