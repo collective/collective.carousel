@@ -28,7 +28,7 @@ class LeadImageTile(BrowserView):
                 return field.tag(context, scale=scale, css_class=css_class)
 
         if getattr(context,'tag', None) is not None:
-            return context.tag(scale='preview', css_class=css_class)
+            return context.tag(scale='mini', css_class=css_class)
 
         return ''
 
