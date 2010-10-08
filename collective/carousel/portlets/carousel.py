@@ -33,6 +33,14 @@ class ICarouselPortlet(base.ICollectionPortlet):
         required=True,
         default=False)
 
+    timer = schema.Float(
+        title=_(u"Timer"),
+        description=_(u"Length of time before automatically move to next tile (seconds)"),
+        required=False,
+        default=25.0)
+
+
+
 class Assignment(base.Assignment):
     implements(ICarouselPortlet)
     
@@ -44,10 +52,11 @@ class Assignment(base.Assignment):
     show_dates = False
     omit_border = True
     hide_controls = False
+    timer = 25.0
 
     def __init__(self, header=u"", target_collection=None, limit=None,
                  random=False, show_more=True, show_dates=False,
-                 omit_border=True, hide_controls=False):
+                 omit_border=True, hide_controls=False, timer=25.0):
         super(Assignment, self).__init__(header=header,
                                          target_collection=target_collection, 
                                          limit=limit,
@@ -56,6 +65,7 @@ class Assignment(base.Assignment):
                                          show_dates=show_dates)
         self.omit_border = omit_border
         self.hide_controls = hide_controls
+        self.timer = timer
 
     @property
     def title(self):
@@ -63,6 +73,7 @@ class Assignment(base.Assignment):
         "manage portlets" screen. Here, we use the title that the user gave.
         """
         return self.header or u"Carousel portlet"
+    
         
 class Renderer(base.Renderer):
     render = ViewPageTemplateFile('carousel.pt')
@@ -93,6 +104,13 @@ class Renderer(base.Renderer):
         if provider is not None:
             return provider.absolute_url() + '/criterion_edit_form'
         return None
+
+    def getTimer(self):
+        """ return timer in ms"""
+        if getattr(self.data,'timer',None) is not None:
+            return int(self.data.timer*1000)
+        else:
+            return 25000
 
 
 class AddForm(base.AddForm):

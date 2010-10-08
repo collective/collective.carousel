@@ -13,7 +13,7 @@
     padding: 0;
     margin: 1em auto;  
     width: &dtml-carouselWidth;;
-    height: &dtml-carouselDefaultHeight;;      
+/*    height: &dtml-carouselDefaultHeight;;  *//    
     border: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
 }
 
@@ -23,7 +23,7 @@ div.scrollable {
     z-index: 1;
     overflow:hidden; 
     width: &dtml-carouselWidth;; 
-    height:&dtml-carouselDefaultHeight;; 
+/*    height:&dtml-carouselDefaultHeight;; */
 }
  
 /* root element for scrollable items. Must be absolutely positioned 

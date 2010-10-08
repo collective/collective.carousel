@@ -63,7 +63,8 @@ jQuery(function($) {
                 setWidthCarousels();
                 resizeCarousel(carousel, scrollable, elems);
                 
-                var ap = (carousels.length == 1) ? true : false;  
+                var ap = (carousels.length == 1) ? true : false;
+                var interval = parseInt($(scrollable).attr('rel'));
         
                 // initialize scrollable 
                 var api = $(scrollable).scrollable({
@@ -72,7 +73,13 @@ jQuery(function($) {
                     loop: true
                 });
                 if (!api.getNaviButtons) 
-                    api.circular().autoscroll({autoplay: ap,steps:1,interval:25000}).navigator({api:true});            
+                    api.circular().autoscroll({autoplay: ap,steps:1,interval:interval}).navigator({api:true});
+                    
+                // Pause on hover
+                $(scrollable).hover(api.pause);
+                // Pause button
+                $(".carousel .pause").click(function (){api.pause();})
+                
             }, 200);
         });
         
@@ -94,4 +101,7 @@ jQuery(function($) {
             $(this).find(".toolBar").eq(0).slideToggle('fast').hide();
         }
     );
+    
+
+    
 })

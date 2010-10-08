@@ -23,7 +23,7 @@
     <div class="carousel"
          tal:omit-tag="not:omit_border">
 
-        <div class="toolBar">
+        <div class="toolBar" condition="python:view.canSeeEditLink()">
             <!-- Wrapper for fullscreen switcher -->
             <!--
                 <a class="carousel-fullscreen"
@@ -46,7 +46,7 @@
            tal:condition="not:hide_controls"
            i18n:attributes="title label_previous_item"><span i18n:translate="label_previous_item">Previous item</span></a>        
 
-        <div class="scrollable">
+        <div class="scrollable" rel="25000" tal:attributes="rel view/getTimer">
             <div class="items">
 
                 <tal:block tal:repeat="item view/results">
