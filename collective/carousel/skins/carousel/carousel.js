@@ -41,6 +41,7 @@ jQuery(function($) {
 		    
 		    $(".toolBar").hide();
 		    var carousels = $(".carousel");
+		    var interval = 3000; // default transition interval, overidable by rel=""
 		    
 		    carousels.each( function(i) {
 		        var carousel = this;
@@ -61,14 +62,18 @@ jQuery(function($) {
 		        $(scrollable).find("img").load(function(event) {
 		            // If an image is loaded later we need to resize the whole carousel to fit it          
 		            resizeCarousel(carousel, scrollable, elems);          
-		        });            
-		    })    
+		        });
+		        
+		        // if a interval rel is set, apply it here
+		        if(parseInt($(scrollable).attr('rel')) > 0)
+		        {
+		        	interval = parseInt($(scrollable).attr('rel'));
+		        }
+		    });
 		    
 		    // doesn't make sense to enable autoscrolling if more than one 
 		    // carousel is on a page - this just distracts and annoys
 		    var ap = (carousels.length == 1) ? true : false;
-		    var interval = 3000; //parseInt($(scrollable).attr('rel'));
-		
 		    
 		    // initialize scrollable 
 		    var api = $("div.scrollable").scrollable({
