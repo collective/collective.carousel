@@ -75,7 +75,7 @@ jQuery(function($) {
     // fix circular function (in jquery.tools) bugs: calculate wrong item width
     $("div.scrollable").each(function(i) {
         var items = $(this).find('.items');
-        var item = items.children().first();
+        var item = $(items.children()[0]);
         items.css('left', '-'+item.css('width'));
     });  
     
