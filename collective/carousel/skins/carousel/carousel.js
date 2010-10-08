@@ -72,7 +72,7 @@ jQuery(function($) {
                 });
                 if (!api.getNaviButtons) 
                     api.circular().autoscroll({autoplay: ap,steps:1,interval:25000}).navigator({api:true});            
-            }, 100);
+            }, 200);
         });
         
         var images = $(scrollable).find("img");
