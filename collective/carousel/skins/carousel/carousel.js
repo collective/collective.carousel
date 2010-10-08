@@ -58,18 +58,21 @@ jQuery(function($) {
         };
         
         $(scrollable).bind('onAllImagesReady', function() {
-            
-            setWidthCarousels();
-            resizeCarousel(carousel, scrollable, elems);
-            
-            var ap = (carousels.length == 1) ? true : false;  
-    
-            // initialize scrollable 
-            var api = $(scrollable).scrollable({
-                size: 1,  
-                clickable: false,      
-                loop: true
-            }).circular().autoscroll({autoplay: ap,steps:1,interval:25000}).navigator({api:true});
+            setTimeout(function() {
+                setWidthCarousels();
+                resizeCarousel(carousel, scrollable, elems);
+                
+                var ap = (carousels.length == 1) ? true : false;  
+        
+                // initialize scrollable 
+                var api = $(scrollable).scrollable({
+                    size: 1,  
+                    clickable: false,      
+                    loop: true
+                });
+                if (!api.getNaviButtons) 
+                    api.circular().autoscroll({autoplay: ap,steps:1,interval:25000}).navigator({api:true});            
+            }, 100);
         });
         
         var images = $(scrollable).find("img");
