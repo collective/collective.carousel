@@ -2,11 +2,17 @@
     tal:define="omit_border view/data/omit_border | nothing;
                 hide_controls view/data/hide_controls | nothing;"
     tal:condition="view/results"
-    tal:attributes="style python: omit_border and 'margin: 0' or ''"
+    tal:omit-tag="omit_border"
     i18n:domain="collective.carousel">
      
+<div class="portletCarouselWrapper"
+     tal:omit-tag="not:omit_border">
+
     <dd class="carousel portletItem"
-        tal:attributes="style python: omit_border and 'border: none;; margin: 0' or ''">
+        tal:omit-tag="omit_border">
+
+    <div class="carousel"
+         tal:omit-tag="not:omit_border">
 
         <div class="toolBar">
             <!-- Wrapper for fullscreen switcher -->
@@ -56,5 +62,8 @@
         <div class="navi"
              tal:condition="not:hide_controls" ><!-- --></div>        
         
+    </div>
     </dd>
+
+</div>
 </dl>
