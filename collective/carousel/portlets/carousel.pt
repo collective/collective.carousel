@@ -1,8 +1,12 @@
 <dl class="portlet portletCarouselWrapper"
+    tal:define="omit_border view/data/omit_border | nothing;
+                hide_controls view/data/hide_controls | nothing;"
     tal:condition="view/results"
+    tal:attributes="style python: omit_border and 'margin: 0' or ''"
     i18n:domain="collective.carousel">
      
-    <dd class="carousel portletItem">
+    <dd class="carousel portletItem"
+        tal:attributes="style python: omit_border and 'border: none;; margin: 0' or ''">
 
         <div class="toolBar">
             <!-- Wrapper for fullscreen switcher -->
@@ -20,6 +24,7 @@
         <!-- "previous page" action --> 
         <a class="prev browse"
            title="Previous item"
+           tal:condition="not:hide_controls"
            i18n:attributes="title label_previous_item"><span i18n:translate="label_previous_item">Previous item</span></a>        
 
         <div class="scrollable">
@@ -44,10 +49,12 @@
         <!-- "next page" action --> 
         <a class="next browse"
            title="Next item"
+           tal:condition="not:hide_controls"
            i18n:attributes="title label_next_item"><span i18n:translate="label_next_item">Next item</span></a>        
         
         <!-- wrapper for navigator elements --> 
-        <div class="navi"><!-- --></div>        
+        <div class="navi"
+             tal:condition="not:hide_controls" ><!-- --></div>        
         
     </dd>
 </dl>
