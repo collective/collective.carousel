@@ -1,6 +1,7 @@
 // What is $(document).ready ? See: http://flowplayer.org/tools/using.html#document_ready
 jQuery(function($) {
-
+    var i = 0;
+    
     var resizeCarousel = function(carousel, scrollable, elems) {
         // Adjust height of the carousel to the max height of the elements.
         var base_height = Math.max.apply(null,
@@ -36,48 +37,47 @@ jQuery(function($) {
         }
     };
     
+    
+    
     $(".toolBar").hide();
     var carousels = $(".carousel");
     
     carousels.each( function(i) {
         var carousel = this;
+        
         var scrollable = $(this).find(".scrollable").eq(0);        
         var elems = $(scrollable).find('.tileItem');
         
-        // Set width of all carousel items so they wrap and have correct widths
-        scrollable_width = $(scrollable).width();         
-        for (i=0; i<elems.length; i++) {   
-            $(elems[i]).css( {width: scrollable_width } );
+        var setWidthCarousels = function() {
+            // Set width of all carousel items so they wrap and have correct widths
+            scrollable_width = $(scrollable).width();
+            for (i=0; i<elems.length; i++) {   
+                $(elems[i]).css( {width: scrollable_width } );
+            };
         };
         
-        // Use setTimeout here to give other code a chance to bind events.
-        // setTimeout 0 causes code to run right after the jQuery load event has finished.
-        // setTimeout(function() { resizeCarousel(carousel, scrollable, elems); }, 0);
-        setTimeout(function() { resizeCarousel(carousel, scrollable, elems) }, 0);        
+        $(scrollable).bind('onAllImagesReady', function() {
+            setWidthCarousels();
+            resizeCarousel(carousel, scrollable, elems);
+            
+            var ap = (carousels.length == 1) ? true : false;  
+    
+            // initialize scrollable 
+            var api = $(scrollable).scrollable({
+                size: 1,  
+                clickable: false,      
+                loop: true
+            }).circular().autoscroll({autoplay: ap,steps:1,interval:25000}).navigator({api:true});
+        });
         
-        $(scrollable).find("img").load(function(event) {
-            // If an image is loaded later we need to resize the whole carousel to fit it          
-            resizeCarousel(carousel, scrollable, elems);          
-        });            
-    })    
-    
-    // doesn't make sense to enable autoscrolling if more than one 
-    // carousel is on a page - this just distracts and annoys
-    var ap = (carousels.length == 1) ? true : false;  
-    
-    // initialize scrollable 
-    var api = $("div.scrollable").scrollable({
-        size: 1,  
-        clickable: false,      
-        loop: true
-    }).circular().autoscroll({autoplay: ap,steps:1,interval:25000}).navigator({api:true});
-    
-    // fix circular function (in jquery.tools) bugs: calculate wrong item width
-    $("div.scrollable").each(function(i) {
-        var items = $(this).find('.items');
-        var item = $(items.children()[0]);
-        items.css('left', '-'+item.css('width'));
-    });  
+        
+        var images = $(scrollable).find("img");
+        images.each(function(i) {
+            $(this).load(function(event) {
+                if (i++ == images.length-1) $(scrollable).trigger('onAllImagesReady');                
+            });
+        });          
+    });    
     
     // Show toolBar when hovering over a carousel
     $(".carousel").hover(
