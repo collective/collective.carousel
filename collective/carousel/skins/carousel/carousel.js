@@ -72,7 +72,7 @@ jQuery(function($) {
         size: 1,  
         clickable: false,      
         loop: true
-    }).circular().autoscroll({autoplay: ap,steps:1,interval:25000}).navigator({api:true});
+    }).circular().autoscroll({autoplay: ap,steps:1,interval:interval}).navigator({api:true});
       
     // Show toolBar when hovering over a carousel
     $(".carousel").hover(
