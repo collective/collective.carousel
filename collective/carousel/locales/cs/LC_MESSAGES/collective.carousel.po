@@ -1,0 +1,91 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: collective.carousel\n"
+"POT-Creation-Date: 2010-11-19 13:08+0000\n"
+"PO-Revision-Date: 2010-11-19 14:09+0100\n"
+"Last-Translator: Lukas Zdych <lukas.zdych@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Preferred-Encodings: utf-8 latin2\n"
+"Language-Team: \n"
+
+#: ./portlets/carousel.py:122
+msgid "Add Carousel Portlet"
+msgstr "Přidat Karusel Portlet"
+
+#: ./portlets/carousel.py:132
+msgid "Edit Carousel Portlet"
+msgstr "Upravit Karusel Portlet"
+
+#: ./browser/templates/carousel.pt:19
+#: ./portlets/carousel.pt:35
+msgid "Edit carousel's results"
+msgstr "Upravit obsah karuselu"
+
+#: ./portlets/carousel.py:30
+msgid "Hide controls"
+msgstr "Skrýt ovládání"
+
+#: ./portlets/carousel.py:38
+msgid "Length of time before automatically move to next tile (seconds)"
+msgstr "Čas, za který je aktuální položka nahrazena další (vteřiny)"
+
+#: ./portlets/carousel.py:23
+msgid "Omit portlet border"
+msgstr "Vynechat okraj portletu"
+
+#: ./portlets/carousel.py:123
+msgid "This portlet display a listing of items from a Collection as a carousel."
+msgstr "Tento portlet zobrazuje přehled položek z Rešerše jako karusel."
+
+#: ./portlets/carousel.py:24
+msgid "Tick this box if you want to render the text above without the standard header, border or footer."
+msgstr "Zaškrtněte toto pole pokud chcete zobrazit text nahoře bez standardní hlavičky, okraje nebo patičky."
+
+#: ./portlets/carousel.py:31
+msgid "Tick this box if you want to temporarily hide carousel controls i.e. next, prev, pause buttons."
+msgstr "Zaškrtněte toto pole pokud chcete dočasně skrýt ovládání karuselu tj. další, předchozí, tlačítko pozastavit."
+
+#: ./portlets/carousel.py:37
+msgid "Timer"
+msgstr "Časovač"
+
+#. Default: "A portlet retrurning collection's result as carousel."
+#: ./profiles/default/portlets.xml
+msgid "description_map_portlet"
+msgstr "Portlet zobrazující obsah rešerše jako karusel."
+
+#. Default: "Object providing items (content) for carousel."
+#: ./schemaextender.py:40
+msgid "help_carouselprovider"
+msgstr "Objekt poskytující položky (obsah) pro karusel."
+
+#. Default: "Carousel object."
+#: ./schemaextender.py:38
+msgid "label_carouselprovider_title"
+msgstr "Objekt karuselu."
+
+#. Default: "Edit Carousel"
+#: ./browser/templates/carousel.pt:19
+msgid "label_edit_carousel"
+msgstr "Upravit Karusel"
+
+#. Default: "Next item"
+#: ./browser/templates/carousel.pt:53
+#: ./portlets/carousel.pt:69
+msgid "label_next_item"
+msgstr "Další"
+
+#. Default: "Previous item"
+#: ./browser/templates/carousel.pt:27
+#: ./portlets/carousel.pt:44
+msgid "label_previous_item"
+msgstr "Předchozí"
+
+#. Default: "Carousel portlet"
+#: ./profiles/default/portlets.xml
+msgid "title_map_portlet"
+msgstr "Karusel portlet"
+

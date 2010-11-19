@@ -18,7 +18,8 @@
                 <tal:edit condition="python:view.canSeeEditLink(provider)">
                     <a href="#" tal:attributes="href python:view.editCarouselLink(provider)"
                        title="Edit carousel's results" 
-                       i18n:attributes="title">Edit Carousel</a>
+                       i18n:attributes="title"
+                       i18n:translate="label_edit_carousel">Edit Carousel</a>
                 </tal:edit>
             </div>      
     
