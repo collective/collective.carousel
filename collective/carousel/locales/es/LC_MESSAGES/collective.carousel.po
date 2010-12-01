@@ -1,97 +1,95 @@
-# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
-# SOME DESCRIPTIVE TITLE.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Héctor Velarde <hector.velarde@gmail.com>, 2010.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: collective.carousel\n"
 "POT-Creation-Date: 2010-12-01 01:21+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2010-11-04 16:51-0600\n"
+"Last-Translator: Héctor Velarde <hector.velarde@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "Language-Code: en\n"
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: collective.carousel\n"
+"Domain: DOMAIN\n"
 
 #: ./portlets/carousel.py:122
 msgid "Add Carousel Portlet"
-msgstr ""
+msgstr "Agregar un portlet carrusel"
 
 #: ./portlets/carousel.py:132
 msgid "Edit Carousel Portlet"
-msgstr ""
+msgstr "Editar el portlet carrusel"
 
 #: ./browser/templates/carousel.pt:19
 #: ./portlets/carousel.pt:35
 msgid "Edit carousel's results"
-msgstr ""
+msgstr "Editar los resultados del carrusel"
 
 #: ./portlets/carousel.py:30
 msgid "Hide controls"
-msgstr ""
+msgstr "Ocultar los controles"
 
 #: ./portlets/carousel.py:38
 msgid "Length of time before automatically move to next tile (seconds)"
-msgstr ""
+msgstr "Lapso de tiempo para moverse al siguiente elemento (en segundos)"
 
 #: ./portlets/carousel.py:23
 msgid "Omit portlet border"
-msgstr ""
+msgstr "Omitir el borde del portlet"
 
 #: ./portlets/carousel.py:123
 msgid "This portlet display a listing of items from a Collection as a carousel."
-msgstr ""
+msgstr "Este portlet muestra una lista de elementos de una colección como un carrusel."
 
 #: ./portlets/carousel.py:24
 msgid "Tick this box if you want to render the text above without the standard header, border or footer."
-msgstr ""
+msgstr "Marque esta casilla si desea mostrar el texto anterior sin el encabezado, borde o nota al pie estándar."
 
 #: ./portlets/carousel.py:31
 msgid "Tick this box if you want to temporarily hide carousel controls i.e. next, prev, pause buttons."
-msgstr ""
+msgstr "Marque esta casilla si desea ocultar temporalmente los controles del carrusel, i. e. los botones siguiente, anterior y pausa."
 
 #: ./portlets/carousel.py:37
 msgid "Timer"
-msgstr ""
+msgstr "Temporizador"
 
 #. Default: "A portlet retrurning collection's result as carousel."
 #: ./profiles/default/portlets.xml
 msgid "description_map_portlet"
-msgstr ""
+msgstr "Un portlet que muestra una colección como un carrusel."
 
 #. Default: "Object providing items (content) for carousel."
 #: ./schemaextender.py:40
 msgid "help_carouselprovider"
-msgstr ""
+msgstr "Objeto que proporciona los elementos (contenido) para el carrusel."
 
 #. Default: "Carousel object."
 #: ./schemaextender.py:38
 msgid "label_carouselprovider_title"
-msgstr ""
+msgstr "Objeto carrusel."
 
 #. Default: "Edit Carousel"
 #: ./browser/templates/carousel.pt:19
 msgid "label_edit_carousel"
-msgstr ""
+msgstr "Editar carrusel"
 
 #. Default: "Next item"
 #: ./browser/templates/carousel.pt:53
 #: ./portlets/carousel.pt:69
 msgid "label_next_item"
-msgstr ""
+msgstr "Siguiente elemento"
 
 #. Default: "Previous item"
 #: ./browser/templates/carousel.pt:27
 #: ./portlets/carousel.pt:44
 msgid "label_previous_item"
-msgstr ""
+msgstr "Elemento anterior"
 
 #. Default: "Carousel portlet"
 #: ./profiles/default/portlets.xml
 msgid "title_map_portlet"
-msgstr ""
+msgstr "Portlet de carrusel"
 
