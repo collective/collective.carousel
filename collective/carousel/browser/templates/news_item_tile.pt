@@ -2,8 +2,8 @@
                   item_type context/portal_type;
                   use_view_action site_properties/typesUseViewActionInListings|python:();
                   item_description context/Description;
-                  item_title_or_id context/pretty_title_or_id;
-                ">
+                  item_title_or_id context/pretty_title_or_id;"
+            i18n:domain="collective.carousel">
                 
 <a href="#"
    tal:attributes="href python:(item_type in use_view_action) and item_url+'/view' or item_url;">

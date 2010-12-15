@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: collective.carousel\n"
 "POT-Creation-Date: 2010-12-01 01:21+0000\n"
-"PO-Revision-Date: 2010-11-04 16:51-0600\n"
+"PO-Revision-Date: 2010-12-15 12:51-0600\n"
 "Last-Translator: Héctor Velarde <hector.velarde@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -93,4 +93,8 @@ msgstr "Elemento anterior"
 #: ./profiles/default/portlets.xml
 msgid "title_map_portlet"
 msgstr "Portlet de carrusel"
+
+#. Default: "Read More&hellip;"
+msgid "read_more"
+msgstr "Leer más&hellip;"
 

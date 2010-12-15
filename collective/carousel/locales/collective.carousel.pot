@@ -95,3 +95,7 @@ msgstr ""
 msgid "title_map_portlet"
 msgstr ""
 
+#. Default: "Read More&hellip;"
+msgid "read_more"
+msgstr ""
+
