@@ -4,13 +4,22 @@ Changelog
 1.4 - Unreleased
 ----------------
 
+- Spanish translation.
+  [hvelarde]
+
+- Chech translation.
+  [lzdych]
+
+- Leadimage tile.
+  [djay]
+
 
 1.3 - July 6, 2010
 ------------------
 
 - Fixed norwegian translation
   [sh]
-  
+
 - Actual russian translation missing in previous release
   [spliter]
 
