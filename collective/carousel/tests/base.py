@@ -10,7 +10,8 @@ class TestCase(Sandboxed, ptc.PloneTestCase):
     """ Base class used for test cases """
 
     layer = testing.layer
-    
+
+
 class FunctionalTestCase(ptc.FunctionalTestCase):
 
     layer = testing.layer
