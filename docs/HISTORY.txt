@@ -13,12 +13,17 @@ Changelog
 - More settings for carousel portlet.
   [djay]
 
-- Pause carousel on :hover/
+- Pause carousel on :hover.
   [djay]
 
 - Leadimage tile.
   [djay]
 
+- Danish translation
+  [stonor]
+
+- Portuguese translation
+  [davilima6]
 
 1.3 - July 6, 2010
 ------------------
