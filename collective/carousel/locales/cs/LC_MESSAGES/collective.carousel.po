@@ -10,6 +10,10 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0\n"
 "Preferred-Encodings: utf-8 latin2\n"
 "Language-Team: \n"
+"Language-Code: cs\n"
+"Language-Name: Czech\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: collective.carousel\n"
 
 #: ./portlets/carousel.py:122
 msgid "Add Carousel Portlet"

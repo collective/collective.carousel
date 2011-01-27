@@ -7,7 +7,7 @@ Changelog
 - Spanish translation.
   [hvelarde]
 
-- Chech translation.
+- Czech translation.
   [lzdych]
 
 - More settings for carousel portlet.
