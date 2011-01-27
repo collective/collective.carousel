@@ -10,6 +10,12 @@ Changelog
 - Chech translation.
   [lzdych]
 
+- More settings for carousel portlet.
+  [djay]
+
+- Pause carousel on :hover/
+  [djay]
+
 - Leadimage tile.
   [djay]
 
