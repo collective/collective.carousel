@@ -5,15 +5,18 @@ from collective.testcaselayer.ptc import BasePTCLayer, ptc_layer
 
 from zope.interface import Interface
 
-class ICustomType(Interface): 
-    """Custom helping interface for testing purposes only! 
-       Used to provide custom tile registration. Doing this with zcml for real is painful since
-       custom zcml registration leaks to the following tests lower in the stack. Most probably you
-       never want to use such marker interface in real-life implementation and would register your
-       custom tile to either IATContentType (tile default for all types) or any specific interface
-       like IATNewsItem
+
+class ICustomType(Interface):
+    """Custom helping interface for testing purposes only!
+       Used to provide custom tile registration. Doing this with zcml for real
+       is painful since custom zcml registration leaks to the following tests
+       lower in the stack. Most probably you never want to use such marker
+       interface in real-life implementation and would register your custom
+       tile to either IATContentType (tile default for all types) or any
+       specific interface like IATNewsItem
     """
     pass
+
 
 class Layer(BasePTCLayer):
     """ set up basic testing layer """

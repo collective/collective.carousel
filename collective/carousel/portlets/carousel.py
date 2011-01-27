@@ -1,4 +1,3 @@
-from zope.component import queryMultiAdapter
 from zope.i18nmessageid import MessageFactory
 from zope.interface import implements
 from zope import schema
@@ -35,15 +34,15 @@ class ICarouselPortlet(base.ICollectionPortlet):
 
     timer = schema.Float(
         title=_(u"Timer"),
-        description=_(u"Length of time before automatically move to next tile (seconds)"),
+        description=_(u"Length of time before automatically move to next \
+                        tile (seconds)"),
         required=False,
         default=25.0)
 
 
-
 class Assignment(base.Assignment):
     implements(ICarouselPortlet)
-    
+
     header = u""
     target_collection=None
     limit = None
@@ -58,7 +57,7 @@ class Assignment(base.Assignment):
                  random=False, show_more=True, show_dates=False,
                  omit_border=True, hide_controls=False, timer=25.0):
         super(Assignment, self).__init__(header=header,
-                                         target_collection=target_collection, 
+                                         target_collection=target_collection,
                                          limit=limit,
                                          random=random,
                                          show_more=show_more,
@@ -73,23 +72,23 @@ class Assignment(base.Assignment):
         "manage portlets" screen. Here, we use the title that the user gave.
         """
         return self.header or u"Carousel portlet"
-    
-        
+
+
 class Renderer(base.Renderer):
     render = ViewPageTemplateFile('carousel.pt')
-    
+
     def use_view_action(self):
-        portal_properties = getToolByName(self.context, 'portal_properties', None)
-        site_properties = getattr(portal_properties, 'site_properties', None)
-        use_view_action = site_properties.getProperty('typesUseViewActionInListings', ())
-        return use_view_action        
+        pp = getToolByName(self.context, 'portal_properties', None)
+        sp = getattr(pp, 'site_properties', None)
+        use_view_action = sp.getProperty('typesUseViewActionInListings', ())
+        return use_view_action
 
     def get_tile(self, obj):
-        # When adapter is uesd this means we check whether obj has any special 
+        # When adapter is uesd this means we check whether obj has any special
         # instructions about how to be handled in defined view or interface
-        # for multi adapter the same is true except more object than just the 
+        # for multi adapter the same is true except more object than just the
         # obj are check for instructions
-        
+
         #have to use traverse to make zpt security work
         tile = obj.unrestrictedTraverse("carousel-portlet-view")
         if tile is None:
@@ -109,7 +108,7 @@ class Renderer(base.Renderer):
 
     def getTimer(self):
         """ return timer in ms"""
-        if getattr(self.data,'timer',None) is not None:
+        if getattr(self.data, 'timer', None) is not None:
             return int(self.data.timer*1000)
         else:
             return 25000
@@ -120,14 +119,17 @@ class AddForm(base.AddForm):
     form_fields['target_collection'].custom_widget = UberSelectionWidget
 
     label = _(u"Add Carousel Portlet")
-    description = _(u"This portlet display a listing of items from a Collection as a carousel.")
-    
+    description = _(u"This portlet display a listing of items from a \
+                      Collection as a carousel.")
+
     def create(self, data):
         return Assignment(**data)
+
 
 class EditForm(base.EditForm):
     form_fields = form.Fields(ICarouselPortlet)
     form_fields['target_collection'].custom_widget = UberSelectionWidget
 
     label = _(u"Edit Carousel Portlet")
-    description = _(u"This portlet display a listing of items from a Collection as a carousel.")
+    description = _(u"This portlet display a listing of items from a \
+                      Collection as a carousel.")

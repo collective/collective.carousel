@@ -2,21 +2,24 @@ from zope.component import adapts
 from zope.interface import implements
 from zope.i18nmessageid import MessageFactory
 
-from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
+from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import \
+                                         ReferenceBrowserWidget
 from Products.ATContentTypes.interface import IATContentType
 from Products.Archetypes.public import ReferenceField
 
-from archetypes.schemaextender.interfaces import ISchemaExtender, IBrowserLayerAwareExtender
+from archetypes.schemaextender.interfaces import ISchemaExtender, \
+                                                 IBrowserLayerAwareExtender
 from archetypes.schemaextender.field import ExtensionField
 
 from collective.carousel.interfaces import ICollectiveCarouselLayer
 
 _ = MessageFactory('collective.carousel')
 
+
 class CarouselProviderField(ExtensionField, ReferenceField):
-   """A field, storing reference to an object, providing 
-      content for carousel
-   """
+    """A field, storing reference to an object, providing content for carousel.
+    """
+
 
 class ContentTypeExtender(object):
     adapts(IATContentType)
@@ -27,9 +30,9 @@ class ContentTypeExtender(object):
     _fields = [
         CarouselProviderField("carouselprovider",
             schemata = "settings",
-            # the field accepts Collections only atm. 
-            # Would be cool to have ATRBW to be able to select items by interface
-            # with something like 'allowed_interfaces'
+            # the field accepts Collections only atm.
+            # Would be cool to have ATRBW to be able to select items by
+            # interface with something like 'allowed_interfaces'
             allowed_types = ('Topic'),
             relationship = 'Carousel',
             languageIndependent = True,
@@ -42,7 +45,7 @@ class ContentTypeExtender(object):
                 ),
             ),
         ]
-        
+
     def __init__(self, context):
         self.context = context
 
