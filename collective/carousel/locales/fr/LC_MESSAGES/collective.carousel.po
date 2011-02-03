@@ -1,0 +1,101 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# JeanMichel FRANCOIS <toutpt@gmail.com>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2010-12-01 01:21+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: French team <plone-fr@lists.plone.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: fr\n"
+"Language-Name: French\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: collective.carousel\n"
+
+#: ./portlets/carousel.py:122
+msgid "Add Carousel Portlet"
+msgstr "Ajouter une portlet carousel"
+
+#: ./portlets/carousel.py:132
+msgid "Edit Carousel Portlet"
+msgstr "Modifier la portlet carousel"
+
+#: ./browser/templates/carousel.pt:19
+#: ./portlets/carousel.pt:35
+msgid "Edit carousel's results"
+msgstr "Modifier les résultats du carousel"
+
+#: ./portlets/carousel.py:30
+msgid "Hide controls"
+msgstr "Cacher les contrôles"
+
+#: ./portlets/carousel.py:38
+msgid "Length of time before automatically move to next tile (seconds)"
+msgstr "Durée avant de passer à l'élément suivant (secondes)"
+
+#: ./portlets/carousel.py:23
+msgid "Omit portlet border"
+msgstr "Omettre la bordure"
+
+#: ./portlets/carousel.py:123
+msgid "This portlet display a listing of items from a Collection as a carousel."
+msgstr "Cette portlet affiche un ensemble d'éléments provenant d'une Collection en tant que carousel."
+
+#: ./portlets/carousel.py:24
+msgid "Tick this box if you want to render the text above without the standard header, border or footer."
+msgstr "Cocher cette case si vous voulez afficher le texte au dessus sans l'entête standard, la bordure ou le bas."
+
+#: ./portlets/carousel.py:31
+msgid "Tick this box if you want to temporarily hide carousel controls i.e. next, prev, pause buttons."
+msgstr "Cocher cette case si vous voulez temporairement cacher les contrôles du carousel, c'est à dire les boutons suivant, précédent, pause"
+
+#: ./portlets/carousel.py:37
+msgid "Timer"
+msgstr ""
+
+#. Default: "A portlet retrurning collection's result as carousel."
+#: ./profiles/default/portlets.xml
+msgid "description_map_portlet"
+msgstr "Une portlet affichant les résultats d'une collection en tant que carousel."
+
+#. Default: "Object providing items (content) for carousel."
+#: ./schemaextender.py:40
+msgid "help_carouselprovider"
+msgstr "Objet conteneur d'éléments (contenu) pour le carousel."
+
+#. Default: "Carousel object."
+#: ./schemaextender.py:38
+msgid "label_carouselprovider_title"
+msgstr "Objet carousel."
+
+#. Default: "Edit Carousel"
+#: ./browser/templates/carousel.pt:19
+msgid "label_edit_carousel"
+msgstr "Modifier le Carousel"
+
+#. Default: "Next item"
+#: ./browser/templates/carousel.pt:53
+#: ./portlets/carousel.pt:69
+msgid "label_next_item"
+msgstr "Elément suivant"
+
+#. Default: "Previous item"
+#: ./browser/templates/carousel.pt:27
+#: ./portlets/carousel.pt:44
+msgid "label_previous_item"
+msgstr "Elément précédent"
+
+#. Default: "Carousel portlet"
+#: ./profiles/default/portlets.xml
+msgid "title_map_portlet"
+msgstr "Portlet carousel"
+
+#. Default: "Read More&hellip;"
+msgid "read_more"
+msgstr "Lire la suite&hellip;"
+

@@ -4,6 +4,8 @@ Changelog
 1.5 - Unreleased
 ----------------
 
+- Add French translation.
+  [toutpt]
 
 1.4 - January 27, 2011
 ----------------------
