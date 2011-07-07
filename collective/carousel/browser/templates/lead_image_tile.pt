@@ -1,12 +1,10 @@
-<div tal:define="item_url context/getURL|context/absolute_url;
-                  item_type context/portal_type;
-                  use_view_action site_properties/typesUseViewActionInListings|python:();
-                  item_description context/Description;
-                  item_title_or_id context/pretty_title_or_id;
-                "
-                class="leadimagetile">
-                
-                
+<div class="leadimagetile"
+     tal:define="item_url context/getURL|context/absolute_url;
+                 item_type context/portal_type;
+                 use_view_action site_properties/typesUseViewActionInListings|python:();
+                 item_description context/Description;
+                 item_title_or_id context/pretty_title_or_id;">
+
 <h2 class="tileHeadline">
     <a href="#"
        class="summary url"

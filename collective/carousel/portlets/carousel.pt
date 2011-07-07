@@ -4,7 +4,7 @@
     tal:condition="view/results"
     tal:omit-tag="omit_border"
     i18n:domain="collective.carousel">
-     
+
 <div class="portletCarouselWrapper"
      tal:omit-tag="not:omit_border">
 
@@ -39,8 +39,8 @@
 
 
         </div>
-        
-        <!-- "previous page" action --> 
+
+        <!-- "previous page" action -->
         <a class="prev browse"
            title="Previous item"
            tal:condition="not:hide_controls"
@@ -53,10 +53,10 @@
                     <div class="tileItem visualIEFloatFix"
                          tal:define="item_object item/getObject">
 
-                        <div class="itemPadding"> 
+                        <div class="itemPadding">
                             <tal:block replace="structure python:view.get_tile(item_object)" />
                         </div>
-                        
+
                         <div class="visualClear"><!-- --></div>
 
                     </div>
@@ -64,17 +64,17 @@
 
             </div>
         </div>
-        
-        <!-- "next page" action --> 
+
+        <!-- "next page" action -->
         <a class="next browse"
            title="Next item"
            tal:condition="not:hide_controls"
            i18n:attributes="title label_next_item"><span i18n:translate="label_next_item">Next item</span></a>        
-        
-        <!-- wrapper for navigator elements --> 
+
+        <!-- wrapper for navigator elements -->
         <div class="navi"
-             tal:condition="not:hide_controls" ><!-- --></div>        
-        
+             tal:condition="not:hide_controls" ><!-- --></div>
+
     </div>
     </dd>
 

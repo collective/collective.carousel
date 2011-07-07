@@ -4,14 +4,14 @@
                   item_description context/Description;
                   item_title_or_id context/pretty_title_or_id;"
             i18n:domain="collective.carousel">
-                
+
 <a href="#"
    tal:attributes="href python:(item_type in use_view_action) and item_url+'/view' or item_url;">
     <img src="" alt=""
          tal:condition="exists:context/image_mini"
          tal:replace="structure python: path('nocall:context/tag')(scale='mini', css_class='tileImage')" />
 </a>
-                
+
 <h2 class="tileHeadline">
     <a href="#"
        class="summary url"

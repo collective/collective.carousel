@@ -1,12 +1,12 @@
 <div class="carouselWrapper"
      tal:condition="view/getProviders"
      i18n:domain="collective.carousel">
-     
+
      <tal:carousel repeat="provider view/getProviders">
         <div class="carousel"
              tal:attributes="class python:repeat['provider'].end and 'carousel lastCarousel' or 'carousel'"
              tal:condition="python: view.results(provider)">
-     
+
             <div class="toolBar">
                 <!-- Wrapper for fullscreen switcher -->
                 <!--
@@ -21,9 +21,9 @@
                        i18n:attributes="title"
                        i18n:translate="label_edit_carousel">Edit Carousel</a>
                 </tal:edit>
-            </div>      
-    
-            <!-- "previous page" action --> 
+            </div>
+
+            <!-- "previous page" action -->
             <a class="prev browse"
                title="Previous item"
                i18n:attributes="title label_previous_item"><span i18n:translate="label_previous_item">Previous item</span></a>                         
@@ -44,19 +44,19 @@
 
                         </div>
                     </tal:block>
-    
+
                 </div>
             </div>
             <!-- </div> -->
 
-            <!-- "next page" action --> 
+            <!-- "next page" action -->
             <a class="next browse"
                title="Next item"
                i18n:attributes="title label_next_item"><span i18n:translate="label_next_item">Next item</span></a> 
 
-           <!-- wrapper for navigator elements --> 
+           <!-- wrapper for navigator elements -->
            <div class="navi"><!-- --></div>
-                   
+
         </div>
     </tal:carousel>
 
