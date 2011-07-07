@@ -1,7 +1,6 @@
 <tal:block define="url context/getRemoteUrl|context/absolute_url;
                    desc context/Description | nothing;">
 
-<center>
   <a href="#"
      tal:attributes="href url;">
     <img src="" alt=""
@@ -9,6 +8,5 @@
          tal:condition="python: imgField is not None and imgField.get_size(context) != 0"
          tal:replace="structure python: path('nocall:imgField/tag')(context, alt=desc, title=desc)" />
   </a>
-</center>
-        
+
 </tal:block>
