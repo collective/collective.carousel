@@ -120,7 +120,6 @@ div.navi a.active {
 /* @end */
 
 /* @group Tool bar */
-
 div.toolBar {
 	position: absolute;
 	right: 0;
@@ -134,7 +133,9 @@ div.toolBar {
     background-color: #fff; /* for those browsers that don't yet support CSS3 rgba colors */
 	background-color: rgba(256, 256, 256, 0.8); /* for good boys of the block */       
 }
-
+.hideTools .toolBar {
+    display: none;
+}
 /* @end */
 
 /* @end */
