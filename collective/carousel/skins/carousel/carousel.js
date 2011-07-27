@@ -1,5 +1,5 @@
 /*jslint bitwise:true, newcap:true, nomen:true, onevar:true, plusplus:true, regexp:true */
-/*globals $, console */
+/*globals $:false, console:false, jQuery:false */
 
 jQuery('html').addClass('hideTools');
 
@@ -71,7 +71,7 @@ $(function () {
                             })
                             .get()
                         );
-                    if (newHeight > baseHeight) {
+                    if (newHeight >= baseHeight) {
                         $this.add($carousel)
                             .height(newHeight)
                             .trigger('resized.carousel', [newHeight]);
