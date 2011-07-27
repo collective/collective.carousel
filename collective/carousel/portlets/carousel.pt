@@ -30,8 +30,6 @@
                        title="Edit carousel's results" 
                        i18n:attributes="title">Edit Carousel</a>
                 </tal:edit>
-
-
         </div>
 
         <!-- "previous page" action -->
