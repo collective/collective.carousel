@@ -103,7 +103,9 @@ $(function () {
     $('.carousel').resizeCarousel();
 
     // Pause on hover
-    $('.carousel').hover(api.pause);
+    if (api) {
+        $('.carousel').hover(api.pause);
+    }
 
     // Show toolBar when hovering over a carousel
     $('.carousel').hover(
