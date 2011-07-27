@@ -81,7 +81,7 @@ $(function () {
         });
     };
 
-    ap = ($('.carousel').length === 1) ? true : false;
+    ap = ($('.carousel').length > 1) ? false : true;
 
     // initialize scrollable
     api = $('div.scrollable')
@@ -92,7 +92,7 @@ $(function () {
             circular: true
         })
         .autoscroll({
-            autoplay: false, 
+            autoplay: ap,
             steps: 1, 
             interval: 25000
         })
