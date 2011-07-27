@@ -25,12 +25,6 @@
 
         <div class="toolBar" tal:condition="python:view.canSeeEditLink()">
             <!-- Wrapper for fullscreen switcher -->
-            <!--
-                <a class="carousel-fullscreen"
-                   href="#"
-                   title="View in fullscreen mode" 
-                   i18n:attributes="title"><span i18n:translate="text_fullscreen_mode">View in fullscreen mode</span></a>
-            -->
                 <tal:edit tal:condition="python:view.canSeeEditLink()">
                     <a href="#" tal:attributes="href python:view.editCarouselLink()"
                        title="Edit carousel's results" 
