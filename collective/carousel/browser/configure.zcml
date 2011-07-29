@@ -3,67 +3,67 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:zcml="http://namespaces.zope.org/zcml"
     i18n_domain="collective.carousel">
-    
+
   <include package="plone.browserlayer" />
-  
+
   <class class="Products.ATContentTypes.content.topic.ATTopic">
     <implements interface="collective.carousel.interfaces.ICarouselProvider" />
-  </class>      
-  
+  </class>
+
   <!-- Viewlets registration -->
   <browser:viewlet
       name="plone.carousel"
       for="*"
-      view="plone.app.layout.globals.interfaces.IViewView" 
+      view="plone.app.layout.globals.interfaces.IViewView"
       manager="plone.app.layout.viewlets.interfaces.IAboveContent"
       class=".viewlets.CarouselViewlet"
-      permission="zope2.View" 
+      permission="zope2.View"
       layer="..interfaces.ICollectiveCarouselLayer"
       />
 
   <!-- Special views for normal carousel -->
 
   <browser:page
-    name="carousel-view"                  
+    name="carousel-view"
     for="Products.ATContentTypes.interface.IATContentType"
     template="templates/default_tile.pt"
     permission="zope2.View"
-    layer="..interfaces.ICollectiveCarouselLayer"      
+    layer="..interfaces.ICollectiveCarouselLayer"
     />
-    
+
   <browser:page
-    name="carousel-view"                  
+    name="carousel-view"
     for="Products.ATContentTypes.interface.IATNewsItem"
     template="templates/news_item_tile.pt"
     permission="zope2.View"
-    layer="..interfaces.ICollectiveCarouselLayer"      
-    />  
-    
+    layer="..interfaces.ICollectiveCarouselLayer"
+    />
+
   <!-- Views for carousel portlet -->
   <!-- default view for standard carousel is good enough for the portlet as well -->
   <browser:page
-    name="carousel-portlet-view"                  
+    name="carousel-portlet-view"
     for="Products.ATContentTypes.interface.IATContentType"
     template="templates/default_tile.pt"
     permission="zope2.View"
-    layer="..interfaces.ICollectiveCarouselLayer"      
-    />  
+    layer="..interfaces.ICollectiveCarouselLayer"
+    />
 
   <browser:page
-    name="carousel-portlet-view"                  
+    name="carousel-portlet-view"
     for="Products.ATContentTypes.interface.IATNewsItem"
     template="templates/news_item_tile.pt"
     permission="zope2.View"
-    layer="..interfaces.ICollectiveCarouselLayer"      
-    />  
+    layer="..interfaces.ICollectiveCarouselLayer"
+    />
 
-  
+
   <browser:page
-      name="carousel-portlet-view"                  
+      name="carousel-portlet-view"
       for="Products.ATContentTypes.interface.IATImage"
       template="templates/image_tile.pt"
       permission="zope2.View"
-      layer="collective.carousel.interfaces.ICollectiveCarouselLayer"      
+      layer="collective.carousel.interfaces.ICollectiveCarouselLayer"
       />
 
   <!-- Zope 3 browser resources -->
@@ -73,36 +73,36 @@
 
   <configure zcml:condition="installed collective.contentleadimage">
     <include package="collective.contentleadimage"/>
-  
+
     <class class="Products.Archetypes.BaseObject.BaseObject">
       <implements interface="..interfaces.IATWithLeadImage"/>
     </class>
     <class class="Products.ATContentTypes.content.newsitem.ATNewsItem">
       <implements interface="..interfaces.IATNewsItemWithLeadImage"/>
     </class>
-  
+
     <browser:page
-      name="carousel-portlet-view"                  
+      name="carousel-portlet-view"
       for="..interfaces.IATWithLeadImage"
       class=".leadimagetile.LeadImageTile"
       permission="zope2.View"
-      layer="collective.carousel.interfaces.ICollectiveCarouselLayer"      
+      layer="collective.carousel.interfaces.ICollectiveCarouselLayer"
       />
 
   <browser:page
-    name="carousel-portlet-view"                  
+    name="carousel-portlet-view"
     for="collective.carousel.interfaces.IATNewsItemWithLeadImage"
     class=".leadimagetile.LeadImageTile"
     permission="zope2.View"
-      layer="collective.carousel.interfaces.ICollectiveCarouselLayer"      
+      layer="collective.carousel.interfaces.ICollectiveCarouselLayer"
     />
 
     <browser:page
-      name="carousel-portlet-view"                  
+      name="carousel-portlet-view"
       for="Products.ATContentTypes.interface.IATLink"
       template="templates/banner_tile.pt"
       permission="zope2.View"
-      layer="collective.carousel.interfaces.ICollectiveCarouselLayer"      
+      layer="collective.carousel.interfaces.ICollectiveCarouselLayer"
       />
 
   </configure>
