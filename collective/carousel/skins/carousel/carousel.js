@@ -7,7 +7,7 @@ $(function () {
 
     var ap, api;
 
-    $.fn.resizeCarousel = function () {
+    jQuery.fn.resizeCarousel = function () {
         return this.each(function () {
             // get the scrollable API for this carousel
             var imgHeight, baseHeight,
@@ -22,13 +22,13 @@ $(function () {
             // We are resizing carousel after it has been initialized. Since it could have different default width, we need to make sure the carousel is focused on the correct item to avoid the carousel having 'sliced in half' position. In this case we position on the first item, that follows the first cloned item
             api.getItemWrap().attr('style', 'left: -' + carouselWidth + 'px');
 
-            $.each($items, function () {
+            jQuery.each($items, function () {
                 //  Adjust the widths of the carousel items
                 $(this).add($('.' + clonedClass, $carousel)).width(carouselWidth);
             });
 
             // Adjust the heights of the carousel items. We can not do
-            // this in the same $.each loop with tthe width, because we
+            // this in the same jQuery.each loop with tthe width, because we
             // need all of the items to re-flow after width's adjustments.
             baseHeight = Math.max.apply(Math,
                 $items
