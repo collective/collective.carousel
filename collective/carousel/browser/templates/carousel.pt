@@ -7,14 +7,12 @@
              tal:attributes="class python:repeat['provider'].end and 'carousel lastCarousel' or 'carousel'"
              tal:condition="python: view.results(provider)">
 
-            <div class="toolBar">
+            <div class="toolBar" tal:condition="python:view.canSeeEditLink(provider)">
                 <!-- Wrapper for fullscreen switcher -->
-                <tal:edit condition="python:view.canSeeEditLink(provider)">
-                    <a href="#" tal:attributes="href python:view.editCarouselLink(provider)"
-                       title="Edit carousel's results" 
-                       i18n:attributes="title"
-                       i18n:translate="label_edit_carousel">Edit Carousel</a>
-                </tal:edit>
+                <a href="#" tal:attributes="href python:view.editCarouselLink(provider)"
+                   title="Edit carousel's results" 
+                   i18n:attributes="title"
+                   i18n:translate="label_edit_carousel">Edit Carousel</a>
             </div>
 
             <!-- "previous page" action -->
