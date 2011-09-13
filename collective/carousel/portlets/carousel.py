@@ -34,10 +34,10 @@ class ICarouselPortlet(base.ICollectionPortlet):
 
     timer = schema.Float(
         title=_(u"Timer"),
-        description=_(u"Length of time before automatically move to next \
-                        tile (seconds)"),
+        description=_(u"How fast the carousel should be rotated \
+                        (seconds)"),
         required=False,
-        default=25.0)
+        default=10)
 
 
 class Assignment(base.Assignment):
@@ -51,11 +51,11 @@ class Assignment(base.Assignment):
     show_dates = False
     omit_border = True
     hide_controls = False
-    timer = 25.0
+    timer = 10
 
     def __init__(self, header=u"", target_collection=None, limit=None,
                  random=False, show_more=True, show_dates=False,
-                 omit_border=True, hide_controls=False, timer=25.0):
+                 omit_border=True, hide_controls=False, timer=10):
         super(Assignment, self).__init__(header=header,
                                          target_collection=target_collection,
                                          limit=limit,
@@ -111,7 +111,7 @@ class Renderer(base.Renderer):
         if getattr(self.data, 'timer', None) is not None:
             return int(self.data.timer*1000)
         else:
-            return 25000
+            return 10000
 
 
 class AddForm(base.AddForm):
