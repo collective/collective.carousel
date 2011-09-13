@@ -3,27 +3,49 @@ from zope.interface import implements
 from zope import schema
 from zope.formlib import form
 from AccessControl import SecurityManagement
+from zope.component import getMultiAdapter, getUtility
+
+from plone.memoize.instance import memoize
+from plone.i18n.normalizer.interfaces import IIDNormalizer
 
 from Products.ATContentTypes.permission import ChangeTopics
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 
-from plone.portlet.collection import collection as base
-from plone.app.form.widgets.uberselectionwidget import UberSelectionWidget
+# from plone.portlet.collection import collection as base
+from plone.portlets.interfaces import IPortletDataProvider
+from plone.app.portlets.portlets import base
 
+from plone.app.form.widgets.uberselectionwidget import UberSelectionWidget
+from plone.app.vocabularies.catalog import SearchableTextSourceBinder
+
+from Products.ATContentTypes.interface import IATTopic
 
 _ = MessageFactory('collective.carousel')
 
 
-class ICarouselPortlet(base.ICollectionPortlet):
+class ICarouselPortlet(IPortletDataProvider):
     """A portlet displaying a carousel with a Collection's results
     """
-    omit_border = schema.Bool(
-        title=_(u"Omit portlet border"),
-        description=_(u"Tick this box if you want to render the text above "
-                      "without the standard header, border or footer."),
+
+    header = schema.TextLine(
+        title=_(u"Portlet header"),
+        description=_(u"Title of the rendered portlet"),
+        required=True)
+
+    target_collection = schema.Choice(
+        title=_(u"Target collection"),
+        description=_(u"Find the collection which provides the items to list"),
         required=True,
-        default=True)
+        source=SearchableTextSourceBinder(
+            {'object_provides': IATTopic.__identifier__},
+            default_query='path:'))
+
+    limit = schema.Int(
+        title=_(u"Limit"),
+        description=_(u"Specify the maximum number of items to show in the "
+                      u"portlet. Leave this blank to show all items."),
+        required=False)
 
     hide_controls = schema.Bool(
         title=_(u"Hide controls"),
@@ -46,23 +68,14 @@ class Assignment(base.Assignment):
     header = u""
     target_collection=None
     limit = None
-    random = False
-    show_more = True
-    show_dates = False
-    omit_border = True
     hide_controls = False
     timer = 10
 
     def __init__(self, header=u"", target_collection=None, limit=None,
-                 random=False, show_more=True, show_dates=False,
-                 omit_border=True, hide_controls=False, timer=10):
+                 hide_controls=False, timer=10):
         super(Assignment, self).__init__(header=header,
                                          target_collection=target_collection,
-                                         limit=limit,
-                                         random=random,
-                                         show_more=show_more,
-                                         show_dates=show_dates)
-        self.omit_border = omit_border
+                                         limit=limit)
         self.hide_controls = hide_controls
         self.timer = timer
 
@@ -76,6 +89,61 @@ class Assignment(base.Assignment):
 
 class Renderer(base.Renderer):
     render = ViewPageTemplateFile('carousel.pt')
+    
+    def __init__(self, *args):
+        base.Renderer.__init__(self, *args)
+
+    @property
+    def available(self):
+        return len(self.results())
+
+    def collection_url(self):
+        collection = self.collection()
+        if collection is None:
+            return None
+        else:
+            return collection.absolute_url()
+
+    def css_class(self):
+        header = self.data.header
+        normalizer = getUtility(IIDNormalizer)
+        return "portlet-collection-%s" % normalizer.normalize(header)
+
+    @memoize
+    def results(self):
+        results = []
+        collection = self.collection()
+        if collection is not None:
+            limit = self.data.limit
+            if limit and limit > 0:
+                # pass on batching hints to the catalog
+                results = collection.queryCatalog(batch=True, b_size=limit)
+                results = results._sequence
+            else:
+                results = collection.queryCatalog()
+            if limit and limit > 0:
+                results = results[:limit]
+        return results
+
+    @memoize
+    def collection(self):
+        collection_path = self.data.target_collection
+        if not collection_path:
+            return None
+
+        if collection_path.startswith('/'):
+            collection_path = collection_path[1:]
+
+        if not collection_path:
+            return None
+
+        portal_state = getMultiAdapter((self.context, self.request),
+                                       name=u'plone_portal_state')
+        portal = portal_state.portal()
+        if isinstance(collection_path, unicode):
+            # restrictedTraverse accepts only strings
+            collection_path = str(collection_path)
+        return portal.restrictedTraverse(collection_path, default=None)
 
     def use_view_action(self):
         pp = getToolByName(self.context, 'portal_properties', None)
