@@ -54,7 +54,7 @@ class ICarouselPortlet(IPortletDataProvider):
         required=True,
         default=False)
 
-    timer = schema.Float(
+    timer = schema.Int(
         title=_(u"Timer"),
         description=_(u"How fast the carousel should be rotated \
                         (seconds)"),
@@ -89,7 +89,7 @@ class Assignment(base.Assignment):
 
 class Renderer(base.Renderer):
     render = ViewPageTemplateFile('carousel.pt')
-    
+
     def __init__(self, *args):
         base.Renderer.__init__(self, *args)
 
