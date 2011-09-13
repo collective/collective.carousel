@@ -1,28 +1,21 @@
 <dl class="portlet portletCarouselWrapper"
-    tal:define="omit_border view/data/omit_border | nothing;
-                hide_controls view/data/hide_controls | nothing;
-                timer view/data/timer | python:10"
+    tal:define="hide_controls view/data/hide_controls | nothing;
+                timer view/data/timer | python:10000"
     tal:condition="view/results"
-    tal:omit-tag="omit_border"
+    tal:omit-tag=""
     i18n:domain="collective.carousel">
 
-<div class="portletCarouselWrapper"
-     tal:omit-tag="not:omit_border">
+<div class="portletCarouselWrapper">
 
-    <dt class="portletHeader"
-        tal:condition="not:omit_border">
+    <dt class="portletHeader">
         <span class="portletTopLeft"></span>
         <a href="#" 
            class="tile"
-           tal:content="view/data/title | string: Carousel portlet" />
+           tal:content="view/data/title" />
         <span class="portletTopRight"></span>
     </dt>
 
-    <dd class="carousel portletItem"
-        tal:omit-tag="omit_border">
-
-    <div class="carousel"
-         tal:omit-tag="not:omit_border">
+    <dd class="carousel portletItem">
 
         <div class="toolBar" tal:condition="python:view.canSeeEditLink()">
             <!-- Wrapper for fullscreen switcher -->
@@ -39,7 +32,7 @@
            tal:condition="not:hide_controls"
            i18n:attributes="title label_previous_item"><span i18n:translate="label_previous_item">Previous item</span></a>        
 
-        <div class="scrollable" data-timer="10"
+        <div class="scrollable" data-timer="10000"
              tal:attributes="data-timer view/getTimer">
             <div class="items">
 
@@ -69,7 +62,6 @@
         <div class="navi"
              tal:condition="not:hide_controls" ><!-- --></div>
 
-    </div>
     </dd>
 
 </div>
