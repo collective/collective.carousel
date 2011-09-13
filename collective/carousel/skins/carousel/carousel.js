@@ -5,7 +5,9 @@ jQuery('html').addClass('hideTools');
 
 $(function () {
 
-    var ap, api;
+    var api,
+        ap = ($('.carousel').length > 1) ? false : true,
+        timer = $('div.scrollable').attr('data-timer');
 
     jQuery.fn.resizeCarousel = function () {
         return this.each(function () {
@@ -81,8 +83,6 @@ $(function () {
         });
     };
 
-    ap = ($('.carousel').length > 1) ? false : true;
-
     // initialize scrollable
     api = $('div.scrollable')
         .scrollable({
@@ -94,7 +94,7 @@ $(function () {
         .autoscroll({
             autoplay: ap,
             steps: 1, 
-            interval: 25000
+            interval: timer
         })
         .navigator({
             api: true

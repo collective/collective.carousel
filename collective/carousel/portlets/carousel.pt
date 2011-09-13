@@ -1,6 +1,7 @@
 <dl class="portlet portletCarouselWrapper"
     tal:define="omit_border view/data/omit_border | nothing;
-                hide_controls view/data/hide_controls | nothing;"
+                hide_controls view/data/hide_controls | nothing;
+                timer view/data/timer | python:10"
     tal:condition="view/results"
     tal:omit-tag="omit_border"
     i18n:domain="collective.carousel">
@@ -38,7 +39,8 @@
            tal:condition="not:hide_controls"
            i18n:attributes="title label_previous_item"><span i18n:translate="label_previous_item">Previous item</span></a>        
 
-        <div class="scrollable" rel="25000" tal:attributes="rel view/getTimer">
+        <div class="scrollable" data-timer="10"
+             tal:attributes="data-timer view/getTimer">
             <div class="items">
 
                 <tal:block tal:repeat="item view/results">
