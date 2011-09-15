@@ -32,6 +32,12 @@ class ICarouselPortlet(IPortletDataProvider):
         title=_(u"Portlet header"),
         description=_(u"Title of the rendered portlet"),
         required=True)
+        
+    hideheader = schema.Bool(
+        title=_(u"Don't show the header."),
+        description=_(u"If enabled, the portlet will not show the header."),
+        required=False,
+        default=False)
 
     target_collection = schema.Choice(
         title=_(u"Target collection"),
@@ -66,16 +72,18 @@ class Assignment(base.Assignment):
     implements(ICarouselPortlet)
 
     header = u""
+    hideheader = False
     target_collection=None
     limit = None
     hide_controls = False
     timer = 10
 
-    def __init__(self, header=u"", target_collection=None, limit=None,
+    def __init__(self, header=u"", hideheader = False, target_collection=None, limit=None,
                  hide_controls=False, timer=10):
-        super(Assignment, self).__init__(header=header,
-                                         target_collection=target_collection,
-                                         limit=limit)
+        self.header = header
+        self.hideheader = hideheader
+        self.target_collection = target_collection
+        self.limit = limit
         self.hide_controls = hide_controls
         self.timer = timer
 
@@ -180,6 +188,13 @@ class Renderer(base.Renderer):
             return int(self.data.timer*1000)
         else:
             return 10000
+
+    def hideHeader(self):
+        """ Whether we show the header or not """
+        if self.data.hideheader:
+            return True
+        else:
+            return False
 
 
 class AddForm(base.AddForm):
