@@ -6,6 +6,14 @@ from AccessControl import SecurityManagement
 from Products.ATContentTypes.permission import ChangeTopics
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
+try:
+    from plone.app.collection.interfaces import ICollection
+    from plone.app.querystring import queryparser
+except ImportError:
+    from zope.interface import Interface
+    class ICollection(Interface):
+        pass
+
 from plone.app.layout.viewlets.common import ViewletBase
 from plone.app.layout.globals.interfaces import IViewView
 
@@ -35,6 +43,11 @@ class CarouselViewlet(ViewletBase):
             
             # It doesn't make sense to show *all* objects from a collection 
             # - some of them might return hundreeds of objects
+            if ICollection.providedBy(provider):
+                query = queryparser.parseFormquery(
+                self.context, provider.getRawQuery())
+                res = provider.queryCatalog(query)
+                return res
             return provider.queryCatalog()[:7]
         return results
 
@@ -44,6 +57,8 @@ class CarouselViewlet(ViewletBase):
 
     def editCarouselLink(self, provider):
         if provider is not None:
+            if ICollection.providedBy(provider):
+                return provider.absolute_url() + '/edit'
             return provider.absolute_url() + '/criterion_edit_form'
         return None
 
