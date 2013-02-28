@@ -21,6 +21,14 @@ from plone.app.vocabularies.catalog import SearchableTextSourceBinder
 
 from Products.ATContentTypes.interface import IATTopic
 
+try:
+    from plone.app.collection.interfaces import ICollection
+    from plone.app.querystring import queryparser
+except ImportError:
+    from zope.interface import Interface
+    class ICollection(Interface):
+        pass
+
 _ = MessageFactory('collective.carousel')
 
 
@@ -179,6 +187,8 @@ class Renderer(base.Renderer):
     def editCarouselLink(self):
         provider = self.collection()
         if provider is not None:
+            if ICollection.providedBy(provider):
+                return provider.absolute_url() + '/edit'
             return provider.absolute_url() + '/criterion_edit_form'
         return None
 
