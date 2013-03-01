@@ -40,7 +40,7 @@ class ICarouselPortlet(IPortletDataProvider):
         title=_(u"Portlet header"),
         description=_(u"Title of the rendered portlet"),
         required=True)
-        
+
     hideheader = schema.Bool(
         title=_(u"Don't show the header."),
         description=_(u"If enabled, the portlet will not show the header."),
@@ -81,12 +81,12 @@ class Assignment(base.Assignment):
 
     header = u""
     hideheader = False
-    target_collection=None
+    target_collection = None
     limit = None
     hide_controls = False
     timer = 10
 
-    def __init__(self, header=u"", hideheader = False, target_collection=None, limit=None,
+    def __init__(self, header=u"", hideheader=False, target_collection=None, limit=None,
                  hide_controls=False, timer=10):
         self.header = header
         self.hideheader = hideheader
