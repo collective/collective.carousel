@@ -12,6 +12,7 @@ class ViewletTestCase(TestCase):
 
     def afterSetUp(self):
         self.setRoles('Manager')
+        self.portal.portal_types.Topic.global_allow = True
         self.folder.invokeFactory('Topic', 'collection')
         collection = getattr(self.folder, 'collection')
 
@@ -36,8 +37,8 @@ class ViewletTestCase(TestCase):
     def test_multiple_providers(self):
         collections = []
         for i in range(3):
-            self.folder.invokeFactory('Topic', 'collection_%s'%i)
-            collection = getattr(self.folder, 'collection_%s'%i)
+            self.folder.invokeFactory('Topic', 'collection_%s' % i)
+            collection = getattr(self.folder, 'collection_%s' % i)
             crit = collection.addCriterion('portal_type',
                                            'ATSimpleStringCriterion')
             crit.setValue('Document')
@@ -52,8 +53,8 @@ class ViewletTestCase(TestCase):
     def test_viewlet_rendering(self):
         # add a few documents
         for i in range(10):
-            self.folder.invokeFactory('Document', 'document_%s'%i)
-            getattr(self.folder, 'document_%s'%i).reindexObject()
+            self.folder.invokeFactory('Document', 'document_%s' % i)
+            getattr(self.folder, 'document_%s' % i).reindexObject()
 
         collection_num_items = len(self.folder.collection.queryCatalog())
         # We better have some documents in the collection's results
@@ -106,7 +107,7 @@ class ViewletTestCase(TestCase):
     def test_edit_carousel_link(self):
         viewlet = CarouselViewlet(self.folder, self.app.REQUEST, None, None)
         carousel_criteria = self.folder.collection.absolute_url() + \
-                            '/criterion_edit_form'
+            '/criterion_edit_form'
         self.assertEqual(viewlet.editCarouselLink(viewlet.getProviders()[0]),
                          carousel_criteria)
 

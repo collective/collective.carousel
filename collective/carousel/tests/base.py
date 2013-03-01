@@ -1,7 +1,7 @@
 from Products.Five.testbrowser import Browser
 from Testing.ZopeTestCase import Sandboxed
 from Products.PloneTestCase import PloneTestCase as ptc
-from collective.carousel import testing
+# from collective.carousel import testing
 
 ptc.setupPloneSite()
 
@@ -9,12 +9,9 @@ ptc.setupPloneSite()
 class TestCase(Sandboxed, ptc.PloneTestCase):
     """ Base class used for test cases """
 
-    layer = testing.layer
-
 
 class FunctionalTestCase(ptc.FunctionalTestCase):
-
-    layer = testing.layer
+    """ Base FunctionalTestCase for collective.carousel """
 
     def getBrowser(self, loggedIn=True):
         """ instantiate and return a testbrowser for convenience """

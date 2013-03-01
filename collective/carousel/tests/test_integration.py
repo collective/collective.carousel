@@ -33,6 +33,7 @@ class CarouselTestCase(TestCase):
     def test_collections_carouselable(self):
         from collective.carousel.interfaces import ICarouselProvider
         self.setRoles('Manager', )
+        self.portal.portal_types.Topic.global_allow = True
         self.folder.invokeFactory("Topic", "test-collection")
         carouselable_col = getattr(self.folder, 'test-collection')
         self.failUnless(ICarouselProvider.providedBy(carouselable_col))

@@ -11,6 +11,7 @@ class ViewsTestCase(TestCase):
 
     def afterSetUp(self):
         self.setRoles('Manager')
+        self.portal.portal_types.Topic.global_allow = True
         self.folder.invokeFactory('Topic', 'collection')
         collection = getattr(self.folder, 'collection')
 
