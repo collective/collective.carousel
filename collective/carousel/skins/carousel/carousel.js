@@ -49,10 +49,10 @@ $(function () {
                 // an event to the moment when a carousel has been
                 // completely loaded and resized use something like this:
                 // $("#my-special-case .carousel")
-                //     .bind('resized.carousel', 
-                //           function (event, newheight) { 
+                //     .bind('resized.carousel',
+                //           function (event, newheight) {
                 //               the custom handler resized.carousel event
-                //           }); 
+                //           });
                 // This is helpful if you need to have more than 1
                 // carousel in the same row and want all of them to be the
                 // same height - then you bind resizing function to this
@@ -93,7 +93,7 @@ $(function () {
         })
         .autoscroll({
             autoplay: ap,
-            steps: 1, 
+            steps: 1,
             interval: timer
         })
         .navigator({
