@@ -7,18 +7,23 @@ from collective.carousel.browser.viewlets import CarouselViewlet
 from collective.carousel.testing import ICustomType
 from collective.carousel.tests.base import TestCase
 
+# default test query
+query = [{
+    'i': 'portal_type',
+    'o': 'plone.app.querystring.operation.selection.is',
+    'v': ['Document', 'Event', 'News Item']
+}]
+
 
 class ViewletTestCase(TestCase):
 
     def afterSetUp(self):
-        self.setRoles('Manager')
-        self.portal.portal_types.Topic.global_allow = True
-        self.folder.invokeFactory('Topic', 'collection')
-        collection = getattr(self.folder, 'collection')
+        """Set up the carousel Collection and some dummy objects"""
 
-        crit = self.folder.collection.addCriterion('portal_type',
-                                                   'ATSimpleStringCriterion')
-        crit.setValue(['Document', 'News Item', 'Event'])
+        self.setRoles('Manager')
+        self.folder.invokeFactory('Collection', 'collection')
+        collection = getattr(self.folder, 'collection')
+        collection.setQuery(query)
 
         field = self.folder.Schema().getField('carouselprovider')
         field.set(self.folder, collection)
@@ -37,11 +42,14 @@ class ViewletTestCase(TestCase):
     def test_multiple_providers(self):
         collections = []
         for i in range(3):
-            self.folder.invokeFactory('Topic', 'collection_%s' % i)
+            self.folder.invokeFactory('Collection', 'collection_%s' % i)
             collection = getattr(self.folder, 'collection_%s' % i)
-            crit = collection.addCriterion('portal_type',
-                                           'ATSimpleStringCriterion')
-            crit.setValue('Document')
+            query = [{
+                'i': 'portal_type',
+                'o': 'plone.app.querystring.operation.selection.is',
+                'v': ['Document']
+            }]
+            collection.setQuery(query)
             collections.append(collection)
         field = self.folder.Schema().getField('carouselprovider')
         field.set(self.folder, tuple(collections))
@@ -56,7 +64,7 @@ class ViewletTestCase(TestCase):
             self.folder.invokeFactory('Document', 'document_%s' % i)
             getattr(self.folder, 'document_%s' % i).reindexObject()
 
-        collection_num_items = len(self.folder.collection.queryCatalog())
+        collection_num_items = len(self.folder.collection.results())
         # We better have some documents in the collection's results
         self.failUnless(collection_num_items >= 10)
 
@@ -107,7 +115,7 @@ class ViewletTestCase(TestCase):
     def test_edit_carousel_link(self):
         viewlet = CarouselViewlet(self.folder, self.app.REQUEST, None, None)
         carousel_criteria = self.folder.collection.absolute_url() + \
-            '/criterion_edit_form'
+            '/edit'
         self.assertEqual(viewlet.editCarouselLink(viewlet.getProviders()[0]),
                          carousel_criteria)
 

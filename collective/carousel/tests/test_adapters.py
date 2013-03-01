@@ -7,17 +7,23 @@ from collective.carousel.testing import ICustomType
 import collective.carousel
 
 
+# default test query
+query = [{
+    'i': 'portal_type',
+    'o': 'plone.app.querystring.operation.selection.is',
+    'v': ['Document', 'Event', 'News Item']
+}]
+
+
 class ViewsTestCase(TestCase):
 
     def afterSetUp(self):
-        self.setRoles('Manager')
-        self.portal.portal_types.Topic.global_allow = True
-        self.folder.invokeFactory('Topic', 'collection')
-        collection = getattr(self.folder, 'collection')
+        """Set up the carousel Collection and some dummy objects"""
 
-        crit = self.folder.collection.addCriterion('portal_type',
-                                                   'ATSimpleStringCriterion')
-        crit.setValue(['Document', 'News Item', 'Event'])
+        self.setRoles('Manager')
+        self.folder.invokeFactory('Collection', 'collection')
+        collection = getattr(self.folder, 'collection')
+        collection.setQuery(query)
 
         field = self.folder.Schema().getField('carouselprovider')
         field.set(self.folder, collection)

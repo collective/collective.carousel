@@ -23,8 +23,8 @@ class FieldTestCase(TestCase):
     def test_field_stored(self):
         # Whether we can change the field and the value of it is getting stored
         self.setRoles('Manager', )
-        self.portal.portal_types.Topic.global_allow = True
-        self.folder.invokeFactory("Topic", "test-collection")
+
+        self.folder.invokeFactory('Collection', 'test-collection')
         carouselable_col = getattr(self.folder, 'test-collection')
         self.folder.invokeFactory('Document', 'my-page',
                                   carouselprovider=(carouselable_col, ))
