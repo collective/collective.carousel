@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.5'
+version = '1.6'
 
 tests_require = ['collective.testcaselayer']
 
@@ -9,13 +9,13 @@ setup(name='collective.carousel',
       version=version,
       description="Add-on for having Collections' results presented as a nice carousel",
       long_description=open("README.txt").read() + "\n" +
-                       open(os.path.join("docs", "HISTORY.txt")).read(),
+      open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
-        "Framework :: Plone",
-        "Programming Language :: Python",
-        "Topic :: Software Development :: Libraries :: Python Modules",
-        ],
+          "Framework :: Plone",
+          "Programming Language :: Python",
+          "Topic :: Software Development :: Libraries :: Python Modules",
+      ],
       keywords='plone zope collection carousel',
       author='Jarn [Denys Mishunov]',
       author_email='info@jarn.com',
