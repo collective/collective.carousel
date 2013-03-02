@@ -17,12 +17,12 @@ How to get a carousel?
 
 Work of carousel is based on one assumption |---| you already have a
 collection that returns results for showing in the carousel.
-    
+
 Carousel can be added in 2 ways:
 
     * as a viewlet above page's title (content carousel);
     * as a portlet to any portlet manager in your site.
-    
+
 Carousel above page's title (Content carousel).
 -----------------------------------------------
 
@@ -47,7 +47,7 @@ Carousel in a portlet.
       well;
     * fill out the fields in the form specifying a collection that will
       provide content for the carousel portlet.
-    
+
 **NOTE** content carousels are not inheritable while carousel portlet is
 inheritable as any other portlet in a Plone site. This means that when you add
 a content carousel to a folder, the same carousel will not be shown on any
@@ -66,7 +66,7 @@ viewlet. Read `Moving a viewlet from a viewlet manager to another one`__ for
 more info on how to move viewlets from one viewlet manager to another.
 
   .. __: http://plone.org/documentation/tutorial/customizing-main-template-viewlets/moving-a-viewlet/
-  
+
 How do I customize carousel's view?
 -----------------------------------
 collective.carousel provides a flexible way of customizing the look of items,
@@ -117,10 +117,10 @@ JQuery::
 
     $("#my-container .carousel").bind('resized.carousel', function(event, newheight) {
         $("#my-container .carousel").each(function() {
-            if ($(this).height() < newheight) $(this).height(newheight); 
+            if ($(this).height() < newheight) $(this).height(newheight);
         });
-    }); 
-  
+    });
+
 
 Developed by **Jarn AS** |---| http://www.jarn.com
 

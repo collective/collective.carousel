@@ -8,7 +8,7 @@
 
     <dt class="portletHeader">
         <span class="portletTopLeft"></span>
-        <a href="#" 
+        <a href="#"
            class="tile"
            tal:attributes="class python:view.hideHeader() and 'tile hiddenStructure' or 'tile'"
            tal:content="view/data/title" />
@@ -21,7 +21,7 @@
             <!-- Wrapper for fullscreen switcher -->
                 <tal:edit tal:condition="python:view.canSeeEditLink()">
                     <a href="#" tal:attributes="href python:view.editCarouselLink()"
-                       title="Edit carousel's results" 
+                       title="Edit carousel's results"
                        i18n:attributes="title">Edit Carousel</a>
                 </tal:edit>
         </div>
@@ -30,7 +30,7 @@
         <a class="prev browse"
            title="Previous item"
            tal:condition="not:hide_controls"
-           i18n:attributes="title label_previous_item"><span i18n:translate="label_previous_item">Previous item</span></a>        
+           i18n:attributes="title label_previous_item"><span i18n:translate="label_previous_item">Previous item</span></a>
 
         <div class="scrollable" data-timer="10000"
              tal:attributes="data-timer view/getTimer">
@@ -56,7 +56,7 @@
         <a class="next browse"
            title="Next item"
            tal:condition="not:hide_controls"
-           i18n:attributes="title label_next_item"><span i18n:translate="label_next_item">Next item</span></a>        
+           i18n:attributes="title label_next_item"><span i18n:translate="label_next_item">Next item</span></a>
 
         <!-- wrapper for navigator elements -->
         <div class="navi"

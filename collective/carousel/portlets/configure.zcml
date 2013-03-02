@@ -5,7 +5,7 @@
 
     <include package="plone.app.portlets" />
     <include package="plone.portlet.collection" />
-        
+
     <plone:portlet
         name="portlet.Carousel"
         interface=".carousel.ICarouselPortlet"
@@ -14,7 +14,7 @@
         edit_permission="plone.portlet.collection.AddCollectionPortlet"
         renderer=".carousel.Renderer"
         addview=".carousel.AddForm"
-        editview=".carousel.EditForm"       
+        editview=".carousel.EditForm"
         />
-        
+
 </configure>

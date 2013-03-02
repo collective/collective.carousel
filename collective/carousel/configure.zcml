@@ -2,19 +2,19 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:five="http://namespaces.zope.org/five"
     xmlns:i18n="http://namespaces.zope.org/i18n"
-    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"    
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="collective.carousel">
 
    <five:registerPackage package="." initialize=".initialize" />
-   
+
    <include package="archetypes.schemaextender" />
-   
-   <include file="skins.zcml" />  
-   <include package=".browser" />     
-   <include package=".portlets" />   
-   
+
+   <include file="skins.zcml" />
+   <include package=".browser" />
+   <include package=".portlets" />
+
    <adapter factory=".schemaextender.ContentTypeExtender"
-            provides="archetypes.schemaextender.interfaces.ISchemaExtender" />   
+            provides="archetypes.schemaextender.interfaces.ISchemaExtender" />
 
    <genericsetup:registerProfile
        name="default"
@@ -24,6 +24,6 @@
        provides="Products.GenericSetup.interfaces.EXTENSION"
        />
 
-  <i18n:registerTranslations directory="locales" /> 
+  <i18n:registerTranslations directory="locales" />
 
 </configure>

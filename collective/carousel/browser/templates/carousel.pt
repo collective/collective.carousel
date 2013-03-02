@@ -10,7 +10,7 @@
             <div class="toolBar" tal:condition="python:view.canSeeEditLink(provider)">
                 <!-- Wrapper for fullscreen switcher -->
                 <a href="#" tal:attributes="href python:view.editCarouselLink(provider)"
-                   title="Edit carousel's results" 
+                   title="Edit carousel's results"
                    i18n:attributes="title"
                    i18n:translate="label_edit_carousel">Edit Carousel</a>
             </div>
@@ -18,7 +18,7 @@
             <!-- "previous page" action -->
             <a class="prev browse"
                title="Previous item"
-               i18n:attributes="title label_previous_item"><span i18n:translate="label_previous_item">Previous item</span></a>                         
+               i18n:attributes="title label_previous_item"><span i18n:translate="label_previous_item">Previous item</span></a>
 
             <!-- <div class="kiosk-wrapper"> -->
             <div class="scrollable">
@@ -44,7 +44,7 @@
             <!-- "next page" action -->
             <a class="next browse"
                title="Next item"
-               i18n:attributes="title label_next_item"><span i18n:translate="label_next_item">Next item</span></a> 
+               i18n:attributes="title label_next_item"><span i18n:translate="label_next_item">Next item</span></a>
 
            <!-- wrapper for navigator elements -->
            <div class="navi"><!-- --></div>

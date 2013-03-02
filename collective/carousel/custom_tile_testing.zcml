@@ -8,7 +8,7 @@
 
     <!-- General views for carousel viewlet -->
     <browser:page
-      name="carousel-view"                  
+      name="carousel-view"
       for=".testing.ICustomType"
       template="tests/custom_default_tile.pt"
       permission="zope2.View"
