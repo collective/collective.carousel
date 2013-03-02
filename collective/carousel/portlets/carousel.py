@@ -123,7 +123,7 @@ class Renderer(base.Renderer):
     def css_class(self):
         header = self.data.header
         normalizer = getUtility(IIDNormalizer)
-        return "portlet-collection-%s" % normalizer.normalize(header)
+        return "portlet-carousel-%s" % normalizer.normalize(header)
 
     @memoize
     def results(self):
