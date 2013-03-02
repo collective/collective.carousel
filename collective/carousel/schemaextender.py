@@ -33,7 +33,7 @@ class ContentTypeExtender(object):
             # the field accepts Collections only atm.
             # Would be cool to have ATRBW to be able to select items by
             # interface with something like 'allowed_interfaces'
-            allowed_types = ('Topic'),
+            allowed_types = ('Topic', 'Collection',),
             relationship = 'Carousel',
             languageIndependent = True,
             multiValued = True,

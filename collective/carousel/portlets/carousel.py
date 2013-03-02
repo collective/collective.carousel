@@ -21,6 +21,14 @@ from plone.app.vocabularies.catalog import SearchableTextSourceBinder
 
 from Products.ATContentTypes.interface import IATTopic
 
+try:
+    from plone.app.collection.interfaces import ICollection
+    from plone.app.querystring import queryparser
+except ImportError:
+    from zope.interface import Interface
+    class ICollection(Interface):
+        pass
+
 _ = MessageFactory('collective.carousel')
 
 
@@ -44,7 +52,7 @@ class ICarouselPortlet(IPortletDataProvider):
         description=_(u"Find the collection which provides the items to list"),
         required=True,
         source=SearchableTextSourceBinder(
-            {'object_provides': IATTopic.__identifier__},
+            {'portal_type': ('Topic', 'Collection')},
             default_query='path:'))
 
     limit = schema.Int(
@@ -115,7 +123,7 @@ class Renderer(base.Renderer):
     def css_class(self):
         header = self.data.header
         normalizer = getUtility(IIDNormalizer)
-        return "portlet-collection-%s" % normalizer.normalize(header)
+        return "portlet-carousel-%s" % normalizer.normalize(header)
 
     @memoize
     def results(self):
@@ -179,6 +187,8 @@ class Renderer(base.Renderer):
     def editCarouselLink(self):
         provider = self.collection()
         if provider is not None:
+            if ICollection.providedBy(provider):
+                return provider.absolute_url() + '/edit'
             return provider.absolute_url() + '/criterion_edit_form'
         return None
 

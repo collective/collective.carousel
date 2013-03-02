@@ -6,9 +6,17 @@ from AccessControl import SecurityManagement
 from Products.ATContentTypes.permission import ChangeTopics
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
+try:
+    from plone.app.collection.interfaces import ICollection
+    from plone.app.querystring import queryparser
+except ImportError:
+    from zope.interface import Interface
+
+    class ICollection(Interface):
+        pass
+
 from plone.app.layout.viewlets.common import ViewletBase
 from plone.app.layout.globals.interfaces import IViewView
-
 
 
 class CarouselViewlet(ViewletBase):
@@ -30,11 +38,14 @@ class CarouselViewlet(ViewletBase):
     def results(self, provider):
         results = []
         if provider is not None:
-            # by default we assume that only Collections are addable 
+            # by default we assume that only Collections are addable
             # as a carousel provider
-            
-            # It doesn't make sense to show *all* objects from a collection 
+
+            # It doesn't make sense to show *all* objects from a collection
             # - some of them might return hundreeds of objects
+            if ICollection.providedBy(provider):
+                res = provider.results(b_size=7)
+                return res
             return provider.queryCatalog()[:7]
         return results
 
@@ -44,14 +55,16 @@ class CarouselViewlet(ViewletBase):
 
     def editCarouselLink(self, provider):
         if provider is not None:
+            if ICollection.providedBy(provider):
+                return provider.absolute_url() + '/edit'
             return provider.absolute_url() + '/criterion_edit_form'
         return None
 
     def get_tile(self, obj):
         # note to myself
-        # When adapter is uesd this means we check whether obj has any special 
+        # When adapter is uesd this means we check whether obj has any special
         # instructions about how to be handled in defined view or interface
-        # for multi adapter the same is true except more object than just the 
+        # for multi adapter the same is true except more object than just the
         # obj are check for instructions
         #have to use traverse to make zpt security work
         tile = obj.unrestrictedTraverse("carousel-view")
