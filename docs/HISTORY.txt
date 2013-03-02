@@ -1,29 +1,33 @@
 Changelog
 =========
 
-1.5 - Unreleased
-----------------
+1.5 - March 2, 2013
+-------------------
+
+- Support for new-style Collection type keeping backwards-compatibility
+  support for the old-style Topic
+  [mishunov, ableeb]
 
 - Don't base the carousel portlet on the collection one since it brings quite
   some unnecessary fileds that don't make sense in this context.
-  [spliter]
+  [mishunov]
 
 - Reduced the default rotation time for a carousel to 10 seconds.
-  [spliter]
+  [mishunov]
 
 - Replace '$' with 'jQuery' in the javascript to avoid unnecessary integration
   conflicts.
-  [spliter]
+  [mishunov]
 
 - We use plain CSS instead of the images for the arrows.
-  [spliter]
+  [mishunov]
 
 - Updated bundled jQueryTools to 1.2.5 and removed 'scrollable' module from
   the local copy.
-  [spliter]
+  [mishunov]
 
 - Complete revert of djay's changes to the javascript.
-  [spliter]
+  [mishunov]
 
 - Add French translation.
   [toutpt]
