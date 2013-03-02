@@ -1,7 +1,6 @@
 <dl class="portlet portletCarouselWrapper"
     tal:define="hide_controls view/data/hide_controls | nothing;
                 timer view/data/timer | python:10000"
-    tal:condition="view/results"
     tal:omit-tag=""
     i18n:domain="collective.carousel">
 
@@ -16,7 +15,7 @@
         <span class="portletTopRight"></span>
     </dt>
 
-    <dd class="carousel portletItem">
+    <dd class="carousel portletItem" tal:condition="view/results">
 
         <div class="toolBar" tal:condition="python:view.canSeeEditLink()">
             <!-- Wrapper for fullscreen switcher -->
