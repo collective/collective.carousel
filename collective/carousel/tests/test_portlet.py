@@ -122,6 +122,46 @@ class TestRenderer(TestCase):
         self.assertEquals('portlet-carousel-test-carousel', r.css_class())
 
 
+    def test_portlet_collection(self):
+
+        query = [{
+            'i': 'portal_type',
+            'o': 'plone.app.querystring.operation.selection.is',
+            'v': ['Document']
+        }]
+        # add a few documents
+        for i in range(6):
+            self.folder.invokeFactory('Document', 'document_%s'%i)
+            getattr(self.folder, 'document_%s'%i).reindexObject()
+
+        collection = getattr(self.folder, 'collection')
+        collection.setQuery(query)
+
+        # the documents are returned by the collection
+        collection_num_items = len(self.folder.collection.queryCatalog())
+        # We better have some documents - we should have 8
+        self.failUnless(collection_num_items >= 8)
+        
+        mapping = PortletAssignmentMapping()
+        mapping['foo'] = carousel.Assignment(header=u"Test carousel", target_collection='/Members/test_user_1_/collection')
+        r = self.renderer(context=None, request=None, view=None, manager=None, assignment=mapping['foo'])
+
+        # sanity check
+        self.assertEqual(r.collection().id, 'collection')
+
+        # we want the portlet to return us the same results as the collection
+        self.assertEquals(collection_num_items, len(r.results()))
+    
+    def test_edit_link(self):
+        collection = getattr(self.folder, 'collection')
+        collection.setQuery(query)
+        mapping = PortletAssignmentMapping()
+        mapping['foo'] = carousel.Assignment(header=u"Test carousel", target_collection='/Members/test_user_1_/collection')
+        r = self.renderer(context=None, request=None, view=None, manager=None, assignment=mapping['foo'])
+        self.assertTrue(r.editCarouselLink().endswith('/edit'))
+
+
+
 def test_suite():
     from unittest import defaultTestLoader
     return defaultTestLoader.loadTestsFromName(__name__)
