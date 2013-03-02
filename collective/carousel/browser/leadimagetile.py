@@ -1,10 +1,13 @@
 from Acquisition import aq_inner
 from zope.component import getUtility
+from zope.component import getMultiAdapter
 from Products.Five import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFPlone.interfaces import IPloneSiteRoot
-from collective.contentleadimage.config import IMAGE_FIELD_NAME
+from collective.contentleadimage.config import IMAGE_FIELD_NAME, IMAGE_CAPTION_FIELD_NAME
 from collective.contentleadimage.leadimageprefs import ILeadImagePrefsForm
+from collective.contentleadimage.browser.viewlets import LeadImageViewlet
+
 
 class LeadImageTile(BrowserView):
 
@@ -27,11 +30,10 @@ class LeadImageTile(BrowserView):
                 scale = 'leadimage'
                 return field.tag(context, scale=scale, css_class=css_class)
 
-        if getattr(context,'tag', None) is not None:
+        if getattr(context, 'tag', None) is not None:
             return context.tag(scale='mini', css_class=css_class)
 
         return ''
-
 
     def caption(self):
         context = aq_inner(self.context)
@@ -54,8 +56,8 @@ class LeadImageTile(BrowserView):
         @return: Last modified as a string, local time format        """
         # Get Plone helper view
         # which we use to convert the date to local format
-        plone=getMultiAdapter((self.context,self.request),name="plone")
-        time=self.context.modified()
+        plone = getMultiAdapter((self.context, self.request), name="plone")
+        time = self.context.modified()
         return plone.toLocalizedTime(time)
 
     def published(self):
@@ -63,12 +65,9 @@ class LeadImageTile(BrowserView):
         @return: Last modified as a string, local time format        """
         # Get Plone helper view
         # which we use to convert the date to local format
-        plone=getMultiAdapter((self.context,self.request),name="plone")
-        time=self.context.effective()
+        plone = getMultiAdapter((self.context, self.request), name="plone")
+        time = self.context.effective()
         return plone.toLocalizedTime(time)
-
 
     def __call__(self):
         return self.render()
-
-

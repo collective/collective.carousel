@@ -1,5 +1,3 @@
-from zope.component import queryMultiAdapter
-from zope.component import getMultiAdapter
 from zope.interface import alsoProvides
 from AccessControl import SecurityManagement
 
@@ -8,7 +6,6 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 try:
     from plone.app.collection.interfaces import ICollection
-    from plone.app.querystring import queryparser
 except ImportError:
     from zope.interface import Interface
 
