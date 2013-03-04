@@ -132,6 +132,13 @@ class TestRenderer(TestCase):
             assignment=carousel.Assignment(header=u"Test carousel"))
         self.assertEquals('portlet-carousel-test-carousel', r.css_class())
 
+    def test_hideheader(self):
+        r = self.renderer(
+            context=self.portal,
+            assignment=carousel.Assignment(header=u"Test carousel", hideheader=True))
+        output = r.render()
+        self.failUnless('class="portletHeader hiddenStructure"' in output)
+
     def test_portlet_collection(self):
 
         query = [{

@@ -6,11 +6,11 @@
 
 <div class="portletCarouselWrapper">
 
-    <dt class="portletHeader">
+    <dt class="portletHeader"
+        tal:attributes="class python:view.hideHeader() and 'portletHeader hiddenStructure' or 'portletHeader'">
         <span class="portletTopLeft"></span>
         <a href="#"
            class="tile"
-           tal:attributes="class python:view.hideHeader() and 'tile hiddenStructure' or 'tile'"
            tal:content="view/data/title" />
         <span class="portletTopRight"></span>
     </dt>
