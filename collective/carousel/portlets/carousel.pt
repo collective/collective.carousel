@@ -8,11 +8,9 @@
 
     <dt class="portletHeader"
         tal:attributes="class python:view.hideHeader() and 'portletHeader hiddenStructure' or 'portletHeader'">
-        <span class="portletTopLeft"></span>
         <a href="#"
            class="tile"
            tal:content="view/data/title" />
-        <span class="portletTopRight"></span>
     </dt>
 
     <dd class="carousel portletItem" tal:condition="view/results">
