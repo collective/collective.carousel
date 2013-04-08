@@ -8,6 +8,7 @@
    <five:registerPackage package="." initialize=".initialize" />
 
    <include package="archetypes.schemaextender" />
+   <include package="plone.app.jquerytools" />
 
    <include file="skins.zcml" />
    <include package=".browser" />
@@ -16,6 +17,7 @@
    <adapter factory=".schemaextender.ContentTypeExtender"
             provides="archetypes.schemaextender.interfaces.ISchemaExtender" />
 
+   <include package=".upgrades" />
    <genericsetup:registerProfile
        name="default"
        title="Carousel for Plone"

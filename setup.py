@@ -28,7 +28,7 @@ setup(name='collective.carousel',
       install_requires=[
           'setuptools',
           'archetypes.schemaextender',
-          # -*- Extra requirements: -*-
+          'plone.app.jquerytools',
       ],
       tests_require=tests_require,
       extras_require={'tests': tests_require},

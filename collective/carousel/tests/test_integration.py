@@ -22,7 +22,9 @@ class CarouselTestCase(TestCase):
     def test_js_available(self):
         jsreg = getattr(self.portal, 'portal_javascripts')
         script_ids = jsreg.getResourceIds()
-        self.failUnless('jquery.tools.min.js' in script_ids)
+        self.failUnless('++resource++plone.app.jquerytools.plugins.js'
+                        in script_ids)
+        self.failUnless('jquery.tools.min.js' not in script_ids)
         self.failUnless('carousel.js' in script_ids)
 
     def test_css_available(self):

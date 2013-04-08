@@ -1,0 +1,12 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup">
+  <genericsetup:upgradeStep
+      source="1"
+      destination="2"
+      title="Upgrade 1 to 2"
+      description="Remove custom jquerytools scrollable plugin and activate plone.app.jquerytools' one."
+      handler=".run_all_import_steps"
+      profile="collective.carousel:default"
+      />
+</configure>
