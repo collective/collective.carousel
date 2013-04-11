@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.6 - Unreleased
-----------------
+1.6 - April 11, 2013
+--------------------
 
 - Depend on plone.app.jquerytools and include the scrollable plugins. Include
   an Upgrade step for it (Upgrade 1 to 2).

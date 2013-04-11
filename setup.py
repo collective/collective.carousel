@@ -3,7 +3,9 @@ import os
 
 version = '1.6'
 
-tests_require = ['collective.testcaselayer']
+tests_require = [
+    'Products.PloneTestCase',
+    'collective.testcaselayer']
 
 setup(name='collective.carousel',
       version=version,
