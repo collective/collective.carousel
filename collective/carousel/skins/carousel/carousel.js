@@ -84,21 +84,32 @@ $(function () {
     };
 
     // initialize scrollable
-    api = $('div.scrollable')
-        .scrollable({
-            size: 1,
-            clickable: false,
-            loop: true,
-            circular: true
-        })
-        .autoscroll({
-            autoplay: ap,
-            steps: 1,
-            interval: timer
-        })
-        .navigator({
-            api: true
-        });
+    if ( ! ((jQuery('html').hasClass('ie8')) || (jQuery('html').hasClass('ie7'))) ) {
+        api = $('div.scrollable')
+            .scrollable({
+                size: 1,
+                clickable: false,
+                loop: true,
+                circular: true
+            })
+            .autoscroll({
+                autoplay: ap,
+                steps: 1,
+                interval: timer
+            })
+            .navigator({
+                api: true
+            });
+    } else {
+        // reduced for IE8/IE7
+        api = $('div.scrollable')
+            .scrollable({
+                size: 1,
+                clickable: false,
+                loop: true,
+                circular: true
+            })
+    }
 
     $('.carousel').resizeCarousel();
 
