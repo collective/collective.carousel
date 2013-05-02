@@ -1,11 +1,12 @@
 Changelog
 =========
 
-1.6.1dev - Unreleased
----------------------
+1.6.1 - May 2, 2013
+-------------------
 
 - Remove stale pdb statement.
   [thet]
+
 
 1.6 - April 11, 2013
 --------------------
