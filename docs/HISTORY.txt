@@ -1,6 +1,12 @@
 Changelog
 =========
 
+1.6.2 (unreleased)
+------------------
+
+- Added MANIFEST.in to prevent issues with packaging.
+  [bogdangi]
+
 1.6.1 - May 2, 2013
 -------------------
 
