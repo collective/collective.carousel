@@ -9,8 +9,6 @@ var
 include/
 lib/
 
-
-
 /src/.project
 /src/.pydevproject
 
@@ -18,5 +16,6 @@ lib/
 *.pyc
 *.swp
 *.egg
+*.mo
 
 *~
