@@ -1,11 +1,9 @@
 # Carousel is rendered through a viewlet in IAboveContent
 # using items provided by the carousel provider added to the context
-
-from zope.interface import alsoProvides, noLongerProvides
-
 from collective.carousel.browser.viewlets import CarouselViewlet
 from collective.carousel.testing import ICustomType
 from collective.carousel.tests.base import TestCase
+from zope.interface import alsoProvides, noLongerProvides
 
 # default test query
 query = [{

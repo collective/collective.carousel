@@ -4,31 +4,40 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     i18n_domain="collective.carousel">
 
-    <include package="." file="configure.zcml" />
+  <include package="." file="configure.zcml" />
 
-    <!-- General views for carousel viewlet -->
-    <browser:page
+  <!-- Custom view for custom type -->
+  <browser:page
+      name="carousel-view"
+      for=".testing.ICustomType"
+      template="tests/custom_default_tile.pt"
+      permission="zope2.View"
+      />
+
+  <!-- General views for carousel viewlet -->
+
+  <browser:page
       name="carousel-view"
       for="Products.ATContentTypes.interface.IATContentType"
       template="tests/default_tile.pt"
       permission="zope2.View"
       />
-    <browser:page
+  <browser:page
       name="carousel-view"
       for="Products.ATContentTypes.interface.IATNewsItem"
       template="tests/news_item_tile.pt"
       permission="zope2.View"
       />
-    <browser:page
+  <browser:page
       name="carousel-view"
       for="Products.ATContentTypes.interface.IATDocument"
       template="tests/page_tile.pt"
       permission="zope2.View"
       />
 
-    <!-- Special views for carousel portlet -->
-    <!-- default view for standard carousel is good enough for the portlet as well -->
-    <browser:page
+  <!-- Special views for carousel portlet -->
+  <!-- default view for standard carousel is good enough for the portlet as well -->
+  <browser:page
       name="carousel-portlet-view"
       for="Products.ATContentTypes.interface.IATContentType"
       template="tests/default_tile.pt"
@@ -36,4 +45,3 @@
       />
 
 </configure>
-

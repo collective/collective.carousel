@@ -1,31 +1,33 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
+    xmlns:cmf="http://namespaces.zope.org/cmf"
     xmlns:five="http://namespaces.zope.org/five"
     xmlns:i18n="http://namespaces.zope.org/i18n"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="collective.carousel">
 
-   <five:registerPackage package="." initialize=".initialize" />
+ <five:registerPackage package="." initialize=".initialize" />
+ <i18n:registerTranslations directory="locales" />
+ <cmf:registerDirectory name="carousel"/>
 
-   <include package="archetypes.schemaextender" />
-   <include package="plone.app.jquerytools" />
+ <include package="archetypes.schemaextender" />
+ <include package="plone.app.jquerytools" />
 
-   <include file="skins.zcml" />
-   <include package=".browser" />
-   <include package=".portlets" />
+ <include package=".browser" />
+ <include package=".portlets" />
+ <include package=".upgrades" />
 
-   <adapter factory=".schemaextender.ContentTypeExtender"
-            provides="archetypes.schemaextender.interfaces.ISchemaExtender" />
+ <adapter
+    name="carouselextender"
+    factory=".schemaextender.ContentTypeExtender"
+    provides="archetypes.schemaextender.interfaces.ISchemaExtender" />
 
-   <include package=".upgrades" />
-   <genericsetup:registerProfile
-       name="default"
-       title="Carousel for Plone"
-       directory="profiles/default"
-       description='Extension profile for the collective.carousel'
-       provides="Products.GenericSetup.interfaces.EXTENSION"
-       />
-
-  <i18n:registerTranslations directory="locales" />
+ <genericsetup:registerProfile
+     name="default"
+     title="Carousel for Plone"
+     directory="profiles/default"
+     description='Extension profile for the collective.carousel'
+     provides="Products.GenericSetup.interfaces.EXTENSION"
+     />
 
 </configure>

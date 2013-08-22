@@ -1,12 +1,13 @@
 from Acquisition import aq_inner
-from zope.component import getUtility
-from zope.component import getMultiAdapter
+from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.Five import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from Products.CMFPlone.interfaces import IPloneSiteRoot
-from collective.contentleadimage.config import IMAGE_FIELD_NAME, IMAGE_CAPTION_FIELD_NAME
-from collective.contentleadimage.leadimageprefs import ILeadImagePrefsForm
 from collective.contentleadimage.browser.viewlets import LeadImageViewlet
+from collective.contentleadimage.config import IMAGE_CAPTION_FIELD_NAME
+from collective.contentleadimage.config import IMAGE_FIELD_NAME
+from collective.contentleadimage.leadimageprefs import ILeadImagePrefsForm
+from zope.component import getMultiAdapter
+from zope.component import getUtility
 
 
 class LeadImageTile(BrowserView):
@@ -52,7 +53,7 @@ class LeadImageTile(BrowserView):
             return ''
 
     def modified(self):
-        """        http://svn.plone.org/svn/plone/Plone/trunk/Products/CMFPlone/browser/ploneview.py
+        """http://svn.plone.org/svn/plone/Plone/trunk/Products/CMFPlone/browser/ploneview.py
         @return: Last modified as a string, local time format        """
         # Get Plone helper view
         # which we use to convert the date to local format
@@ -61,7 +62,7 @@ class LeadImageTile(BrowserView):
         return plone.toLocalizedTime(time)
 
     def published(self):
-        """        http://svn.plone.org/svn/plone/Plone/trunk/Products/CMFPlone/browser/ploneview.py
+        """http://svn.plone.org/svn/plone/Plone/trunk/Products/CMFPlone/browser/ploneview.py
         @return: Last modified as a string, local time format        """
         # Get Plone helper view
         # which we use to convert the date to local format

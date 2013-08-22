@@ -1,17 +1,13 @@
-from zope.component import adapts
-from zope.interface import implements
-from zope.i18nmessageid import MessageFactory
-
-from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import \
-                                         ReferenceBrowserWidget
 from Products.ATContentTypes.interface import IATContentType
+from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
 from Products.Archetypes.public import ReferenceField
-
-from archetypes.schemaextender.interfaces import ISchemaExtender, \
-                                                 IBrowserLayerAwareExtender
 from archetypes.schemaextender.field import ExtensionField
-
+from archetypes.schemaextender.interfaces import IBrowserLayerAwareExtender
+from archetypes.schemaextender.interfaces import ISchemaExtender
 from collective.carousel.interfaces import ICollectiveCarouselLayer
+from zope.component import adapts
+from zope.i18nmessageid import MessageFactory
+from zope.interface import implements
 
 _ = MessageFactory('collective.carousel')
 
@@ -23,8 +19,7 @@ class CarouselProviderField(ExtensionField, ReferenceField):
 
 class ContentTypeExtender(object):
     adapts(IATContentType)
-    implements(ISchemaExtender,
-               IBrowserLayerAwareExtender)
+    implements(ISchemaExtender, IBrowserLayerAwareExtender)
     layer = ICollectiveCarouselLayer
 
     _fields = [

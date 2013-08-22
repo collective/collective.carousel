@@ -1,13 +1,8 @@
-from Products.Five import zcml
 from Products.Five import fiveconfigure
-# from Products.PloneTestCase.PloneTestCase import installPackage
-# from collective.testcaselayer.ptc import BasePTCLayer, ptc_layer
-
-from Testing import ZopeTestCase as ztc
-
+from Products.Five import zcml
 from Products.PloneTestCase import PloneTestCase as ptc
 from Products.PloneTestCase.layer import onsetup
-
+from Testing import ZopeTestCase as ztc
 from zope.interface import Interface
 
 
@@ -24,7 +19,6 @@ def setup_product():
     fiveconfigure.debug_mode = True
     from collective import carousel
     zcml.load_config('testing.zcml', package=carousel)
-    zcml.load_config('custom_tile_testing.zcml', package=carousel)
     fiveconfigure.debug_mode = False
 
     # We need to tell the testing framework that these products

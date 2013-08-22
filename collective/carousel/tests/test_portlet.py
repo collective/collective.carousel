@@ -1,16 +1,14 @@
 # Carousel is rendered through a viewlet in IAboveContent
 # using items provided by the carousel provider added to the context
-from plone.app.portlets.storage import PortletAssignmentMapping
-from plone.portlets.interfaces import IPortletType
-from plone.portlets.interfaces import IPortletManager
-from plone.portlets.interfaces import IPortletAssignment
-from plone.portlets.interfaces import IPortletDataProvider
-from plone.portlets.interfaces import IPortletRenderer
-from Products.CMFCore.utils import getToolByName
-from zope.component import getUtility, getMultiAdapter
-
 from collective.carousel.portlets import carousel
 from collective.carousel.tests.base import TestCase
+from plone.app.portlets.storage import PortletAssignmentMapping
+from plone.portlets.interfaces import IPortletAssignment
+from plone.portlets.interfaces import IPortletDataProvider
+from plone.portlets.interfaces import IPortletManager
+from plone.portlets.interfaces import IPortletRenderer
+from plone.portlets.interfaces import IPortletType
+from zope.component import getUtility, getMultiAdapter
 
 # default test query
 query = [{

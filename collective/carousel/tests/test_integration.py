@@ -1,9 +1,7 @@
 # Testing basic integration of the package into Plone
-from zope.component import getUtility
-
-from plone.portlets.interfaces import IPortletType
-
 from collective.carousel.tests.base import TestCase
+from plone.portlets.interfaces import IPortletType
+from zope.component import getUtility
 
 
 class CarouselTestCase(TestCase):

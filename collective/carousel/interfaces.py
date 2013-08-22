@@ -1,4 +1,10 @@
+from Products.ATContentTypes.interface import IATContentType
+from Products.ATContentTypes.interface import IATNewsItem
 from zope.interface import Interface
+try:
+    from collective.contentleadimage.interfaces import ILeadImageable
+except:
+    ILeadImageable = None
 
 
 class ICollectiveCarouselLayer(Interface):
@@ -11,15 +17,6 @@ class ICarouselProvider(Interface):
         the special marker. For now this marks Collections only.
     """
 
-ILeadImageable = None
-
-try:
-    from collective.contentleadimage.interfaces import ILeadImageable
-except:
-    pass
-
-from Products.ATContentTypes.interface import IATContentType
-from Products.ATContentTypes.interface import IATNewsItem
 
 if ILeadImageable is not None:
     # Need to make sure we come up top

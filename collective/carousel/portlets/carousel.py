@@ -1,29 +1,21 @@
+from AccessControl import SecurityManagement
+from Products.ATContentTypes.interface import IATTopic
+from Products.ATContentTypes.permission import ChangeTopics
+from Products.CMFCore.utils import getToolByName
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from plone.app.form.widgets.uberselectionwidget import UberSelectionWidget
+from plone.app.portlets.portlets import base
+from plone.app.vocabularies.catalog import SearchableTextSourceBinder
+from plone.i18n.normalizer.interfaces import IIDNormalizer
+from plone.memoize.instance import memoize
+from plone.portlets.interfaces import IPortletDataProvider
+from zope import schema
+from zope.component import getMultiAdapter, getUtility
+from zope.formlib import form
 from zope.i18nmessageid import MessageFactory
 from zope.interface import implements
-from zope import schema
-from zope.formlib import form
-from AccessControl import SecurityManagement
-from zope.component import getMultiAdapter, getUtility
-
-from plone.memoize.instance import memoize
-from plone.i18n.normalizer.interfaces import IIDNormalizer
-
-from Products.ATContentTypes.permission import ChangeTopics
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from Products.CMFCore.utils import getToolByName
-
-# from plone.portlet.collection import collection as base
-from plone.portlets.interfaces import IPortletDataProvider
-from plone.app.portlets.portlets import base
-
-from plone.app.form.widgets.uberselectionwidget import UberSelectionWidget
-from plone.app.vocabularies.catalog import SearchableTextSourceBinder
-
-from Products.ATContentTypes.interface import IATTopic
-
 try:
     from plone.app.collection.interfaces import ICollection
-    from plone.app.querystring import queryparser
 except ImportError:
     from zope.interface import Interface
     class ICollection(Interface):

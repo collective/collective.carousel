@@ -1,9 +1,8 @@
+from Products.Five import zcml
+from collective.carousel.testing import ICustomType
+from collective.carousel.tests.base import TestCase
 from zope.component import queryMultiAdapter
 from zope.interface import alsoProvides, noLongerProvides
-from Products.Five import zcml
-
-from collective.carousel.tests.base import TestCase
-from collective.carousel.testing import ICustomType
 import collective.carousel
 
 
