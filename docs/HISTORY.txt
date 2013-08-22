@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.6.2 (unreleased)
-------------------
+1.6.2dev (unreleased)
+---------------------
 
 - Added MANIFEST.in to prevent issues with packaging.
   [bogdangi]
