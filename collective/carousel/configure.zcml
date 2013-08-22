@@ -6,28 +6,33 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="collective.carousel">
 
- <five:registerPackage package="." initialize=".initialize" />
- <i18n:registerTranslations directory="locales" />
- <cmf:registerDirectory name="carousel"/>
+  <five:registerPackage package="." initialize=".initialize" />
+  <i18n:registerTranslations directory="locales" />
+  <cmf:registerDirectory name="carousel"/>
 
- <include package="archetypes.schemaextender" />
- <include package="plone.app.jquerytools" />
+  <include package="archetypes.schemaextender" />
+  <include package="plone.app.jquerytools" />
 
- <include package=".browser" />
- <include package=".portlets" />
- <include package=".upgrades" />
+  <include package=".browser" />
+  <include package=".portlets" />
+  <include package=".upgrades" />
 
- <adapter
-    name="carouselextender"
-    factory=".schemaextender.ContentTypeExtender"
-    provides="archetypes.schemaextender.interfaces.ISchemaExtender" />
+  <adapter
+      name="carouselextender"
+      factory=".schemaextender.ContentTypeExtender"
+      provides="archetypes.schemaextender.interfaces.ISchemaExtender" />
 
- <genericsetup:registerProfile
-     name="default"
-     title="Carousel for Plone"
-     directory="profiles/default"
-     description='Extension profile for the collective.carousel'
-     provides="Products.GenericSetup.interfaces.EXTENSION"
-     />
+  <utility
+      component=".vocabularies.ImageScaleVocabulary"
+      name="collective.carousel.ImageScaleVocabulary"
+      />
+
+  <genericsetup:registerProfile
+      name="default"
+      title="Carousel for Plone"
+      directory="profiles/default"
+      description='Extension profile for the collective.carousel'
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
 
 </configure>

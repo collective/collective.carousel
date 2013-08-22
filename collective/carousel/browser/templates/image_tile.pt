@@ -1,5 +1,7 @@
-<tal:block define="desc context/Description | nothing;">
+<tal:block
+    condition="exists:context/image"
+    define="desc context/Description | nothing;
+            image_scale request/carousel_image_scale|nothing;">
     <img src="" alt=""
-         tal:condition="exists:context/image"
-         tal:replace="structure python: path('nocall:context/tag')(alt=desc, title=desc)" />
+        tal:replace="structure python:path('nocall:context/tag')(scale=image_scale, alt=desc, title=desc)" />
 </tal:block>

@@ -1,12 +1,13 @@
 <tal:block define="url context/getRemoteUrl|context/absolute_url;
-                   desc context/Description | nothing;">
+                   desc context/Description | nothing;
+                   image_scale request/carousel_image_scale|nothing;">
 
   <a href="#"
      tal:attributes="href url;">
     <img src="" alt=""
          tal:define="imgField python:context.getField('leadImage')"
          tal:condition="python: imgField is not None and imgField.get_size(context) != 0"
-         tal:replace="structure python: path('nocall:imgField/tag')(context, alt=desc, title=desc)" />
+         tal:replace="structure python: path('nocall:imgField/tag')(context, scale=image_scale, alt=desc, title=desc)" />
   </a>
 
 </tal:block>

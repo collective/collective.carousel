@@ -38,7 +38,7 @@
                     <div class="tileItem visualIEFloatFix"
                          tal:define="item_object item/getObject">
 
-                        <div class="itemPadding">
+                        <div class="itemPadding" tal:define="image_scale view/data/image_scale|nothing; dummy python:view.request.set('carousel_image_scale', image_scale);">
                             <tal:block replace="structure python:view.get_tile(item_object)" />
                         </div>
 

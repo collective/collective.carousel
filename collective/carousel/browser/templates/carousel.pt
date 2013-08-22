@@ -28,7 +28,7 @@
                         <div class="tileItem visualIEFloatFix"
                              tal:define="item_object item/getObject">
 
-                            <div class="itemPadding">
+                            <div class="itemPadding" tal:define="dummy python:view.request.set('carousel_image_scale', None);"><tal:com condition="nothing">re-set carousel_image_scale to None, as it's only used in portlets</tal:com>
                                 <tal:block replace="structure python:view.get_tile(item_object)" />
                             </div>
 

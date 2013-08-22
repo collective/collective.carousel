@@ -3,7 +3,8 @@
                  item_type context/portal_type;
                  use_view_action site_properties/typesUseViewActionInListings|python:();
                  item_description context/Description;
-                 item_title_or_id context/pretty_title_or_id;">
+                 item_title_or_id context/pretty_title_or_id;
+                 image_scale request/carousel_image_scale|nothing;">
 
 <h2 class="tileHeadline">
     <a href="#"
@@ -17,7 +18,7 @@
 <a href="#"
    tal:attributes="href python:(item_type in use_view_action) and item_url+'/view' or item_url;">
     <img src="" tal:condition="view/tag|nothing"
-         tal:replace="structure python:path('nocall:view/tag')(css_class='')"
+         tal:replace="structure python:path('nocall:view/tag')(scale=image_scale, css_class='')"
          alt="" />
 </a>
 

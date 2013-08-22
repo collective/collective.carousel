@@ -67,6 +67,16 @@ class ICarouselPortlet(IPortletDataProvider):
         required=False,
         default=10)
 
+    image_scale = schema.Choice(
+        title=_(u'portlet_image_scale', default=u'Image Scale'),
+        description=_(u'portlet_help_image_scale',
+                      default=u'Select, which image scale should be used '
+                              u'for the portlet, if there is any image.'),
+        required=True,
+        default=None,
+        vocabulary="collective.carousel.ImageScaleVocabulary",
+        )
+
 
 class Assignment(base.Assignment):
     implements(ICarouselPortlet)
@@ -77,15 +87,17 @@ class Assignment(base.Assignment):
     limit = None
     hide_controls = False
     timer = 10
+    image_scale = None
 
     def __init__(self, header=u"", hideheader=False, target_collection=None, limit=None,
-                 hide_controls=False, timer=10):
+                 hide_controls=False, timer=10, image_scale=None):
         self.header = header
         self.hideheader = hideheader
         self.target_collection = target_collection
         self.limit = limit
         self.hide_controls = hide_controls
         self.timer = timer
+        self.image_scale = image_scale
 
     @property
     def title(self):

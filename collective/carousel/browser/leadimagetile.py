@@ -20,19 +20,17 @@ class LeadImageTile(BrowserView):
         portal = getUtility(IPloneSiteRoot)
         return ILeadImagePrefsForm(portal)
 
-    def tag(self, css_class='tileImage'):
+    def tag(self, scale='mini', css_class='tileImage'):
         """ return a tag for the leadimage"""
         context = aq_inner(self.context)
 
         field = context.getField(IMAGE_FIELD_NAME)
         if field is not None:
             if field.get_size(context) != 0:
-                #scale = self.prefs.body_scale_name
-                scale = 'leadimage'
                 return field.tag(context, scale=scale, css_class=css_class)
 
         if getattr(context, 'tag', None) is not None:
-            return context.tag(scale='mini', css_class=css_class)
+            return context.tag(scale=scale, css_class=css_class)
 
         return ''
 
