@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.6.2dev (unreleased)
----------------------
+1.6.2 - August 28, 2013
+-----------------------
 
 - Allow configuring of image_scales in portlets.
   [thet]

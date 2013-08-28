@@ -1,13 +1,12 @@
 from setuptools import setup, find_packages
-import os
 
-version = '1.6.2dev'
+version = '1.6.2'
 
 setup(
     name='collective.carousel',
     version=version,
     description="Add-on for having Collections' results presented as a nice carousel",
-    long_description=open("README.rst").read() + "\n" + open(os.path.join("docs", "HISTORY.txt")).read(),
+    long_description=open("README.rst").read() + "\n" + open("CHANGES.rst").read(),
     classifiers=[
         "Framework :: Plone",
         "Programming Language :: Python",
