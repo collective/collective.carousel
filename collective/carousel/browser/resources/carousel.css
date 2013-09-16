@@ -44,6 +44,7 @@ div.scrollable div.items {
  * It's better to keep the padding here than on .tileItem to avoid messing up
  * the width of an item. */
 div.scrollable div.items div.itemPadding {
+    position: relative;
     margin: 1.5em 1em 2.2em;
 }
 
