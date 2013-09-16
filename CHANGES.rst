@@ -1,13 +1,14 @@
 Changelog
 =========
 
-2.0dev - (unreleased)
+1.7dev - (unreleased)
 ---------------------
 
-- Refactoring: Remove skins layer and register css and js browser resources.
-  Don't use dtml css anymore but let integrators overload styles via own css.
-  Optimize javascript.
+- Remove skins layer and register css and js browser resources. Don't use dtml
+  css anymore but let integrators overload styles via own css.  Optimize
+  javascript and CSS.
   [thet]
+
 
 1.6.2 - August 28, 2013
 -----------------------
