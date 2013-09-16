@@ -60,7 +60,7 @@ a.browse {
 	position: absolute;
 	z-index: 2;
 	bottom: 0;
-    width:38px;
+    width:25%;
     height:100%;
     margin: 0;
     cursor:pointer;
@@ -72,22 +72,37 @@ a.next {
 	right: 0;
 }
 a.browse span {
-    position: absolute;
-    overflow:hidden;
+    position:absolute;
     top: 50%;
-    margin-top: -11px;
-    margin-left: -5px;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-top: 11px solid transparent;
-    border-bottom: 11px solid transparent;
+    margin-top: -10px;
+    display: block;
+    display: block;
+    width: 13px;
+    height: 20px;
+    border-radius: 20px;
+    color: transparent;
+    background-color: #222;
+    font-size: 1.4em;
+    font-weight: bold;
+    padding: 0 0 0 7px
 }
 a.prev span {
-    border-right: 11px solid black; /* TODO */
+    left: 2em;
 }
 a.next span {
-    border-left: 11px solid black; /* TODO */
+    right: 2em;
+}
+a.prev span:before {
+    color: lightgrey;
+    content: '\2039';
+}
+a.next span:before {
+    color: lightgrey;
+    content: '\203a';
+}
+a.prev:hover span:before,
+a.next:hover span:before {
+    color:black;
 }
 
 /* disabled navigational button */
