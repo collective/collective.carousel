@@ -56,7 +56,11 @@ div.scrollable div.items div.itemPadding {
 /* NAVIGATION BUTTONS */
 
 /* prev, next, prevPage and nextPage buttons */
+.carousel:hover a.browse {
+    display: block;
+}
 a.browse {
+    display: none;
 	position: absolute;
 	z-index: 2;
 	bottom: 0;
@@ -76,7 +80,6 @@ a.browse span {
     top: 50%;
     margin-top: -10px;
     display: block;
-    display: block;
     width: 13px;
     height: 20px;
     border-radius: 20px;
@@ -86,11 +89,17 @@ a.browse span {
     font-weight: bold;
     padding: 0 0 0 7px
 }
+a.browse:hover span {
+    background-color:lightgrey;
+}
+a.browse:hover span:before {
+    color:#222;
+}
 a.prev span {
-    left: 2em;
+    left: 1.5em;
 }
 a.next span {
-    right: 2em;
+    right: 1.5em;
 }
 a.prev span:before {
     color: lightgrey;
@@ -99,10 +108,6 @@ a.prev span:before {
 a.next span:before {
     color: lightgrey;
     content: '\203a';
-}
-a.prev:hover span:before,
-a.next:hover span:before {
-    color:black;
 }
 
 /* disabled navigational button */
@@ -129,20 +134,22 @@ div.navi a {
     height:7px;
     margin:14px 3px 3px;
     width:7px;
-    border: 1px solid black; /* TODO */
+    border: 1px solid grey;
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
     border-radius: 4px;
-    background: white; /* TODO */
+    background: white;
     display:inline-block;
     font-size:1px;
 }
 div.navi a:hover {
-    background: black; /* TODO */
+    border-color: #222;
+    background: #222;
     cursor: pointer;
 }
 div.navi a.active {
-    background: black; /* TODO */
+    border-color: #222;
+    background: #222;
 }
 
 
