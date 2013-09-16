@@ -9,4 +9,12 @@
       handler=".run_all_import_steps"
       profile="collective.carousel:default"
       />
+  <genericsetup:upgradeStep
+      source="2"
+      destination="3"
+      title="Upgrade 2 to 3"
+      description="Remove skin layer and register browser resources."
+      handler=".run_all_import_steps"
+      profile="collective.carousel:default"
+      />
 </configure>

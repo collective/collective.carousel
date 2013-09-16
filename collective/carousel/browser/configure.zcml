@@ -6,6 +6,13 @@
 
   <include package="plone.browserlayer" />
 
+  <browser:resourceDirectory
+      name="collective.carousel"
+      directory="resources"
+      permission="zope.Public"
+      layer="collective.carousel.interfaces.ICollectiveCarouselLayer"
+      />
+
   <class class="Products.ATContentTypes.content.topic.ATTopic">
     <implements interface="collective.carousel.interfaces.ICarouselProvider" />
   </class>

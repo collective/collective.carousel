@@ -1,11 +1,7 @@
-/* Main stylesheet for collective.carousel */
-/* <dtml-with base_properties> (do not remove this :) */
-/* <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either :) */
-
-/* @group Viewlet */
+/* VIEWLET */
 
 /* root element for the scrollable.
-   when scrolling occurs this element stays still. */
+ * when scrolling occurs this element stays still. */
 .carousel {
 	position: relative;
 	z-index: 0;
@@ -44,8 +40,9 @@ div.scrollable div.items {
     margin: 0;
 }
 
-/* Visual padding for a single item in a carousel. It's better to keep the padding here than
-   on .tileItem to avoid messing up the width of an item. */
+/* Visual padding for a single item in a carousel.
+ * It's better to keep the padding here than on .tileItem to avoid messing up
+ * the width of an item. */
 div.scrollable div.items div.itemPadding {
     margin: 1.5em 1em 2.2em;
 }
@@ -55,11 +52,8 @@ div.scrollable div.items div.itemPadding {
     max-width: 100%;
 }
 
-/* @end */
 
-/* @group Navigation elements */
-
-/* @group Navigation buttons */
+/* NAVIGATION BUTTONS */
 
 /* prev, next, prevPage and nextPage buttons */
 a.browse {
@@ -90,27 +84,26 @@ a.browse span {
     border-bottom: 11px solid transparent;
 }
 a.prev span {
-    border-right: 11px solid &dtml-globalBackgroundColor;;
+    border-right: 11px solid black; /* TODO */
 }
 a.next span {
-    border-left: 11px solid &dtml-globalBackgroundColor;;
+    border-left: 11px solid black; /* TODO */
 }
-
 
 /* disabled navigational button */
 a.disabled {
     visibility:hidden !important;
 }
 
-/* @end */
 
-/* @group Navigation bar */
+/* NAVIGATION BAR */
 
 div.navi {
     height:38px;
     text-align: center;
     clear: left;
-    /* 38px is the height of the whole navigation bar, including arrows. Adjust to your numbers */
+    /* 38px is the height of the whole navigation bar, including arrows.
+     * Adjust this to your need. */
     margin-top: -38px;
     margin-left: 38px;
     margin-right: 38px;
@@ -121,25 +114,24 @@ div.navi a {
     height:7px;
     margin:14px 3px 3px;
     width:7px;
-    border: 1px solid &dtml-globalBorderColor;;
+    border: 1px solid black; /* TODO */
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
     border-radius: 4px;
-    background: &dtml-globalBackgroundColor;;
+    background: white; /* TODO */
     display:inline-block;
     font-size:1px;
 }
 div.navi a:hover {
-    background: &dtml-globalBorderColor;;
+    background: black; /* TODO */
     cursor: pointer;
 }
 div.navi a.active {
-    background: &dtml-globalBorderColor;;
+    background: black; /* TODO */
 }
 
-/* @end */
 
-/* @group Tool bar */
+/* TOOLBAR */
 div.toolBar {
 	position: absolute;
 	right: 0;
@@ -150,17 +142,16 @@ div.toolBar {
     width: auto;
     padding: 0 0.5em;
     line-height: 2em;
-    background-color: #fff; /* for those browsers that don't yet support CSS3 rgba colors */
-	background-color: rgba(256, 256, 256, 0.8); /* for the good boys of the block */
+    background-color: #fff; /* for those browsers that don't yet support CSS3
+                             *  rgba colors */
+	background-color: rgba(256, 256, 256, 0.8); /* CSS3 rgba */
 }
 .hideTools .toolBar {
     display: none;
 }
-/* @end */
 
-/* @end */
 
-/* @group Additional styles for the portlet */
+/* PORTLET */
 
 .portletCarouselWrapper {
 	border: none;
@@ -174,7 +165,3 @@ div.toolBar {
 .portletCarouselWrapper div.scrollable {
     width: 100%;
 }
-
-/* @end */
-
-/* </dtml-with> */

@@ -1,15 +1,6 @@
-/*jslint bitwise:true, newcap:true, nomen:true, onevar:true, plusplus:true, regexp:true */
-/*globals $:false, console:false, jQuery:false */
+(function($) {
 
-jQuery('html').addClass('hideTools');
-
-$(function () {
-
-    var api,
-        ap = ($('.carousel').length > 1) ? false : true,
-        timer = $('div.scrollable').attr('data-timer');
-
-    jQuery.fn.resizeCarousel = function () {
+    $.fn.resizeCarousel = function () {
         return this.each(function () {
             // get the scrollable API for this carousel
             var imgHeight, baseHeight,
@@ -24,7 +15,7 @@ $(function () {
             // We are resizing carousel after it has been initialized. Since it could have different default width, we need to make sure the carousel is focused on the correct item to avoid the carousel having 'sliced in half' position. In this case we position on the first item, that follows the first cloned item
             api.getItemWrap().attr('style', 'left: -' + carouselWidth + 'px');
 
-            jQuery.each($items, function () {
+            $.each($items, function () {
                 //  Adjust the widths of the carousel items
                 $(this).add($('.' + clonedClass, $carousel)).width(carouselWidth);
             });
@@ -83,44 +74,59 @@ $(function () {
         });
     };
 
-    // initialize scrollable
-    if ( ! ((jQuery('html').hasClass('ie8')) || (jQuery('html').hasClass('ie7'))) ) {
-        api = $('div.scrollable')
-            .scrollable({
-                size: 1,
-                clickable: false,
-                loop: true,
-                circular: true
-            })
-            .autoscroll({
-                autoplay: ap,
-                steps: 1,
-                interval: timer
-            })
-            .navigator({
-                api: true
+    $.fn.initializeCarousel = function () {
+        return this.each(function () {
+            var $this = $(this);
+            var scrollable = $(this).find('div.scrollable');
+            var api,
+                ap = ($this.length > 1) ? false : true,
+                timer = scrollable.attr('data-timer');
+
+            // initialize scrollable
+            if ( ! (($('html').hasClass('ie8')) || ($('html').hasClass('ie7'))) ) {
+                api = scrollable
+                    .scrollable({
+                        size: 1,
+                        clickable: false,
+                        loop: true,
+                        circular: true
+                    })
+                    .autoscroll({
+                        autoplay: ap,
+                        steps: 1,
+                        interval: timer
+                    })
+                    .navigator({
+                        api: true
+                    });
+            } else {
+                // reduced for IE8/IE7
+                api = scrollable.scrollable({
+                    size: 1,
+                    clickable: false,
+                    loop: true,
+                    circular: true
+                });
+            }
+
+            $this.resizeCarousel();
+
+            // Pause on hover
+            if (api) {
+                $this.hover(api.pause);
+            }
+
+            // Show toolBar when hovering over a carousel
+            $this.hover(function () {
+                $this.find('.toolBar').eq(0).slideToggle('fast');
             });
-    } else {
-        // reduced for IE8/IE7
-        api = $('div.scrollable')
-            .scrollable({
-                size: 1,
-                clickable: false,
-                loop: true,
-                circular: true
-            })
-    }
 
-    $('.carousel').resizeCarousel();
-
-    // Pause on hover
-    if (api) {
-        $('.carousel').hover(api.pause);
-    }
-
-    // Show toolBar when hovering over a carousel
-    $('.carousel').hover(
-        function () {
-            $(this).find('.toolBar').eq(0).slideToggle('fast');
         });
-});
+    };
+
+    $(document).ready(function() {
+        $('html').addClass('hideTools');
+        $('.carousel').initializeCarousel();
+    });
+
+})(jQuery);
