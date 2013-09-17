@@ -113,7 +113,8 @@
 
             // Pause on hover
             if (api) {
-                $this.hover(api.pause);
+                $this.mouseenter(api.pause);
+                $this.mouseleave(api.play);
             }
 
             // Show toolBar when hovering over a carousel

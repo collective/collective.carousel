@@ -4,6 +4,9 @@ Changelog
 1.7dev - (unreleased)
 ---------------------
 
+- Play/Autoscroll the carousel again, when the mouse leaves the carousel.
+  [thet]
+
 - Remove skins layer and register css and js browser resources. Don't use dtml
   css anymore but let integrators overload styles via own css.  Optimize
   javascript and CSS.
