@@ -127,4 +127,12 @@ Developed by **Jarn AS** |---| http://www.jarn.com
 Development sponsored by the **Bergen Public Library** |---|
 http://www.nettbiblioteket.no
 
+Dexterity
+=========
+
+`collective.carouselbehaviour`_ provides Dexterity-based (``plone.app.dexterity``) content types support.
+
+  .. |---| unicode:: U+2014  .. em dash
+  .. _collective.carouselbehaviour: http://pypi.python.org/pypi/collective.carouselbevaviour
+
 
