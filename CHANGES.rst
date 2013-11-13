@@ -12,6 +12,9 @@ Changelog
   javascript and CSS.
   [thet]
 
+- Added description for dexterity support
+  [bogdangi]
+
 
 1.6.2 - August 28, 2013
 -----------------------
