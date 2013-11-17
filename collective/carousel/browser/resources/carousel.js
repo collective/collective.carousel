@@ -127,7 +127,7 @@
 
     $(document).ready(function() {
         $('html').addClass('hideTools');
-        $('.carousel').initializeCarousel();
+        $('.collective.carousel').initializeCarousel();
     });
 
 })(jQuery);

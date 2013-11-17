@@ -2,7 +2,7 @@
 
 /* root element for the scrollable.
  * when scrolling occurs this element stays still. */
-.carousel {
+.collective.carousel {
 	position: relative;
 	z-index: 0;
     padding: 0;
@@ -49,7 +49,7 @@ div.scrollable div.items div.itemPadding {
 }
 
 /* To make images sit within the carousel's boundaries no matter what */
-.carousel img {
+.collective.carousel img {
     max-width: 100%;
 }
 
@@ -57,7 +57,7 @@ div.scrollable div.items div.itemPadding {
 /* NAVIGATION BUTTONS */
 
 /* prev, next, prevPage and nextPage buttons */
-.carousel:hover a.browse {
+.collective.carousel:hover a.browse {
     display: block;
 }
 a.browse {
@@ -179,7 +179,7 @@ div.toolBar {
 .portletCarouselWrapper {
 	border: none;
 }
-.portletCarouselWrapper .carousel {
+.portletCarouselWrapper .collective.carousel {
     width: 100%;
     padding: 0;
     margin-bottom: 0;
