@@ -133,6 +133,6 @@ Dexterity
 `collective.carouselbehaviour`_ provides Dexterity-based (``plone.app.dexterity``) content types support.
 
   .. |---| unicode:: U+2014  .. em dash
-  .. _collective.carouselbehaviour: http://pypi.python.org/pypi/collective.carouselbevaviour
+  .. _collective.carouselbehaviour: http://pypi.python.org/pypi/collective.carouselbehaviour
 
 
