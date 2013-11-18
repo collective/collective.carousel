@@ -4,6 +4,11 @@ Changelog
 1.7dev - (unreleased)
 ---------------------
 
+- Edited the css/html/js so that carousel uses the .collective.carousel
+  selector. Fixes this issue: 
+  https://github.com/collective/collective.carousel/issues/13
+  [pigeonflight]
+
 - Play/Autoscroll the carousel again, when the mouse leaves the carousel.
   [thet]
 

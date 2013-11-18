@@ -4,7 +4,7 @@
 
      <tal:carousel repeat="provider view/getProviders">
         <div class="carousel"
-             tal:attributes="class python:repeat['provider'].end and 'carousel lastCarousel' or 'carousel'"
+             tal:attributes="class python:repeat['provider'].end and 'collective carousel lastCarousel' or 'collective carousel'"
              tal:condition="python: view.results(provider)">
 
             <div class="toolBar" tal:condition="python:view.canSeeEditLink(provider)">
