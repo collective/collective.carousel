@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.7dev - (unreleased)
----------------------
+1.7 (2014-04-30)
+----------------
 
 - Edited the css/html/js so that carousel uses the .collective.carousel
   selector. Fixes this issue: 
