@@ -1,11 +1,17 @@
 Changelog
 =========
 
+1.8 (unreleased)
+----------------
+
+- Nothing changed yet.
+
+
 1.7 (2014-04-30)
 ----------------
 
 - Edited the css/html/js so that carousel uses the .collective.carousel
-  selector. Fixes this issue: 
+  selector. Fixes this issue:
   https://github.com/collective/collective.carousel/issues/13
   [pigeonflight]
 
