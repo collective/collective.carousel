@@ -78,7 +78,8 @@ class ViewletTestCase(TestCase):
 
         # check results(). We get not more than 7 items even though the
         # collection returns >=7 results, don't we?
-        self.failUnless(len(viewlet.results(viewlet.getProviders()[0])) == 7)
+        self.assertEqual(
+            len(list(viewlet.results(viewlet.getProviders()[0]))), 7)
         results = [result.id for result in
                    viewlet.results(viewlet.getProviders()[0])]
         doc_ids = [id for id in self.folder.contentIds()[:7]
