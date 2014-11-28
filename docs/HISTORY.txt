@@ -1,6 +1,12 @@
 Changelog
 =========
 
+
+1.4.1 - Unreleased
+------------------
+
+- Cleanup carousel.js for compression problems [cekk]
+
 1.4 - January 27, 2011
 ----------------------
 
