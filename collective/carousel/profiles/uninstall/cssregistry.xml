@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<object name="portal_css" meta_type="Stylesheets Registry">
+  <!-- upgrade -->
+  <stylesheet remove="True" id="carousel.css" />
+
+  <stylesheet
+      id="++resource++collective.carousel/carousel.css"
+      remove="True"/>
+
+</object>

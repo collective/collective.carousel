@@ -32,5 +32,11 @@
       description='Extension profile for the collective.carousel'
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
-
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="Carousel for Plone: uninstall"
+      directory="profiles/uninstall"
+      description='Extension profile for the collective.carousel'
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
 </configure>

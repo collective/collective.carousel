@@ -1,0 +1,5 @@
+<layers>
+    <layer name="collective.carousel"
+           interface="collective.carousel.interfaces.ICollectiveCarouselLayer"
+           remove="True" />
+</layers>

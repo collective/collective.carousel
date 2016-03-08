@@ -4,7 +4,8 @@ Changelog
 1.8 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Add uninstall profile
+  [cekk]
 
 
 1.7 (2014-04-30)
@@ -156,4 +157,3 @@ Changelog
 
 - Initial release
   [spliter]
-
